@@ -8,6 +8,7 @@ export type Project = {
   category: string;
   title: string;
   benefit: string; // ROI badge, e.g. "Saves 20 hours/month"
+  summary: string; // 2-sentence Problem/Solution shown on the card
   description: string;
   screenshotUrl: string; // hero screenshot for detail view
   loomUrl: string; // Loom embed URL
@@ -77,6 +78,8 @@ export const site = {
       category: "Lead Management",
       title: "Inbound lead router with AI qualification",
       benefit: "Saves 20 hours/month",
+      summary:
+        "Sales reps were drowning in unqualified leads from 6 different sources, losing hot prospects in the noise. Now every lead is auto-enriched, AI-scored against ICP, and routed to the right AE in Slack within 30 seconds.",
       description:
         "Captures leads from 6 sources, enriches with Clearbit, scores with GPT, and routes to the right AE in Slack with a pre-drafted reply.",
       screenshotUrl: "/projects/lead-router.jpg",
@@ -94,6 +97,8 @@ export const site = {
       category: "Finance Ops",
       title: "Invoice extraction & reconciliation",
       benefit: "Cuts AP time by 78%",
+      summary:
+        "AP team spent 3 days a month manually keying invoices from PDFs into Xero, with frequent matching errors. The system now extracts line items with GPT-4, matches to POs, and queues a one-click approval in Slack.",
       description:
         "OCR-parses PDFs from inbox, extracts line items with AI, matches to POs, and posts to Xero with human-in-the-loop approval.",
       screenshotUrl: "/projects/invoice-ops.jpg",
@@ -107,27 +112,12 @@ export const site = {
       tools: ["Make", "OpenAI", "Xero"],
     },
     {
-      id: "content-engine",
-      category: "Marketing",
-      title: "Content repurposing engine",
-      benefit: "10x content output",
-      description:
-        "Turns a single long-form video into 12 assets: blog, LinkedIn carousel, shorts, threads, newsletter, and landing copy.",
-      screenshotUrl: "/projects/content-engine.jpg",
-      loomUrl: "https://www.loom.com/embed/REPLACE_ID",
-      logic: [
-        "Loom/Zoom transcript pull",
-        "Chapter detection + GPT rewriting",
-        "Asset generation per platform",
-        "Draft queue in Notion",
-      ],
-      tools: ["n8n", "OpenAI", "Notion"],
-    },
-    {
       id: "onboarding",
       category: "Client Ops",
       title: "Client onboarding autopilot",
       benefit: "Zero-touch onboarding",
+      summary:
+        "New clients waited 3-5 days for kickoff while ops manually sent contracts, set up workspaces, and chased intake forms. A single Stripe payment now triggers 14 actions end-to-end — client is onboarded before the team logs in.",
       description:
         "Stripe payment triggers 14 actions: contract, workspace, intake form, kickoff call, welcome email, and CRM setup.",
       screenshotUrl: "/projects/onboarding.jpg",
@@ -139,40 +129,6 @@ export const site = {
         "CRM record + Slack channel",
       ],
       tools: ["Zapier", "Stripe", "Cal.com"],
-    },
-    {
-      id: "support-triage",
-      category: "Support",
-      title: "AI-triaged support inbox",
-      benefit: "3min → 20s response",
-      description:
-        "Classifies tickets, drafts answers from your knowledge base, and escalates only what actually needs a human.",
-      screenshotUrl: "/projects/support-triage.jpg",
-      loomUrl: "https://www.loom.com/embed/REPLACE_ID",
-      logic: [
-        "Intercom + email unified intake",
-        "Vector search over help center",
-        "GPT drafts with citations",
-        "Human review for sensitive tags",
-      ],
-      tools: ["n8n", "OpenAI", "Intercom"],
-    },
-    {
-      id: "reporting",
-      category: "Reporting",
-      title: "Exec dashboard auto-brief",
-      benefit: "Every Monday, 6am",
-      description:
-        "Pulls data from 9 tools, writes a plain-English weekly summary, and delivers it to leadership before standup.",
-      screenshotUrl: "/projects/reporting.jpg",
-      loomUrl: "https://www.loom.com/embed/REPLACE_ID",
-      logic: [
-        "Scheduled multi-source sync",
-        "Metric diff vs last week",
-        "Narrative generation with GPT",
-        "Email + Slack delivery",
-      ],
-      tools: ["Make", "OpenAI", "Google Sheets"],
     },
   ] as Project[],
 
