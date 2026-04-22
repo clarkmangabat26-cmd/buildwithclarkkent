@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 const About = () => {
   return (
     <section id="about" className="border-b-2 border-ink">
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left: portrait */}
           <div className="lg:col-span-5">

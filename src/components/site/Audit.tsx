@@ -24,7 +24,7 @@ const Audit = () => {
 
   return (
     <section id="audit" className="border-b-2 border-ink bg-ink text-background">
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-28 grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28 grid grid-cols-1 lg:grid-cols-12 gap-10">
         <div className="lg:col-span-5">
           <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4 opacity-70">
             / {site.contact.eyebrow}
