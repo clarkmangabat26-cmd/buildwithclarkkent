@@ -185,6 +185,30 @@ export const site = {
     ctaLabel: "Book My Discovery Call →",
   },
 
+  // ---------- CTA Section (Find your bottleneck) ----------
+  ctaSection: {
+    eyebrow: "FREE DISCOVERY CALL",
+    headline: "Find your bottleneck.",
+    description: "45 minutes. I'll map your current ops, identify the three highest-leverage automations, and tell you what they'd save — before you pay a dollar.",
+    bullets: [
+      "No sales pitch",
+      "Written report delivered in 48h", 
+      "Yours to keep"
+    ],
+    formLabels: {
+      name: "01 / Name",
+      email: "02 / Email",
+      bottleneck: "03 / What is your biggest manual bottleneck?"
+    },
+    placeholders: {
+      name: "Alex Morgan",
+      email: "alex@company.com",
+      bottleneck: "Our team spends ~15h/week copying data between..."
+    },
+    submitButton: "Book My Discovery Call →",
+    submittingText: "Sending…"
+  },
+
   // ---------- Footer ----------
   footer: {
     tagline: "Built for high-performance operations.",

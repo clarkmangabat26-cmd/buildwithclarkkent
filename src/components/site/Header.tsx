@@ -46,7 +46,7 @@ const Header = () => {
             Book a Discovery Call →
           </a>
         </nav>
-        <div className="lg:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center">
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen(!open)}
