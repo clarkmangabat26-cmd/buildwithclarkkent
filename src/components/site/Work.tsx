@@ -1,118 +1,19 @@
 import { useState } from "react";
-import { ArrowUpRight, X, Play } from "lucide-react";
-
-export type Project = {
-  id: string;
-  category: string;
-  title: string;
-  benefit: string;
-  description: string;
-  logic: string[];
-  tools: string[];
-};
-
-const projects: Project[] = [
-  {
-    id: "lead-router",
-    category: "Lead Management",
-    title: "Inbound lead router with AI qualification",
-    benefit: "Saves 20 hours/month",
-    description:
-      "Captures leads from 6 sources, enriches with Clearbit, scores with GPT, and routes to the right AE in Slack with a pre-drafted reply.",
-    logic: [
-      "Webhook intake from forms, ads, and email",
-      "Enrichment + deduplication in Airtable",
-      "GPT scoring against ICP rubric",
-      "Round-robin assignment + Slack alert",
-    ],
-    tools: ["n8n", "OpenAI", "Slack"],
-  },
-  {
-    id: "invoice-ops",
-    category: "Finance Ops",
-    title: "Invoice extraction & reconciliation",
-    benefit: "Cuts AP time by 78%",
-    description:
-      "OCR-parses PDFs from inbox, extracts line items with AI, matches to POs, and posts to Xero with human-in-the-loop approval.",
-    logic: [
-      "Gmail watch → PDF parse",
-      "GPT-4 structured extraction",
-      "Match against purchase orders",
-      "Approval workflow in Slack",
-    ],
-    tools: ["Make", "OpenAI", "Xero"],
-  },
-  {
-    id: "content-engine",
-    category: "Marketing",
-    title: "Content repurposing engine",
-    benefit: "10x content output",
-    description:
-      "Turns a single long-form video into 12 assets: blog, LinkedIn carousel, shorts, threads, newsletter, and landing copy.",
-    logic: [
-      "Loom/Zoom transcript pull",
-      "Chapter detection + GPT rewriting",
-      "Asset generation per platform",
-      "Draft queue in Notion",
-    ],
-    tools: ["n8n", "OpenAI", "Notion"],
-  },
-  {
-    id: "onboarding",
-    category: "Client Ops",
-    title: "Client onboarding autopilot",
-    benefit: "Zero-touch onboarding",
-    description:
-      "Stripe payment triggers 14 actions: contract, workspace, intake form, kickoff call, welcome email, and CRM setup.",
-    logic: [
-      "Stripe webhook as trigger",
-      "PandaDoc contract + workspace creation",
-      "Cal.com booking link sent",
-      "CRM record + Slack channel",
-    ],
-    tools: ["Zapier", "Stripe", "Cal.com"],
-  },
-  {
-    id: "support-triage",
-    category: "Support",
-    title: "AI-triaged support inbox",
-    benefit: "3min → 20s response",
-    description:
-      "Classifies tickets, drafts answers from your knowledge base, and escalates only what actually needs a human.",
-    logic: [
-      "Intercom + email unified intake",
-      "Vector search over help center",
-      "GPT drafts with citations",
-      "Human review for sensitive tags",
-    ],
-    tools: ["n8n", "OpenAI", "Intercom"],
-  },
-  {
-    id: "reporting",
-    category: "Reporting",
-    title: "Exec dashboard auto-brief",
-    benefit: "Every Monday, 6am",
-    description:
-      "Pulls data from 9 tools, writes a plain-English weekly summary, and delivers it to leadership before standup.",
-    logic: [
-      "Scheduled multi-source sync",
-      "Metric diff vs last week",
-      "Narrative generation with GPT",
-      "Email + Slack delivery",
-    ],
-    tools: ["Make", "OpenAI", "Google Sheets"],
-  },
-];
+import { ArrowUpRight, X } from "lucide-react";
+import { site, type Project } from "@/content/site";
 
 const Work = () => {
   const [active, setActive] = useState<Project | null>(null);
+  const projects = site.projects;
 
   return (
     <section id="work" className="border-b-2 border-ink">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-28">
         <div className="flex items-end justify-between mb-10 md:mb-16">
           <div>
-            <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">/ Automation Catalog</div>
+            <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
+              / Automation Catalog
+            </div>
             <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95]">
               Systems I've<br />built<span className="text-primary">.</span>
             </h2>
@@ -183,55 +84,64 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
 
       <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-12 md:py-20">
         <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95] max-w-4xl">
-          {project.title}<span className="text-primary">.</span>
+          {project.title}
+          <span className="text-primary">.</span>
         </h2>
         <div className="mt-6 inline-flex items-center gap-3 border-2 border-ink px-4 py-2">
           <span className="h-2 w-2 bg-primary" />
-          <span className="font-mono text-xs uppercase tracking-[0.15em] font-bold">{project.benefit}</span>
+          <span className="font-mono text-xs uppercase tracking-[0.15em] font-bold">
+            {project.benefit}
+          </span>
         </div>
         <p className="mt-8 max-w-3xl text-lg md:text-xl leading-relaxed text-foreground/80">
           {project.description}
         </p>
 
-        {/* Video placeholder */}
+        {/* Loom video */}
         <div className="mt-12 md:mt-16">
-          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">/ Video Demo — Loom</div>
-          <div className="relative aspect-video border-2 border-ink bg-secondary flex items-center justify-center grid-lines">
-            <div className="flex flex-col items-center gap-4">
-              <div className="h-20 w-20 md:h-24 md:w-24 bg-primary border-2 border-ink flex items-center justify-center">
-                <Play className="h-8 w-8 md:h-10 md:w-10 text-primary-foreground fill-current" />
-              </div>
-              <span className="font-mono text-xs uppercase tracking-[0.2em]">Loom walkthrough · 4:32</span>
-            </div>
+          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">
+            / Video Demo — Loom
+          </div>
+          <div className="relative aspect-video border-2 border-ink bg-secondary">
+            <iframe
+              src={project.loomUrl}
+              title={`${project.title} — Loom demo`}
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
           </div>
         </div>
 
-        {/* Screenshots */}
+        {/* Screenshot */}
         <div className="mt-12 md:mt-16">
-          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">/ Process Screenshots</div>
-          <div className="grid grid-cols-1 md:grid-cols-3 border-2 border-ink">
-            {[1, 2, 3].map((n, i) => (
-              <div
-                key={n}
-                className={`aspect-[4/3] grid-lines bg-secondary flex items-center justify-center
-                  ${i < 2 ? "border-b-2 md:border-b-0 md:border-r-2 border-ink" : ""}`}
-              >
-                <span className="font-black tracking-tightest text-4xl md:text-6xl opacity-20">
-                  0{n}
-                </span>
-              </div>
-            ))}
+          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">
+            / Process Screenshot
+          </div>
+          <div className="border-2 border-ink bg-secondary overflow-hidden">
+            <img
+              src={project.screenshotUrl}
+              alt={`${project.title} — screenshot`}
+              className="w-full h-auto block"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
           </div>
         </div>
 
-        {/* Logic */}
+        {/* Logic Breakdown */}
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-ink">
           <div className="p-6 md:p-8 md:col-span-1 border-b-2 md:border-b-0 md:border-r-2 border-ink bg-ink text-background">
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 mb-4">/ The Logic</div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 mb-4">
+              / Logic Breakdown
+            </div>
             <h3 className="font-black tracking-tightest text-3xl md:text-4xl">How it flows.</h3>
             <div className="mt-6 flex flex-wrap gap-2">
               {project.tools.map((t) => (
-                <span key={t} className="font-mono text-[10px] uppercase tracking-[0.15em] border border-background/40 px-2 py-1">
+                <span
+                  key={t}
+                  className="font-mono text-[10px] uppercase tracking-[0.15em] border border-background/40 px-2 py-1"
+                >
                   {t}
                 </span>
               ))}
@@ -241,7 +151,9 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
             {project.logic.map((step, i) => (
               <div
                 key={i}
-                className={`flex gap-6 p-6 md:p-8 ${i < project.logic.length - 1 ? "border-b-2 border-ink" : ""}`}
+                className={`flex gap-6 p-6 md:p-8 ${
+                  i < project.logic.length - 1 ? "border-b-2 border-ink" : ""
+                }`}
               >
                 <div className="font-black tracking-tightest text-4xl md:text-5xl text-primary leading-none">
                   {String(i + 1).padStart(2, "0")}
@@ -255,10 +167,17 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
         <div className="mt-12 md:mt-16 flex flex-col sm:flex-row gap-4">
           <a
             href="#audit"
-            onClick={onClose}
+            onClick={(e) => {
+              e.preventDefault();
+              onClose();
+              setTimeout(
+                () => document.getElementById("audit")?.scrollIntoView({ behavior: "smooth" }),
+                50
+              );
+            }}
             className="inline-flex items-center justify-center h-14 px-8 bg-primary text-primary-foreground font-bold uppercase tracking-[0.12em] text-sm border-2 border-ink"
           >
-            Build something like this →
+            Book a Discovery Call →
           </a>
           <button
             onClick={onClose}
