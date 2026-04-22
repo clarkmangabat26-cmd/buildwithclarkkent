@@ -103,5 +103,28 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-mono-stack {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .tracking-tightest {
+    letter-spacing: -0.04em;
+  }
+  .border-ink {
+    border-color: hsl(var(--ink));
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, hsl(var(--ink) / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--ink) / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 }
