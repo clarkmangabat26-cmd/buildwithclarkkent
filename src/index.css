@@ -8,35 +8,37 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Swiss Minimalist B2B — Pure White / Jet Black / Power Blue */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 10%;          /* #1A1A1A Jet Black */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 222 100% 50%;         /* #0052FF Power Blue */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 222 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ink: 0 0% 10%;                 /* Jet Black alias */
+    --border: 0 0% 10%;              /* 2px solid black borders */
+    --input: 0 0% 10%;
+    --ring: 222 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;                  /* Swiss: no rounding */
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +103,28 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-mono-stack {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .tracking-tightest {
+    letter-spacing: -0.04em;
+  }
+  .border-ink {
+    border-color: hsl(var(--ink));
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, hsl(var(--ink) / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--ink) / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 }
