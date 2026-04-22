@@ -5,7 +5,7 @@ const Hero = () => {
     <section id="top" className="relative border-b-2 border-ink overflow-hidden">
       <div className="absolute inset-0 grid-lines pointer-events-none" aria-hidden />
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 py-10 md:py-28">
-        <div className="flex items-center gap-3 mb-8 md:mb-10">
+        <div className="flex items-center gap-3 mb-16 md:mb-20">
           <span className="h-2 w-2 bg-primary" />
           <span className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em]">
             {site.role} / {site.availability}
