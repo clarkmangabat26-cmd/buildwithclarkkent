@@ -47,13 +47,6 @@ const Header = () => {
           </a>
         </nav>
         <div className="lg:hidden flex items-center gap-3">
-          <a
-            href={CTA_HREF}
-            onClick={(e) => smoothTo(e, CTA_HREF)}
-            className="inline-flex items-center justify-center h-11 px-4 bg-primary text-primary-foreground font-bold uppercase tracking-[0.1em] text-xs border-2 border-ink"
-          >
-            {CTA_LABEL_SHORT}
-          </a>
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen(!open)}
@@ -79,6 +72,16 @@ const Header = () => {
                 {l.label}
               </a>
             ))}
+            <a
+              href={CTA_HREF}
+              onClick={(e) => {
+                setOpen(false);
+                smoothTo(e, CTA_HREF);
+              }}
+              className="m-6 inline-flex items-center justify-center h-12 px-6 bg-primary text-primary-foreground font-bold uppercase tracking-[0.12em] text-sm border-2 border-ink"
+            >
+              Book a Discovery Call →
+            </a>
           </nav>
         </div>
       )}

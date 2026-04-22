@@ -8,7 +8,7 @@ const About = () => {
           {/* Left: portrait */}
           <div className="lg:col-span-5">
             <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">/ About</div>
-            <div className="aspect-[4/5] w-full border-2 border-ink bg-secondary overflow-hidden">
+            <div className="aspect-[4/5] w-full border border-ink rounded-[4px] bg-secondary overflow-hidden">
               <img
                 src={site.about.imageUrl}
                 alt={`${site.name} — ${site.role}`}
