@@ -18,16 +18,16 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 border-b-2 border-ink bg-background">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-10 h-16 md:h-20">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10 h-16 md:h-20">
         <a
           href="#top"
           onClick={(e) => smoothTo(e, "#top")}
-          className="flex items-center gap-2 font-black tracking-tightest text-lg md:text-xl"
+          className="flex items-center gap-2 font-black tracking-tightest text-base md:text-xl truncate max-w-[55%] md:max-w-none"
         >
           <span className="inline-block w-3 h-3 bg-primary" aria-hidden />
           {site.brandMark}
         </a>
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-10">
           {links.map((l) => (
             <a
               key={l.href}
@@ -46,7 +46,7 @@ const Header = () => {
             Book a Discovery Call →
           </a>
         </nav>
-        <div className="md:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center gap-3">
           <a
             href={CTA_HREF}
             onClick={(e) => smoothTo(e, CTA_HREF)}
@@ -64,7 +64,7 @@ const Header = () => {
         </div>
       </div>
       {open && (
-        <div className="md:hidden border-t-2 border-ink bg-background">
+        <div className="lg:hidden border-t-2 border-ink bg-background">
           <nav className="flex flex-col">
             {links.map((l) => (
               <a
@@ -74,7 +74,7 @@ const Header = () => {
                   setOpen(false);
                   smoothTo(e, l.href);
                 }}
-                className="px-5 py-4 border-b-2 border-ink font-semibold uppercase tracking-[0.15em] text-sm"
+                className="px-6 py-4 border-b-2 border-ink font-semibold uppercase tracking-[0.15em] text-sm"
               >
                 {l.label}
               </a>

@@ -8,7 +8,7 @@ const Work = () => {
 
   return (
     <section id="work" className="border-b-2 border-ink">
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
         <div className="flex items-end justify-between mb-10 md:mb-16">
           <div>
             <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
@@ -68,7 +68,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
   return (
     <div className="fixed inset-0 z-[100] bg-background overflow-y-auto animate-fade-up">
       <div className="sticky top-0 z-10 border-b-2 border-ink bg-background">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
           <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em]">
             / Case Study — {project.category}
           </span>
@@ -82,7 +82,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-12 md:py-20">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-12 md:py-20">
         <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95] max-w-4xl">
           {project.title}
           <span className="text-primary">.</span>

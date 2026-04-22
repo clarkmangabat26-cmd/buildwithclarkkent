@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 const Stack = () => {
   return (
     <section id="solutions" className="border-b-2 border-ink bg-ink text-background">
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-12 md:py-20">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-12 md:py-20">
         <div className="flex items-center justify-between mb-8 md:mb-12">
           <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-70">
             / {site.stack.label}

@@ -21,7 +21,7 @@ export const site = {
   firstName: "[Your Name]",
   role: "AI Automation Specialist",
   availability: "Available for Q2",
-  brandMark: "AUTOMATE/OPS",
+  brandMark: "[Your Full Name]",
   email: "hello@yourdomain.com",
   social: {
     linkedin: "#",
