@@ -24,6 +24,10 @@ const Header = () => {
           ))}
           <a
             href="#audit"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="inline-flex items-center justify-center h-11 px-6 bg-primary text-primary-foreground font-bold uppercase tracking-[0.12em] text-sm border-2 border-ink hover:translate-y-[-2px] transition-transform"
           >
             Book a Call →
@@ -32,6 +36,10 @@ const Header = () => {
         <div className="md:hidden flex items-center gap-3">
           <a
             href="#audit"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="inline-flex items-center justify-center h-11 px-4 bg-primary text-primary-foreground font-bold uppercase tracking-[0.1em] text-xs border-2 border-ink"
           >
             Book a Call
