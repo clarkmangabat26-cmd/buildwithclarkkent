@@ -123,8 +123,8 @@ All colors MUST be HSL.
   }
   .grid-lines {
     background-image:
-      linear-gradient(to right, hsl(var(--ink) / 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--ink) / 0.06) 1px, transparent 1px);
+      linear-gradient(to right, hsl(var(--ink) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--ink) / 0.05) 1px, transparent 1px);
     background-size: 48px 48px;
   }
 }

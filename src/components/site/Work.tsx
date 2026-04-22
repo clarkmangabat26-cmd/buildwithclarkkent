@@ -127,7 +127,8 @@ const Work = () => {
             <button
               key={p.id}
               onClick={() => setActive(p)}
-              className={`group text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-colors relative
+              className={`group text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative
+                hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))]
                 ${i % 3 !== 2 ? "lg:border-r-2" : ""} 
                 ${i % 2 !== 1 ? "md:border-r-2 lg:border-r-2" : "md:border-r-0"}
                 ${i < projects.length - 1 ? "border-b-2" : ""}

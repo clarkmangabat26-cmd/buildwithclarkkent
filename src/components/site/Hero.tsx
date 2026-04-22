@@ -9,7 +9,7 @@ const Hero = () => {
             AI Automation Specialist / Available for Q2
           </span>
         </div>
-        <h1 className="font-black tracking-tightest leading-[0.95] text-[44px] sm:text-6xl md:text-8xl lg:text-[128px]">
+        <h1 className="font-black tracking-tightest leading-[0.95] text-[32px] sm:text-6xl md:text-8xl lg:text-[128px]">
           I build systems <br className="hidden sm:block" />
           that handle your <br className="hidden sm:block" />
           <span className="relative inline-block">
