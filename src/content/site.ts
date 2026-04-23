@@ -18,11 +18,11 @@ export type Project = {
 
 export const site = {
   // ---------- Identity ----------
-  name: "[Your Full Name]",
-  firstName: "[Your Name]",
+  name: "Clark Kent Mangabat",
+  firstName: "Clark",
   role: "AI Automation Specialist",
   availability: "Available for Q2",
-  brandMark: "[Your Full Name]",
+  brandMark: "CLARK KENT MANGABAT",
   email: "hello@yourdomain.com",
   social: {
     linkedin: "#",
