@@ -22,10 +22,10 @@ const Header = () => {
         <a
           href="#top"
           onClick={(e) => smoothTo(e, "#top")}
-          className="flex items-center gap-2 font-black tracking-tightest text-base md:text-xl truncate max-w-[55%] md:max-w-none"
+          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-3 pr-4 font-black tracking-tightest text-base md:text-lg lg:max-w-none lg:text-xl"
         >
-          <span className="inline-block w-3 h-3 bg-primary" aria-hidden />
-          {site.brandMark}
+          <span className="inline-block h-3 w-3 shrink-0 bg-primary" aria-hidden />
+          <span className="truncate">{site.brandMark}</span>
         </a>
         <nav className="hidden lg:flex items-center gap-10">
           {links.map((l) => (
@@ -50,7 +50,7 @@ const Header = () => {
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen(!open)}
-            className="h-11 w-11 border-2 border-ink flex items-center justify-center"
+            className="flex h-11 w-11 shrink-0 items-center justify-center border-2 border-ink"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

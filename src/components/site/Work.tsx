@@ -23,19 +23,16 @@ const Work = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-2 border-ink">
+        <div className="grid grid-cols-1 lg:grid-cols-3 border-2 border-ink">
           {projects.map((p, i) => (
             <button
               key={p.id}
               onClick={() => setActive(p)}
-              className={`group text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative
+              className={`group text-left p-8 md:p-10 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative
                 hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))]
-                ${i % 3 !== 2 ? "lg:border-r-2" : ""} 
-                ${i % 2 !== 1 ? "md:border-r-2 lg:border-r-2" : "md:border-r-0"}
-                ${i < projects.length - 1 ? "border-b-2" : ""}
-                ${i >= projects.length - 3 ? "lg:border-b-0" : "lg:border-b-2"}
-                ${i >= projects.length - 2 ? "md:border-b-0" : "md:border-b-2"}
-                border-ink min-h-[280px] flex flex-col justify-between`}
+                ${i < projects.length - 1 ? "border-b-2 lg:border-b-0" : ""}
+                ${i < projects.length - 1 ? "lg:border-r-2" : "lg:border-r-0"}
+                border-ink min-h-[420px] md:min-h-[460px] flex flex-col justify-between`}
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
@@ -47,10 +44,13 @@ const Work = () => {
                 <h3 className="font-black tracking-tightest text-2xl md:text-3xl leading-tight">
                   {p.title}
                 </h3>
+                <p className="mt-6 max-w-md text-sm md:text-base leading-relaxed text-foreground/75 transition-colors group-hover:text-background/80">
+                  {p.summary}
+                </p>
               </div>
               <div className="mt-8 inline-flex items-center gap-2 self-start">
                 <span className="h-2 w-2 bg-primary group-hover:bg-background" />
-                <span className="font-mono text-xs uppercase tracking-[0.15em] font-semibold">
+                <span className="font-mono text-sm md:text-base uppercase tracking-[0.15em] font-bold">
                   {p.benefit}
                 </span>
               </div>

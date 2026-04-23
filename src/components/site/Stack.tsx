@@ -1,8 +1,7 @@
 import { site } from "@/content/site";
 
 const Stack = () => {
-  // Duplicate the list so the -50% translate creates a seamless loop.
-  const loop = [...site.stack.tools, ...site.stack.tools, ...site.stack.tools, ...site.stack.tools];
+  const loop = [...site.stack.tools, ...site.stack.tools];
   return (
     <section id="solutions" className="border-b-2 border-ink bg-ink text-background overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-12 md:py-20">
@@ -25,16 +24,16 @@ const Stack = () => {
           }}
         >
           <div
-            className="flex w-max animate-marquee will-change-transform"
-            style={{ animationDuration: "28s" }}
+            className="flex w-max animate-marquee motion-reduce:animate-none will-change-transform [transform:translate3d(0,0,0)]"
+            style={{ animationDuration: "24s" }}
           >
             {loop.map((t, i) => (
               <div
                 key={`${t}-${i}`}
-                className="flex items-center justify-center shrink-0 px-8 md:px-20 py-8 md:py-12 min-h-[140px] md:min-h-[180px] w-[50vw] md:w-[25vw] max-w-[360px]"
+                className="flex h-[132px] w-[50vw] min-w-[180px] max-w-[320px] shrink-0 items-center justify-center px-4 sm:px-6 md:h-[180px] md:w-[25vw] md:min-w-[220px] md:max-w-[360px] md:px-12 lg:px-16"
                 aria-hidden={i >= site.stack.tools.length}
               >
-                <span className="font-black tracking-tightest text-3xl md:text-5xl lg:text-6xl text-center whitespace-nowrap">
+                <span className="text-center font-black tracking-tightest text-2xl sm:text-3xl md:text-5xl lg:text-6xl whitespace-nowrap">
                   {t}
                   <span className="text-primary">.</span>
                 </span>
