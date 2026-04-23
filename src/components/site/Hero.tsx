@@ -3,25 +3,40 @@ import { site, CTA_HREF } from "@/content/site";
 const Hero = () => {
   return (
     <section id="top" className="relative border-b-2 border-ink overflow-hidden">
-      <div className="absolute inset-0 grid-lines pointer-events-none" aria-hidden />
+      <div
+        className="absolute inset-0 grid-lines pointer-events-none animate-grid-fade"
+        aria-hidden
+      />
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 py-10 md:py-28">
-        <div className="flex items-center gap-3 mb-16 md:mb-20">
+        <div
+          className="flex items-center gap-3 mb-8 animate-fade-up"
+          style={{ animationDelay: "0.3s" }}
+        >
           <span className="h-2 w-2 bg-primary" />
           <span className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em]">
             {site.role} / {site.availability}
           </span>
         </div>
-        <h1 className="font-black tracking-tightest leading-[0.95] text-4xl sm:text-6xl md:text-8xl lg:text-[128px]">
+        <h1
+          className="font-black tracking-tightest leading-[0.95] text-4xl sm:text-6xl md:text-8xl lg:text-[128px] animate-fade-up"
+          style={{ animationDelay: "0.4s" }}
+        >
           {site.hero.headline.split(" ").slice(0, -2).join(" ")}{" "}
           <span className="relative inline-block">
             {site.hero.headline.split(" ").slice(-2).join(" ").replace(".", "")}
             <span className="text-primary">.</span>
           </span>
         </h1>
-        <p className="mt-6 md:mt-12 max-w-2xl text-sm md:text-xl leading-relaxed text-foreground/80">
+        <p
+          className="mt-6 md:mt-12 max-w-2xl text-sm md:text-xl leading-relaxed text-foreground/80 animate-fade-up"
+          style={{ animationDelay: "0.5s" }}
+        >
           {site.hero.sub}
         </p>
-        <div className="mt-6 md:mt-12 flex flex-col sm:flex-row gap-4">
+        <div
+          className="mt-6 md:mt-12 flex flex-col sm:flex-row gap-4 animate-fade-up"
+          style={{ animationDelay: "0.6s" }}
+        >
           <a
             href={CTA_HREF}
             onClick={(e) => {
@@ -45,7 +60,10 @@ const Hero = () => {
         </div>
 
         {/* Metric strip */}
-        <div className="mt-12 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-2 border-ink">
+        <div
+          className="mt-12 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-2 border-ink animate-fade-up"
+          style={{ animationDelay: "0.7s" }}
+        >
           {site.hero.metrics.map((m, i) => {
             const total = site.hero.metrics.length;
             return (
