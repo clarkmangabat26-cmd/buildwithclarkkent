@@ -22,7 +22,7 @@ const Header = () => {
         <a
           href="#top"
           onClick={(e) => smoothTo(e, "#top")}
-          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-3 pr-4 font-black tracking-tightest text-base md:text-lg lg:max-w-none lg:text-xl"
+          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-3 pr-4 font-black uppercase tracking-[0.05em] text-base md:text-lg lg:max-w-none lg:text-xl"
         >
           <span className="inline-block h-3 w-3 shrink-0 bg-primary" aria-hidden />
           <span className="truncate">{site.brandMark}</span>
