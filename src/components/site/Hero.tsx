@@ -1,15 +1,21 @@
 import { site, CTA_HREF } from "@/content/site";
 
-const Hero = () => {
+interface HeroProps {
+  introDone?: boolean;
+}
+
+const Hero = ({ introDone = true }: HeroProps) => {
   return (
     <section id="top" className="relative border-b-2 border-ink overflow-hidden">
       <div
-        className="absolute inset-0 grid-lines pointer-events-none animate-grid-fade"
+        className={`absolute inset-0 grid-lines pointer-events-none ${
+          introDone ? "animate-grid-fade" : "opacity-0"
+        }`}
         aria-hidden
       />
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 py-10 md:py-28">
         <div
-          className="flex items-center gap-3 mb-8 animate-fade-up"
+          className={`flex items-center gap-3 mb-8 ${introDone ? "animate-fade-up" : "opacity-0"}`}
           style={{ animationDelay: "0.3s" }}
         >
           <span className="h-2 w-2 bg-primary" />
@@ -18,7 +24,9 @@ const Hero = () => {
           </span>
         </div>
         <h1
-          className="font-black tracking-tightest leading-[0.95] text-4xl sm:text-6xl md:text-8xl lg:text-[128px] animate-fade-up"
+          className={`font-black tracking-tightest leading-[0.95] text-4xl sm:text-6xl md:text-8xl lg:text-[128px] ${
+            introDone ? "animate-fade-up" : "opacity-0"
+          }`}
           style={{ animationDelay: "0.4s" }}
         >
           {site.hero.headline.split(" ").slice(0, -2).join(" ")}{" "}
@@ -28,13 +36,17 @@ const Hero = () => {
           </span>
         </h1>
         <p
-          className="mt-6 md:mt-12 max-w-2xl text-sm md:text-xl leading-relaxed text-foreground/80 animate-fade-up"
+          className={`mt-6 md:mt-12 max-w-2xl text-sm md:text-xl leading-relaxed text-foreground/80 ${
+            introDone ? "animate-fade-up" : "opacity-0"
+          }`}
           style={{ animationDelay: "0.5s" }}
         >
           {site.hero.sub}
         </p>
         <div
-          className="mt-6 md:mt-12 flex flex-col sm:flex-row gap-4 animate-fade-up"
+          className={`mt-6 md:mt-12 flex flex-col sm:flex-row gap-4 ${
+            introDone ? "animate-fade-up" : "opacity-0"
+          }`}
           style={{ animationDelay: "0.6s" }}
         >
           <a
@@ -61,7 +73,9 @@ const Hero = () => {
 
         {/* Metric strip */}
         <div
-          className="mt-12 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-2 border-ink animate-fade-up"
+          className={`mt-12 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-2 border-ink ${
+            introDone ? "animate-fade-up" : "opacity-0"
+          }`}
           style={{ animationDelay: "0.7s" }}
         >
           {site.hero.metrics.map((m, i) => {

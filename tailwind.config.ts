@@ -101,6 +101,26 @@ export default {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
+        "loader-out": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
+        },
+        "ckm-draw": {
+          "0%": { clipPath: "inset(0 100% 0 0)" },
+          "100%": { clipPath: "inset(0 0 0 0)" },
+        },
+        "ping-once": {
+          "0%": { transform: "scale(1)", opacity: "0.85" },
+          "80%": { transform: "scale(6)", opacity: "0" },
+          "100%": { transform: "scale(6)", opacity: "0" },
+        },
+        "glitch-shift": {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "20%": { transform: "translate(-1px, 1px)" },
+          "40%": { transform: "translate(1px, -1px)" },
+          "60%": { transform: "translate(-1px, 0)" },
+          "80%": { transform: "translate(1px, 1px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -108,6 +128,10 @@ export default {
         "marquee": "marquee 30s linear infinite",
         "fade-up": "fade-up 0.6s ease-out both",
         "grid-fade": "grid-fade 0.8s ease-out both",
+        "loader-out": "loader-out 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards",
+        "ckm-draw": "ckm-draw 0.5s linear forwards",
+        "ping-once": "ping-once 0.9s cubic-bezier(0, 0, 0.2, 1) forwards",
+        "glitch-shift": "glitch-shift 0.18s steps(2, end) 3",
       },
     },
   },
