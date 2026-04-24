@@ -121,6 +121,26 @@ export default {
           "60%": { transform: "translate(-1px, 0)" },
           "80%": { transform: "translate(1px, 1px)" },
         },
+        "pulse-sweep": {
+          "0%": { transform: "translateX(-110%)" },
+          "100%": { transform: "translateX(110%)" },
+        },
+        "scan-glow": {
+          "0%, 100%": { opacity: "0", filter: "blur(6px)" },
+          "45%, 55%": { opacity: "1", filter: "blur(0px)" },
+        },
+        "split-top": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
+        },
+        "split-bottom": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(100%)" },
+        },
+        "line-collapse": {
+          "0%": { transform: "scaleX(1)", opacity: "1" },
+          "100%": { transform: "scaleX(0)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -132,6 +152,11 @@ export default {
         "ckm-draw": "ckm-draw 0.5s linear forwards",
         "ping-once": "ping-once 0.9s cubic-bezier(0, 0, 0.2, 1) forwards",
         "glitch-shift": "glitch-shift 0.18s steps(2, end) 3",
+        "pulse-sweep": "pulse-sweep 0.55s cubic-bezier(0.4, 0, 0.6, 1) forwards",
+        "scan-glow": "scan-glow 0.55s ease-out forwards",
+        "split-top": "split-top 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards",
+        "split-bottom": "split-bottom 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards",
+        "line-collapse": "line-collapse 0.35s ease-in forwards",
       },
     },
   },
