@@ -141,6 +141,28 @@ export default {
           "0%": { transform: "scaleX(1)", opacity: "1" },
           "100%": { transform: "scaleX(0)", opacity: "0" },
         },
+        "knight-drop": {
+          "0%": { transform: "translateY(-120%) scale(1.05)", opacity: "0" },
+          "70%": { transform: "translateY(6%) scale(1)", opacity: "1" },
+          "85%": { transform: "translateY(-2%) scale(1)", opacity: "1" },
+          "100%": { transform: "translateY(0) scale(1)", opacity: "1" },
+        },
+        "knight-impact": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(2px)" },
+        },
+        "sonar-ping": {
+          "0%": { transform: "scale(0.2)", opacity: "0.9" },
+          "100%": { transform: "scale(8)", opacity: "0" },
+        },
+        "grid-flash": {
+          "0%, 100%": { opacity: "0.18" },
+          "30%": { opacity: "1" },
+        },
+        "loader-slide-up": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -157,6 +179,11 @@ export default {
         "split-top": "split-top 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards",
         "split-bottom": "split-bottom 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards",
         "line-collapse": "line-collapse 0.35s ease-in forwards",
+        "knight-drop": "knight-drop 0.55s cubic-bezier(0.7, 0, 0.3, 1) forwards",
+        "knight-impact": "knight-impact 0.18s ease-out forwards",
+        "sonar-ping": "sonar-ping 0.85s cubic-bezier(0, 0, 0.2, 1) forwards",
+        "grid-flash": "grid-flash 0.7s ease-out forwards",
+        "loader-slide-up": "loader-slide-up 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards",
       },
     },
   },
