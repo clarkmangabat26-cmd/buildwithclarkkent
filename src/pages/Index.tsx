@@ -9,13 +9,21 @@ import Footer from "@/components/site/Footer";
 import IntroLoader from "@/components/site/IntroLoader";
 
 const Index = () => {
-  const [introDone, setIntroDone] = useState(false);
+  const [introUnmounted, setIntroUnmounted] = useState(false);
+  const [heroReady, setHeroReady] = useState(false);
+
+  const handleIntroComplete = () => {
+    setIntroUnmounted(true);
+    // Tiny breath between the intro fully clearing and the hero reveal.
+    window.setTimeout(() => setHeroReady(true), 300);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
+      {!introUnmounted && <IntroLoader onComplete={handleIntroComplete} />}
       <Header />
       <main>
-        <Hero introDone={introDone} />
+        <Hero introDone={heroReady} />
         <Stack />
         <Work />
         <About />
