@@ -13,6 +13,10 @@ export type Project = {
   summary: string; // short card description
   tools: string[];
 
+  // ---- Visuals ----
+  thumbnail?: string; // 800x500 card image
+  fullImage?: string; // 1600x1000 case-study image
+
   // ---- Modal / case study ----
   client?: string;
   problem?: string;
@@ -50,19 +54,19 @@ export const site = {
 
   // ---------- About ----------
   about: {
-    imageUrl: "/about-portrait.jpg",
+    imageUrl: "/src/assets/clark-portrait.png",
     headline: "Hi, I'm Clark Kent Mangabat",
-    bio: "I build automation workflows for operations teams — turning manual processes into reliable systems that run themselves. I started learning Make and Zapier in December 2024, completed certifications in Make Intermediate and Google Prompting Essentials, and have built 8+ real-world automation projects covering lead management, CRM workflows, invoice processing, and AI-powered data enrichment. I work with businesses that need workflows shipped fast without the consultant overhead.",
+    bio: "I build automation workflows for operations teams — turning manual processes into reliable systems that run themselves. I completed certifications in Make Intermediate and Google Prompting Essentials, and have built 8+ real-world automation projects covering lead management, CRM workflows, invoice processing, and AI-powered data enrichment. I work with businesses that need workflows shipped fast without the consultant overhead.",
     principles: [
       {
         n: "01",
-        t: "Documented, not improvised.",
-        d: "Every workflow comes with a process map, error handling plan, and runbook. No guesswork when something breaks.",
+        t: "You get the workflow + the process map.",
+        d: "Every build includes a visual process diagram showing how data flows, what triggers what, and where things can break. No black boxes.",
       },
       {
         n: "02",
-        t: "I build what returns 5x its cost.",
-        d: "Before building anything, I time-audit the manual process. If the automation doesn't save 5x what it costs to build, I'll tell you not to build it.",
+        t: "Tested before handoff.",
+        d: "I run test scenarios with real data before I deliver. If it breaks during testing, you don't see it. If it works during testing, it'll work in production.",
       },
       {
         n: "03",
@@ -70,6 +74,13 @@ export const site = {
         d: "I'm here to build and ship workflows, not consult on digital transformation. You tell me what's broken, I build the fix.",
       },
     ],
+  },
+
+  // ---------- Work section header ----------
+  workSection: {
+    eyebrow: "Selected Builds",
+    headline: "Systems I've built.",
+    subtext: "3 CASE STUDIES",
   },
 
   // ---------- Stack ----------
@@ -188,7 +199,7 @@ export const site = {
     placeholders: {
       name: "Your name",
       email: "you@company.com",
-      bottleneck: "We need to automate our lead intake from...",
+      bottleneck: "Our team spends ~15h/week copying data between...",
     },
     submitButton: "Send message",
     submittingText: "Sending…",
