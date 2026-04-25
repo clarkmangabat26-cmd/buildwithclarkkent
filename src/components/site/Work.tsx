@@ -5,6 +5,7 @@ import { site, type Project } from "@/content/site";
 const Work = () => {
   const [active, setActive] = useState<Project | null>(null);
   const projects = site.projects;
+  const ws = site.workSection;
 
   return (
     <section id="work" className="border-b-2 border-ink">
@@ -12,11 +13,14 @@ const Work = () => {
         <div className="flex items-end justify-between mb-10 md:mb-16">
           <div>
             <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
-              / Selected Builds
+              / {ws.eyebrow}
             </div>
             <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95]">
-              Workflows I've<br />built<span className="text-primary">.</span>
+              {ws.headline.replace(/\.$/, "")}<span className="text-primary">.</span>
             </h2>
+            <div className="mt-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              {ws.subtext}
+            </div>
           </div>
           <div className="hidden md:block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
             {projects.length} case studies
@@ -32,9 +36,22 @@ const Work = () => {
                 hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))]
                 ${i < projects.length - 1 ? "border-b-2 lg:border-b-0" : ""}
                 ${i < projects.length - 1 ? "lg:border-r-2" : "lg:border-r-0"}
-                border-ink min-h-[420px] md:min-h-[460px] flex flex-col justify-between`}
+                border-ink flex flex-col justify-between`}
             >
               <div>
+                {/* Thumbnail placeholder — 800x500 (8:5) */}
+                <div
+                  className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors"
+                  aria-label="Project thumbnail placeholder"
+                >
+                  {p.thumbnail ? (
+                    <img src={p.thumbnail} alt={p.title} className="h-full w-full object-cover" />
+                  ) : (
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/40 group-hover:text-background/50">
+                      800 × 500 / Thumbnail
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-center justify-between mb-8">
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
                     {String(i + 1).padStart(2, "0")} / {p.category}
@@ -47,6 +64,17 @@ const Work = () => {
                 <p className="mt-6 max-w-md text-sm md:text-base leading-relaxed text-foreground/75 transition-colors group-hover:text-background/80">
                   {p.summary}
                 </p>
+                {/* Tools badges */}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {p.tools.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[10px] uppercase tracking-[0.15em] border border-ink px-2 py-1 bg-background text-foreground group-hover:bg-ink group-hover:border-background group-hover:text-background transition-colors"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
               <div className="mt-8 inline-flex items-center gap-2 self-start">
                 <span className="h-2 w-2 bg-primary group-hover:bg-background" />
@@ -103,6 +131,17 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           <span className="font-mono text-xs uppercase tracking-[0.15em] font-bold">
             {project.benefit}
           </span>
+        </div>
+
+        {/* Full view image placeholder — 1600x1000 (8:5) */}
+        <div className="mt-12 md:mt-16 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center">
+          {project.fullImage ? (
+            <img src={project.fullImage} alt={project.title} className="h-full w-full object-cover" />
+          ) : (
+            <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-foreground/40">
+              1600 × 1000 / Full view
+            </span>
+          )}
         </div>
 
         {/* Problem / Solution */}
