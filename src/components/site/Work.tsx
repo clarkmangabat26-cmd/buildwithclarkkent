@@ -12,10 +12,10 @@ const Work = () => {
         <div className="flex items-end justify-between mb-10 md:mb-16">
           <div>
             <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
-              / Automation Catalog
+              / Selected Builds
             </div>
             <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95]">
-              Systems I've<br />built<span className="text-primary">.</span>
+              Workflows I've<br />built<span className="text-primary">.</span>
             </h2>
           </div>
           <div className="hidden md:block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -64,6 +64,12 @@ const Work = () => {
   );
 };
 
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">
+    / {children}
+  </div>
+);
+
 const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () => void }) => {
   return (
     <div className="fixed inset-0 z-[100] bg-background overflow-y-auto animate-fade-up">
@@ -83,6 +89,11 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
       </div>
 
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-12 md:py-20">
+        {project.client && (
+          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 text-muted-foreground">
+            Client: {project.client}
+          </div>
+        )}
         <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95] max-w-4xl">
           {project.title}
           <span className="text-primary">.</span>
@@ -93,97 +104,155 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
             {project.benefit}
           </span>
         </div>
-        <p className="mt-8 max-w-3xl text-lg md:text-xl leading-relaxed text-foreground/80">
-          {project.description}
-        </p>
 
-        {/* Loom video */}
-        <div className="mt-12 md:mt-16">
-          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">
-            / Video Demo — Loom
+        {/* Problem / Solution */}
+        {(project.problem || project.solution) && (
+          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-ink">
+            {project.problem && (
+              <div className="p-6 md:p-8 border-b-2 md:border-b-0 md:border-r-2 border-ink">
+                <SectionLabel>The Problem</SectionLabel>
+                <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+                  {project.problem}
+                </p>
+              </div>
+            )}
+            {project.solution && (
+              <div className="p-6 md:p-8">
+                <SectionLabel>The Solution</SectionLabel>
+                <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+                  {project.solution}
+                </p>
+              </div>
+            )}
           </div>
-          <div className="relative aspect-video border-2 border-ink bg-secondary">
-            <iframe
-              src={project.loomUrl}
-              title={`${project.title} — Loom demo`}
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
-            />
-          </div>
-        </div>
+        )}
 
-        {/* Screenshot */}
-        <div className="mt-12 md:mt-16">
-          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">
-            / Process Screenshot
-          </div>
-          <div className="border-2 border-ink bg-secondary overflow-hidden">
-            <img
-              src={project.screenshotUrl}
-              alt={`${project.title} — screenshot`}
-              className="w-full h-auto block"
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Logic Breakdown */}
-        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-ink">
-          <div className="p-6 md:p-8 md:col-span-1 border-b-2 md:border-b-0 md:border-r-2 border-ink bg-ink text-background">
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 mb-4">
-              / Logic Breakdown
+        {/* How it flows */}
+        {project.flow && project.flow.length > 0 && (
+          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-ink">
+            <div className="p-6 md:p-8 md:col-span-1 border-b-2 md:border-b-0 md:border-r-2 border-ink bg-ink text-background">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 mb-4">
+                / How It Flows
+              </div>
+              <h3 className="font-black tracking-tightest text-3xl md:text-4xl">Step by step.</h3>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tools.map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-[10px] uppercase tracking-[0.15em] border border-background/40 px-2 py-1"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
-            <h3 className="font-black tracking-tightest text-3xl md:text-4xl">How it flows.</h3>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {project.tools.map((t) => (
-                <span
-                  key={t}
-                  className="font-mono text-[10px] uppercase tracking-[0.15em] border border-background/40 px-2 py-1"
+            <div className="md:col-span-2">
+              {project.flow.map((step, i) => (
+                <div
+                  key={i}
+                  className={`flex gap-6 p-6 md:p-8 ${
+                    i < project.flow!.length - 1 ? "border-b-2 border-ink" : ""
+                  }`}
                 >
-                  {t}
-                </span>
+                  <div className="font-black tracking-tightest text-3xl md:text-4xl text-primary leading-none shrink-0 w-12">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="font-medium text-base md:text-lg leading-snug">{step}</div>
+                </div>
+              ))}
+              {project.flowNote && (
+                <div className="p-6 md:p-8 border-t-2 border-ink bg-secondary">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2 text-primary font-bold">
+                    Edge case
+                  </div>
+                  <p className="text-sm md:text-base leading-relaxed text-foreground/80">
+                    {project.flowNote}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* AI Scoring Rubric */}
+        {project.rubric && project.rubric.length > 0 && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>AI Scoring Rubric</SectionLabel>
+            <div className="border-2 border-ink">
+              {project.rubric.map((row, i) => (
+                <div
+                  key={i}
+                  className={`grid grid-cols-12 gap-4 p-5 md:p-6 ${
+                    i < project.rubric!.length - 1 ? "border-b-2 border-ink" : ""
+                  }`}
+                >
+                  <div className="col-span-12 md:col-span-4 font-bold text-base md:text-lg">
+                    {row.label}
+                  </div>
+                  <div className="col-span-12 md:col-span-8 font-mono text-xs md:text-sm text-foreground/80 leading-relaxed">
+                    {row.detail}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-          <div className="md:col-span-2">
-            {project.logic.map((step, i) => (
-              <div
-                key={i}
-                className={`flex gap-6 p-6 md:p-8 ${
-                  i < project.logic.length - 1 ? "border-b-2 border-ink" : ""
-                }`}
-              >
-                <div className="font-black tracking-tightest text-4xl md:text-5xl text-primary leading-none">
-                  {String(i + 1).padStart(2, "0")}
+        )}
+
+        {/* Impact */}
+        {project.impact && project.impact.length > 0 && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Impact</SectionLabel>
+            <div className="border-2 border-ink">
+              {project.impact.map((row, i) => (
+                <div
+                  key={i}
+                  className={`grid grid-cols-12 gap-4 p-5 md:p-6 items-center ${
+                    i < project.impact!.length - 1 ? "border-b-2 border-ink" : ""
+                  }`}
+                >
+                  <div className="col-span-12 md:col-span-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    {row.label}
+                  </div>
+                  <div className="col-span-5 md:col-span-4 font-bold text-base md:text-lg line-through opacity-50">
+                    {row.from}
+                  </div>
+                  <div className="col-span-7 md:col-span-4 font-black tracking-tightest text-lg md:text-2xl text-primary">
+                    → {row.to}
+                  </div>
                 </div>
-                <div className="font-semibold text-lg md:text-xl leading-snug">{step}</div>
-              </div>
-            ))}
+              ))}
+              {project.toolsDetail && (
+                <div className="p-5 md:p-6 border-t-2 border-ink bg-ink text-background">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 mb-2">
+                    Tools
+                  </div>
+                  <div className="font-mono text-sm md:text-base">{project.toolsDetail}</div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="mt-12 md:mt-16 flex flex-col sm:flex-row gap-4">
           <a
-            href="#audit"
+            href="#contact"
             onClick={(e) => {
               e.preventDefault();
               onClose();
               setTimeout(
-                () => document.getElementById("audit")?.scrollIntoView({ behavior: "smooth" }),
+                () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }),
                 50
               );
             }}
             className="inline-flex items-center justify-center h-14 px-8 bg-primary text-primary-foreground font-bold uppercase tracking-[0.12em] text-sm border-2 border-ink"
           >
-            Book a Discovery Call →
+            Contact me →
           </a>
           <button
             onClick={onClose}
             className="inline-flex items-center justify-center h-14 px-8 bg-background text-foreground font-bold uppercase tracking-[0.12em] text-sm border-2 border-ink hover:bg-ink hover:text-background transition-colors"
           >
-            Back to Work
+            Back to work
           </button>
         </div>
       </div>
