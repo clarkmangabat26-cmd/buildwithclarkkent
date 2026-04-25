@@ -4,15 +4,15 @@ const About = () => {
   return (
     <section id="about" className="border-b-2 border-ink">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          {/* Left: portrait */}
-          <div className="lg:col-span-5">
-            <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">/ About</div>
-            <div className="aspect-[4/5] w-full border border-ink rounded-[4px] bg-secondary overflow-hidden">
+        <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-8">/ About</div>
+        <div className="flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-12">
+          {/* Portrait — 400x400 desktop, centered on mobile */}
+          <div className="shrink-0 mx-auto lg:mx-0">
+            <div className="w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[400px] lg:h-[400px] max-w-full border border-ink rounded-2xl bg-secondary overflow-hidden">
               <img
                 src={site.about.imageUrl}
                 alt={`${site.name} — ${site.role}`}
-                className="h-full w-full object-cover grayscale"
+                className="h-full w-full object-cover"
                 onError={(e) => {
                   (e.currentTarget.style.display = "none");
                 }}
@@ -21,7 +21,7 @@ const About = () => {
           </div>
 
           {/* Right: bio + principles */}
-          <div className="lg:col-span-7">
+          <div className="flex-1 min-w-0">
             <h2 className="font-black tracking-tightest text-4xl md:text-6xl leading-[0.95]">
               {site.about.headline}
               <span className="text-primary">.</span>
