@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { site, CTA_HREF, CTA_LABEL_SHORT } from "@/content/site";
+import { site, CTA_HREF } from "@/content/site";
 import knightLogo from "@/assets/knight-logo.png";
 
 const links = [
