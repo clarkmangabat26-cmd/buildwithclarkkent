@@ -15,7 +15,7 @@ const Stack = () => {
         </div>
         {/* Infinite horizontal marquee — 2 visible on mobile, 4 on desktop */}
         <div
-          className="relative border-y-2 border-background overflow-hidden"
+          className="relative border-y-2 border-background overflow-hidden py-5"
           style={{
             maskImage:
               "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
@@ -24,13 +24,13 @@ const Stack = () => {
           }}
         >
           <div
-            className="flex w-max animate-marquee motion-reduce:animate-none will-change-transform [transform:translate3d(0,0,0)]"
+            className="flex w-max gap-16 animate-marquee motion-reduce:animate-none will-change-transform [transform:translate3d(0,0,0)]"
             style={{ animationDuration: "24s" }}
           >
             {loop.map((t, i) => (
               <div
                 key={`${t}-${i}`}
-                className="flex h-[132px] w-[50vw] min-w-[180px] max-w-[320px] shrink-0 items-center justify-center px-4 sm:px-6 md:h-[180px] md:w-[25vw] md:min-w-[220px] md:max-w-[360px] md:px-12 lg:px-16"
+                className="flex h-[132px] w-[50vw] min-w-[180px] max-w-[320px] shrink-0 items-center justify-center md:h-[180px] md:w-[25vw] md:min-w-[220px] md:max-w-[360px]"
                 aria-hidden={i >= site.stack.tools.length}
               >
                 <span className="text-center font-black tracking-tightest text-2xl sm:text-3xl md:text-5xl lg:text-6xl whitespace-nowrap">
