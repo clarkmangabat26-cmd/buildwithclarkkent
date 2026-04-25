@@ -99,6 +99,8 @@ export const site = {
       summary:
         "Built for Prestige Auto Detail. Tally form triggers n8n workflow that runs duplicate checks, scores leads 1-10 using weighted AI rubric (vehicle type, service, budget, timeline), routes into GoHighLevel CRM by tier (hot/warm/cold), fires Slack alerts with lead summary, and triggers tier-specific follow-up sequences. Hot leads get contacted in under 60 seconds, 24/7.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
+      thumbnail: "/work/lead-router-thumbnail.png",
+      fullImage: "/work/lead-router-full.png",
       client: "Prestige Auto Detail",
       problem:
         "Most service businesses lose leads because no one follows up fast enough. Average response time was 47 hours — by then the lead already booked with a competitor. Manual qualification took 15-20 minutes per lead, hot leads only got followed up 60% of the time, and coverage was business hours only.",
