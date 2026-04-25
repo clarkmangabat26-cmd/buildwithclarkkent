@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { site, CTA_HREF, CTA_LABEL_SHORT } from "@/content/site";
-import KnightMark from "./KnightMark";
+import knightLogo from "@/assets/knight-logo.png";
 
 const links = [
   { href: "#work", label: "Work" },
@@ -25,13 +25,12 @@ const Header = () => {
           onClick={(e) => smoothTo(e, "#top")}
           className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-3 pr-4 font-black uppercase tracking-[0.05em] text-base md:text-lg lg:max-w-none lg:text-xl"
         >
-          <KnightMark
+          <img
+            src={knightLogo}
+            alt=""
             aria-hidden
-            className="block h-7 w-7 shrink-0 md:h-8 md:w-8"
-            outline="hsl(var(--ink))"
-            fill="hsl(var(--background))"
-            accent="hsl(var(--primary))"
-            strokeWidth={5}
+            className="block h-7 w-7 shrink-0 object-contain md:h-8 md:w-8"
+            draggable={false}
           />
           <span className="truncate">{site.brandMark}</span>
         </a>

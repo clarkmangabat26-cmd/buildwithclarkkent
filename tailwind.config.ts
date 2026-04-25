@@ -97,9 +97,39 @@ export default {
           from: { opacity: "0", transform: "translateY(16px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-up-smooth": {
+          from: { opacity: "0", transform: "translateY(24px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
         "grid-fade": {
           from: { opacity: "0" },
           to: { opacity: "1" },
+        },
+        "knight-descend": {
+          "0%": {
+            transform: "translateY(-8%) scale(1.35)",
+            filter: "blur(14px)",
+            opacity: "0",
+          },
+          "30%": { opacity: "1" },
+          "100%": {
+            transform: "translateY(0) scale(1)",
+            filter: "blur(0px)",
+            opacity: "1",
+          },
+        },
+        "eclipse-glow": {
+          "0%": { transform: "scale(0.4)", opacity: "0" },
+          "60%": { transform: "scale(1)", opacity: "0.85" },
+          "100%": { transform: "scale(1.4)", opacity: "0" },
+        },
+        "name-track-in": {
+          "0%": { opacity: "0", letterSpacing: "0.05em" },
+          "100%": { opacity: "1", letterSpacing: "0.4em" },
+        },
+        "loader-fade-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
         },
         "loader-out": {
           "0%": { transform: "translateY(0)" },
@@ -169,7 +199,12 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "marquee": "marquee 30s linear infinite",
         "fade-up": "fade-up 0.6s ease-out both",
+        "fade-up-smooth": "fade-up-smooth 0.8s cubic-bezier(0.22, 1, 0.36, 1) both",
         "grid-fade": "grid-fade 0.8s ease-out both",
+        "knight-descend": "knight-descend 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "eclipse-glow": "eclipse-glow 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "name-track-in": "name-track-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "loader-fade-out": "loader-fade-out 0.6s ease-out forwards",
         "loader-out": "loader-out 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards",
         "ckm-draw": "ckm-draw 0.5s linear forwards",
         "ping-once": "ping-once 0.9s cubic-bezier(0, 0, 0.2, 1) forwards",
