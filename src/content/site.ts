@@ -86,7 +86,17 @@ export const site = {
   // ---------- Stack ----------
   stack: {
     label: "Tools I Use",
-    tools: ["Make", "Zapier", "n8n", "GoHighLevel"],
+    tools: [
+      "Make",
+      "Zapier",
+      "n8n",
+      "GoHighLevel",
+      "Asana",
+      "Notion",
+      "Google Workspace",
+      "Xero",
+      "PayPal",
+    ],
   },
 
   // ---------- Projects ----------
@@ -143,6 +153,8 @@ export const site = {
       summary:
         "Automated invoice reconciliation with Make.com. System monitors Xero for new invoices, extracts line items with GPT-4, matches against POs in Google Sheets, then queues mismatches for AP review in Asana with one-click approval actions.",
       tools: ["Make", "Xero", "OpenAI", "Google Sheets", "Asana"],
+      thumbnail: "/work/xero-invoice-thumbnail.png",
+      fullImage: "/work/xero-invoice-full.png",
       problem:
         "AP team spent 3 days a month manually keying invoices from Xero into review spreadsheets, with frequent matching errors and missed mismatches.",
       solution:
