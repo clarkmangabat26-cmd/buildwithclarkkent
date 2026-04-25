@@ -5,7 +5,7 @@ import knightLogo from "@/assets/knight-logo.png";
 
 const links = [
   { href: "#work", label: "Work" },
-  { href: "#solutions", label: "Solutions" },
+  { href: "#solutions", label: "Tools" },
   { href: "#about", label: "About" },
 ];
 
@@ -50,7 +50,7 @@ const Header = () => {
             onClick={(e) => smoothTo(e, CTA_HREF)}
             className="inline-flex items-center justify-center h-11 px-6 bg-primary text-primary-foreground font-bold uppercase tracking-[0.12em] text-sm border-2 border-ink hover:translate-y-[-2px] transition-transform"
           >
-            Book a Discovery Call →
+            Contact me →
           </a>
         </nav>
         <div className="lg:hidden flex items-center">
@@ -87,7 +87,7 @@ const Header = () => {
               }}
               className="m-6 inline-flex items-center justify-center h-12 px-6 bg-primary text-primary-foreground font-bold uppercase tracking-[0.12em] text-sm border-2 border-ink"
             >
-              Book a Discovery Call →
+              Contact me →
             </a>
           </nav>
         </div>
