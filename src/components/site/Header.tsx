@@ -23,13 +23,13 @@ const Header = () => {
         <a
           href="#top"
           onClick={(e) => smoothTo(e, "#top")}
-          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-3 pr-4 font-black uppercase leading-none tracking-[0.05em] text-lg md:text-2xl lg:max-w-none lg:text-[26px]"
+          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-4 pr-4 font-black uppercase leading-none tracking-[0.06em] text-xl md:text-3xl lg:max-w-none lg:text-[34px]"
         >
           <img
             src={knightLogo}
             alt=""
             aria-hidden
-            className="block h-11 w-11 shrink-0 object-contain md:h-12 md:w-12"
+            className="block h-16 w-16 shrink-0 object-contain md:h-20 md:w-20"
             draggable={false}
           />
           <span className="truncate">{site.brandMark}</span>
