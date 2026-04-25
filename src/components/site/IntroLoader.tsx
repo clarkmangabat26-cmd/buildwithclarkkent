@@ -2,17 +2,17 @@ import { useEffect, useMemo, useState } from "react";
 import knightLogo from "@/assets/knight-logo.png";
 
 /**
- * Minimal "Black Card" intro loader.
+ * Minimal "White Card" intro loader.
  *
- * Sequence (first visit, 1500ms total):
- *   0ms     — Black screen
- *   0ms     — Knight fades in (300ms)
- *   200ms   — Name fades in (300ms)
- *   700ms   — Hold both visible (500ms)
- *   1200ms  — Both fade out together (300ms)
- *   1500ms  — Unmount, reveal site
+ * Sequence (first visit, 1200ms total):
+ *   0ms     — White screen
+ *   0ms     — Knight fades in (200ms)
+ *   100ms   — Name fades in (200ms)
+ *   500ms   — Hold both visible (~500ms)
+ *   900ms   — Both fade out together (300ms)
+ *   1200ms  — Unmount, reveal site
  *
- * Repeat visits (sessionStorage flag): compressed to 800ms total.
+ * Repeat visits (sessionStorage flag): compressed to 600ms total.
  * Reduced motion: skip entirely.
  */
 
@@ -34,15 +34,15 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
     };
   }, []);
 
-  // Speed multiplier — repeat visits run at ~53% (≈800ms total).
-  const speed = isRepeat ? 0.53 : 1;
+  // Speed multiplier — repeat visits run at 50% (~600ms total).
+  const speed = isRepeat ? 0.5 : 1;
   const d = (ms: number) => Math.round(ms * speed);
 
-  const FADE_IN = d(300);
-  const NAME_DELAY = d(200);
+  const FADE_IN = d(200);
+  const NAME_DELAY = d(100);
   const HOLD = d(500);
   const FADE_OUT = d(300);
-  const TOTAL = FADE_IN + HOLD + FADE_OUT; // logo timeline
+  const TOTAL = FADE_IN + HOLD + FADE_OUT;
 
   const [visible, setVisible] = useState(true);
   const [exiting, setExiting] = useState(false);
@@ -55,18 +55,16 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
 
     const timers: number[] = [];
 
-    // Trigger fade-out
     timers.push(
       window.setTimeout(() => setExiting(true), FADE_IN + HOLD),
     );
 
-    // Unmount + signal complete
     timers.push(
       window.setTimeout(() => {
         try {
           window.sessionStorage.setItem(STORAGE_KEY, "1");
         } catch {
-          // ignore storage failures (private mode, etc.)
+          // ignore storage failures
         }
         setVisible(false);
         onComplete();
@@ -80,38 +78,32 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-[200] overflow-hidden pointer-events-none bg-black"
+      className="fixed inset-0 z-[200] overflow-hidden pointer-events-none bg-white"
       aria-hidden
       style={{
         opacity: exiting ? 0 : 1,
         transition: `opacity ${FADE_OUT}ms ease-out`,
       }}
     >
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
-        {/* Knight logo — fades in immediately */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 md:gap-4">
+        {/* Knight logo — original colors (black with blue hair) */}
         <img
           src={knightLogo}
           alt=""
           draggable={false}
           className="block object-contain"
           style={{
-            width: "min(18vmin, 140px)",
-            height: "min(18vmin, 140px)",
-            opacity: exiting ? 0 : 1,
-            transition: `opacity ${exiting ? FADE_OUT : FADE_IN}ms ease-out`,
-            // initial fade-in handled by starting at opacity:0 via animation
+            width: "min(20vmin, 160px)",
+            height: "min(20vmin, 160px)",
             animation: `intro-fade-in ${FADE_IN}ms ease-out both`,
-            filter: "brightness(0) invert(1)",
           }}
         />
 
         {/* Name — fades in slightly after the logo */}
         <div
-          className="font-black uppercase text-white text-sm md:text-base"
+          className="font-black uppercase text-ink text-xs md:text-sm"
           style={{
             letterSpacing: "0.4em",
-            opacity: exiting ? 0 : 1,
-            transition: `opacity ${exiting ? FADE_OUT : FADE_IN}ms ease-out`,
             animation: `intro-fade-in ${FADE_IN}ms ease-out ${NAME_DELAY}ms both`,
           }}
         >
