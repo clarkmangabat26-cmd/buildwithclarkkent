@@ -54,7 +54,7 @@ export const site = {
 
   // ---------- About ----------
   about: {
-    imageUrl: "/src/assets/clark-portrait.png",
+    imageUrl: "/clark-portrait.png",
     headline: "Hi, I'm Clark Kent Mangabat",
     bio: "I build automation workflows for operations teams — turning manual processes into reliable systems that run themselves. I completed certifications in Make Intermediate and Google Prompting Essentials, and have built 8+ real-world automation projects covering lead management, CRM workflows, invoice processing, and AI-powered data enrichment. I work with businesses that need workflows shipped fast without the consultant overhead.",
     principles: [
