@@ -19,17 +19,17 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 border-b-2 border-ink bg-background">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10 h-16 md:h-20">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10 h-20 md:h-24">
         <a
           href="#top"
           onClick={(e) => smoothTo(e, "#top")}
-          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-3 pr-4 font-black uppercase tracking-[0.05em] text-base md:text-lg lg:max-w-none lg:text-xl"
+          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-3 pr-4 font-black uppercase leading-none tracking-[0.05em] text-lg md:text-2xl lg:max-w-none lg:text-[26px]"
         >
           <img
             src={knightLogo}
             alt=""
             aria-hidden
-            className="block h-7 w-7 shrink-0 object-contain md:h-8 md:w-8"
+            className="block h-11 w-11 shrink-0 object-contain md:h-12 md:w-12"
             draggable={false}
           />
           <span className="truncate">{site.brandMark}</span>
