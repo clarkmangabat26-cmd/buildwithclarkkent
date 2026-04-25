@@ -4,14 +4,15 @@ import knightLogo from "@/assets/knight-logo.png";
 const BLUE = "#007BFF";
 
 /**
- * "Smooth Descent" intro loader.
+ * "White Gallery" intro loader.
  *
  * Phases:
- *   descend — Knight image starts larger + blurred, smoothly scales down
- *             into focus with a custom ease-out (no bounce). (1400ms)
- *   pulse   — Soft blue eclipse glow expands behind the piece while the
+ *   descend — Knight starts blurred + scaled up on a pure white field, then
+ *             smoothly settles to center with a weighted cubic-bezier. (1300ms)
+ *   pulse   — A soft blue eclipse glow expands behind the piece while the
  *             full name fades in with tracked-out letter-spacing. (1100ms)
- *   exit    — Whole loader fades away to reveal the homepage. (600ms)
+ *   exit    — White background fades cleanly away. (550ms)
+ *   done    — Component unmounts entirely (no DOM ghost remains).
  */
 
 type Phase = "descend" | "pulse" | "exit" | "done";
@@ -21,9 +22,9 @@ interface IntroLoaderProps {
 }
 
 const TIMINGS: Record<Exclude<Phase, "done">, number> = {
-  descend: 1400,
+  descend: 1300,
   pulse: 1100,
-  exit: 600,
+  exit: 550,
 };
 
 const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
@@ -50,6 +51,8 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
     return () => timers.forEach((t) => window.clearTimeout(t));
   }, [onComplete]);
 
+  // CRITICAL: Once "done", unmount completely so no white overlay or
+  // ghost knight lingers above the homepage.
   if (phase === "done") return null;
 
   const isExiting = phase === "exit";
@@ -61,7 +64,7 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
       aria-hidden
     >
       <div
-        className={`absolute inset-0 bg-black ${
+        className={`absolute inset-0 bg-white ${
           isExiting ? "animate-loader-fade-out" : ""
         }`}
       >
@@ -79,8 +82,8 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
               <span
                 className="absolute inset-0 rounded-full animate-eclipse-glow"
                 style={{
-                  background: `radial-gradient(circle, ${BLUE}cc 0%, ${BLUE}55 45%, transparent 72%)`,
-                  filter: "blur(8px)",
+                  background: `radial-gradient(circle, ${BLUE}aa 0%, ${BLUE}44 45%, transparent 72%)`,
+                  filter: "blur(10px)",
                 }}
               />
             )}
@@ -96,7 +99,7 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
 
           {/* Full name — fades in with tracked-out spacing on the pulse */}
           <div
-            className={`font-black uppercase text-white text-sm md:text-base ${
+            className={`font-black uppercase text-black text-sm md:text-base ${
               showPulse ? "animate-name-track-in" : "opacity-0"
             }`}
             style={{ letterSpacing: "0.4em" }}
