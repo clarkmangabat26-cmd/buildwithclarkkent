@@ -15,7 +15,7 @@ const Hero = ({ introDone = true }: HeroProps) => {
       />
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 py-10 md:py-28">
         <div
-          className={`flex items-center gap-3 mb-8 ${introDone ? "animate-fade-up" : "opacity-0"}`}
+          className={`flex items-center gap-3 mb-8 ${introDone ? "animate-fade-up-smooth" : "opacity-0"}`}
           style={{ animationDelay: "0.3s" }}
         >
           <span className="h-2 w-2 bg-primary" />
@@ -25,7 +25,7 @@ const Hero = ({ introDone = true }: HeroProps) => {
         </div>
         <h1
           className={`font-black tracking-tightest leading-[0.95] text-4xl sm:text-6xl md:text-8xl lg:text-[128px] ${
-            introDone ? "animate-fade-up" : "opacity-0"
+            introDone ? "animate-fade-up-smooth" : "opacity-0"
           }`}
           style={{ animationDelay: "0.4s" }}
         >
@@ -37,7 +37,7 @@ const Hero = ({ introDone = true }: HeroProps) => {
         </h1>
         <p
           className={`mt-6 md:mt-12 max-w-2xl text-sm md:text-xl leading-relaxed text-foreground/80 ${
-            introDone ? "animate-fade-up" : "opacity-0"
+            introDone ? "animate-fade-up-smooth" : "opacity-0"
           }`}
           style={{ animationDelay: "0.5s" }}
         >
@@ -45,7 +45,7 @@ const Hero = ({ introDone = true }: HeroProps) => {
         </p>
         <div
           className={`mt-6 md:mt-12 flex flex-col sm:flex-row gap-4 ${
-            introDone ? "animate-fade-up" : "opacity-0"
+            introDone ? "animate-fade-up-smooth" : "opacity-0"
           }`}
           style={{ animationDelay: "0.6s" }}
         >
@@ -74,7 +74,7 @@ const Hero = ({ introDone = true }: HeroProps) => {
         {/* Metric strip */}
         <div
           className={`mt-12 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-2 border-ink ${
-            introDone ? "animate-fade-up" : "opacity-0"
+            introDone ? "animate-fade-up-smooth" : "opacity-0"
           }`}
           style={{ animationDelay: "0.7s" }}
         >

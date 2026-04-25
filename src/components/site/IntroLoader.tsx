@@ -1,45 +1,42 @@
 import { useEffect, useState } from "react";
-import KnightMark from "./KnightMark";
+import knightLogo from "@/assets/knight-logo.png";
 
 const BLUE = "#007BFF";
 
 /**
- * Bespoke "Grandmaster Move" intro loader.
+ * "Smooth Descent" intro loader.
+ *
  * Phases:
- *   grid    — 3x3 blueprint grid fades in (250ms)
- *   drop    — Knight piece is placed onto the centre square (550ms)
- *   ping    — Sonar pulse expands, grid flashes blue (700ms)
- *   exit    — Loader slides up to reveal the homepage (500ms)
- * Total ≈ 2.0s
+ *   descend — Knight image starts larger + blurred, smoothly scales down
+ *             into focus with a custom ease-out (no bounce). (1400ms)
+ *   pulse   — Soft blue eclipse glow expands behind the piece while the
+ *             full name fades in with tracked-out letter-spacing. (1100ms)
+ *   exit    — Whole loader fades away to reveal the homepage. (600ms)
  */
 
-type Phase = "grid" | "drop" | "ping" | "exit" | "done";
+type Phase = "descend" | "pulse" | "exit" | "done";
 
 interface IntroLoaderProps {
   onComplete: () => void;
 }
 
 const TIMINGS: Record<Exclude<Phase, "done">, number> = {
-  grid: 250,
-  drop: 550,
-  ping: 700,
-  exit: 500,
+  descend: 1400,
+  pulse: 1100,
+  exit: 600,
 };
 
 const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
-  const [phase, setPhase] = useState<Phase>("grid");
+  const [phase, setPhase] = useState<Phase>("descend");
 
   useEffect(() => {
     const timers: number[] = [];
     let acc = 0;
 
-    acc += TIMINGS.grid;
-    timers.push(window.setTimeout(() => setPhase("drop"), acc));
+    acc += TIMINGS.descend;
+    timers.push(window.setTimeout(() => setPhase("pulse"), acc));
 
-    acc += TIMINGS.drop;
-    timers.push(window.setTimeout(() => setPhase("ping"), acc));
-
-    acc += TIMINGS.ping;
+    acc += TIMINGS.pulse;
     timers.push(window.setTimeout(() => setPhase("exit"), acc));
 
     acc += TIMINGS.exit;
@@ -56,8 +53,7 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
   if (phase === "done") return null;
 
   const isExiting = phase === "exit";
-  const isPinging = phase === "ping";
-  const showKnight = phase !== "grid";
+  const showPulse = phase === "pulse" || phase === "exit";
 
   return (
     <div
@@ -66,105 +62,46 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
     >
       <div
         className={`absolute inset-0 bg-black ${
-          isExiting ? "animate-loader-slide-up" : ""
+          isExiting ? "animate-loader-fade-out" : ""
         }`}
       >
-        {/* 3x3 blueprint grid — centred, fades in first */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-10">
+          {/* Knight + eclipse glow */}
           <div
-            className="relative grid-fade-wrap"
+            className="relative flex items-center justify-center"
             style={{
-              width: "min(60vmin, 420px)",
-              height: "min(60vmin, 420px)",
-              opacity: phase === "grid" ? 0 : 1,
-              transition: "opacity 250ms ease-out",
+              width: "min(38vmin, 260px)",
+              height: "min(38vmin, 260px)",
             }}
           >
-            {/* Grid lines */}
-            <svg
-              viewBox="0 0 300 300"
-              className={`absolute inset-0 h-full w-full ${
-                isPinging ? "animate-grid-flash" : ""
-              }`}
-              style={{
-                opacity: 0.18,
-              }}
-            >
-              {/* outer frame */}
-              <rect
-                x="0.5"
-                y="0.5"
-                width="299"
-                height="299"
-                fill="none"
-                stroke={BLUE}
-                strokeWidth="1"
-              />
-              {/* vertical lines */}
-              <line x1="100" y1="0" x2="100" y2="300" stroke={BLUE} strokeWidth="1" />
-              <line x1="200" y1="0" x2="200" y2="300" stroke={BLUE} strokeWidth="1" />
-              {/* horizontal lines */}
-              <line x1="0" y1="100" x2="300" y2="100" stroke={BLUE} strokeWidth="1" />
-              <line x1="0" y1="200" x2="300" y2="200" stroke={BLUE} strokeWidth="1" />
-            </svg>
-
-            {/* Centre square + knight */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div
-                className="relative flex items-center justify-center"
+            {/* Eclipse glow — sits behind the piece */}
+            {showPulse && (
+              <span
+                className="absolute inset-0 rounded-full animate-eclipse-glow"
                 style={{
-                  width: "33.333%",
-                  height: "33.333%",
+                  background: `radial-gradient(circle, ${BLUE}cc 0%, ${BLUE}55 45%, transparent 72%)`,
+                  filter: "blur(8px)",
                 }}
-              >
-                {/* Sonar ping rings — emit from centre of the square */}
-                {isPinging && (
-                  <>
-                    <span
-                      className="absolute inline-block h-6 w-6 rounded-full animate-sonar-ping"
-                      style={{
-                        backgroundColor: "transparent",
-                        border: `2px solid ${BLUE}`,
-                        boxShadow: `0 0 12px ${BLUE}`,
-                      }}
-                    />
-                    <span
-                      className="absolute inline-block h-6 w-6 rounded-full animate-sonar-ping"
-                      style={{
-                        backgroundColor: "transparent",
-                        border: `2px solid ${BLUE}`,
-                        animationDelay: "0.15s",
-                      }}
-                    />
-                  </>
-                )}
+              />
+            )}
 
-                {/* The knight piece */}
-                {showKnight && (
-                  <div
-                    className={
-                      phase === "drop"
-                        ? "animate-knight-drop"
-                        : isPinging
-                          ? "animate-knight-impact"
-                          : ""
-                    }
-                    style={{
-                      width: "78%",
-                      filter: `drop-shadow(0 8px 18px ${BLUE}55)`,
-                    }}
-                  >
-                    <KnightMark
-                      className="block h-full w-full"
-                      outline="#000000"
-                      fill="#FFFFFF"
-                      accent={BLUE}
-                      strokeWidth={4}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
+            {/* Knight image */}
+            <img
+              src={knightLogo}
+              alt=""
+              className="relative block h-full w-full object-contain animate-knight-descend"
+              draggable={false}
+            />
+          </div>
+
+          {/* Full name — fades in with tracked-out spacing on the pulse */}
+          <div
+            className={`font-black uppercase text-white text-sm md:text-base ${
+              showPulse ? "animate-name-track-in" : "opacity-0"
+            }`}
+            style={{ letterSpacing: "0.4em" }}
+          >
+            Clark Kent Mangabat
           </div>
         </div>
       </div>
