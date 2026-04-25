@@ -133,14 +133,21 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </span>
         </div>
 
-        {/* Full view image placeholder — 1600x1000 (8:5) */}
-        <div className="mt-12 md:mt-16 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center">
+        {/* Full view image — preserves aspect ratio so the entire diagram is readable */}
+        <div className="mt-12 md:mt-16 w-full border-2 border-ink bg-ink overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]">
           {project.fullImage ? (
-            <img src={project.fullImage} alt={project.title} className="h-full w-full object-cover" />
+            <img
+              src={project.fullImage}
+              alt={`${project.title} — full workflow diagram`}
+              className="block w-full h-auto"
+              loading="lazy"
+            />
           ) : (
-            <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-foreground/40">
-              1600 × 1000 / Full view
-            </span>
+            <div className="aspect-[8/5] flex items-center justify-center">
+              <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-background/50">
+                1600 × 1000 / Full view
+              </span>
+            </div>
           )}
         </div>
 
