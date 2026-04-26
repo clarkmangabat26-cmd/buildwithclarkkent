@@ -37,8 +37,8 @@ export const site = {
   brandMark: "CLARK KENT MANGABAT",
   email: "hello@yourdomain.com",
   social: {
-    linkedin: "#",
-    twitter: "#",
+    linkedin: "https://www.linkedin.com/in/clark-kent-mangabat-81183725a",
+    onlineJobs: "https://v2.onlinejobs.ph/jobseekers/info/3243744",
   },
 
   // ---------- Hero ----------
@@ -147,30 +147,31 @@ export const site = {
     },
     {
       id: "invoice-ops",
-      category: "Finance Ops",
-      title: "Xero invoice extraction to Asana",
-      benefit: "ZERO MANUAL DATA ENTRY",
+      category: "CRM Automation",
+      title: "Asana CRM with automated follow-ups",
+      benefit: "ZERO FORGOTTEN CLIENTS",
       summary:
-        "Automated invoice reconciliation with Make.com. System monitors Xero for new invoices, extracts line items with GPT-4, matches against POs in Google Sheets, then queues mismatches for AP review in Asana with one-click approval actions.",
-      tools: ["Make", "Xero", "OpenAI", "Google Sheets", "Asana"],
+        "Transformed Asana into a fully automated CRM handling file organization and lead follow-ups. When a lead reaches 'Ready' status, the system creates Google Drive folders with linked Asana subtasks, triggers automated SMS/Email sequences for unresponsive leads, sends welcome emails with PDF attachments once approved, and delivers tailored maintenance advice based on the service purchased.",
+      tools: ["Asana", "Google Drive", "Gmail", "Twilio SMS"],
       thumbnail: "/work/xero-invoice-thumbnail.png",
       fullImage: "/work/xero-invoice-full.png",
       problem:
-        "AP team spent 3 days a month manually keying invoices from Xero into review spreadsheets, with frequent matching errors and missed mismatches.",
+        "Leads were slipping through the cracks — files scattered across drives, follow-ups forgotten, and onboarding handled manually for every new client. The team had no consistent system for nurturing prospects or delivering post-sale guidance.",
       solution:
-        "Make.com scenario monitors Xero, extracts invoice line items with GPT-4, matches against POs in Google Sheets, and queues mismatches for AP review in Asana with one-click approval actions.",
+        "Turned Asana into a full CRM. Status changes drive automation: folders auto-created in Google Drive with linked subtasks, unresponsive leads get SMS/Email nurture sequences, approved clients receive welcome emails with PDFs, and service-specific maintenance advice goes out automatically.",
       flow: [
-        "Make.com watches Xero for new invoices",
-        "GPT-4 extracts structured line items from each invoice",
-        "Match line items against PO list in Google Sheets",
-        "Clean matches auto-approved and logged",
-        "Mismatches create Asana task with approval/reject buttons",
+        "Lead reaches 'Ready' status in Asana",
+        "Google Drive folder auto-created and linked back as Asana subtask",
+        "Unresponsive leads enter SMS + Email follow-up sequence",
+        "Once approved, welcome email fires with PDF attachments",
+        "Tailored maintenance advice scheduled based on service purchased",
       ],
       impact: [
-        { label: "Manual data entry", from: "3 days/month", to: "0 minutes" },
-        { label: "Mismatch detection", from: "Spotty", to: "100%" },
+        { label: "Forgotten follow-ups", from: "Frequent", to: "Zero" },
+        { label: "File organization", from: "Manual", to: "Automatic" },
+        { label: "Client onboarding", from: "Hours", to: "Instant" },
       ],
-      toolsDetail: "Make.com, Xero, OpenAI (GPT-4), Google Sheets, Asana",
+      toolsDetail: "Asana, Google Drive, Gmail, Twilio (SMS)",
     },
     {
       id: "onboarding",
