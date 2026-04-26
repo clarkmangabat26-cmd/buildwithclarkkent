@@ -16,6 +16,7 @@ export type Project = {
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
   fullImage?: string; // 1600x1000 case-study image
+  gallery?: { src: string; alt: string }[]; // optional multi-image gallery for modal
 
   // ---- Modal / case study ----
   client?: string;
@@ -111,6 +112,10 @@ export const site = {
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
       thumbnail: "/work/lead-router-thumbnail.png",
       fullImage: "/work/lead-router-full.png",
+      gallery: [
+        { src: "/work/lead-router-full.png", alt: "n8n workflow — lead scoring + routing" },
+        { src: "/work/lead-router-ghl.png", alt: "GoHighLevel automation — tag-based branching" },
+      ],
       client: "Prestige Auto Detail",
       problem:
         "Most service businesses lose leads because no one follows up fast enough. Average response time was 47 hours — by then the lead already booked with a competitor. Manual qualification took 15-20 minutes per lead, hot leads only got followed up 60% of the time, and coverage was business hours only.",
