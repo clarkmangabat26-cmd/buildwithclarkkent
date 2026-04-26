@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { site, type Project } from "@/content/site";
 
 const Work = () => {
@@ -27,16 +27,12 @@ const Work = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 border-2 border-ink">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((p, i) => (
             <button
               key={p.id}
               onClick={() => setActive(p)}
-              className={`group text-left p-8 md:p-10 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative
-                hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))]
-                ${i < projects.length - 1 ? "border-b-2 lg:border-b-0" : ""}
-                ${i < projects.length - 1 ? "lg:border-r-2" : "lg:border-r-0"}
-                border-ink flex flex-col justify-between`}
+              className="group text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col justify-between"
             >
               <div>
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
