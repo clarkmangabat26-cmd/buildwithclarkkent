@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { site, type Project } from "@/content/site";
+import SmartImage from "@/components/site/SmartImage";
 
 const Work = () => {
   const [active, setActive] = useState<Project | null>(null);
@@ -36,12 +37,16 @@ const Work = () => {
             >
               <div>
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
-                <div
-                  className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors"
-                  aria-label="Project thumbnail placeholder"
-                >
+                <div className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors">
                   {p.thumbnail ? (
-                    <img src={p.thumbnail} alt={p.title} className="h-full w-full object-cover" />
+                    <SmartImage
+                      src={p.thumbnail}
+                      alt={`${p.title} — workflow thumbnail showing ${p.tools.slice(0, 3).join(", ")}`}
+                      width={800}
+                      height={500}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
                   ) : (
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/40 group-hover:text-background/50">
                       800 × 500 / Thumbnail
