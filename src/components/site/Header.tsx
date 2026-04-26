@@ -23,7 +23,7 @@ const Header = () => {
         <a
           href="#top"
           onClick={(e) => smoothTo(e, "#top")}
-          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-2 pr-2 font-black uppercase leading-none tracking-[0.04em] text-[13px] sm:text-base md:text-2xl lg:max-w-none lg:gap-4 lg:pr-4 lg:tracking-[0.06em] lg:text-[34px]"
+          className="flex min-w-0 max-w-[calc(100%-4.5rem)] items-center gap-2 pr-2 font-black uppercase leading-none tracking-[0.04em] text-[11px] sm:text-[13px] md:text-[19px] lg:max-w-none lg:gap-4 lg:pr-4 lg:tracking-[0.06em] lg:text-[27px]"
         >
           <img
             src={knightLogo}
