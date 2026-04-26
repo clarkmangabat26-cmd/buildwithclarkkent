@@ -1,5 +1,7 @@
 import { site } from "@/content/site";
 
+const EMAIL = "clarkmangabat26@gmail.com";
+
 const Footer = () => {
   return (
     <footer className="bg-background border-t-2 border-ink">
@@ -11,14 +13,24 @@ const Footer = () => {
           </span>
         </div>
         <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.2em]">
-          <a href={`mailto:${site.email}`} className="hover:text-primary">
-            {site.email}
+          <a href={`mailto:${EMAIL}`} className="hover:text-primary">
+            {EMAIL}
           </a>
-          <a href={site.social.linkedin} className="hover:text-primary">
+          <a
+            href={site.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary"
+          >
             LinkedIn
           </a>
-          <a href={site.social.twitter} className="hover:text-primary">
-            Twitter
+          <a
+            href={site.social.onlineJobs}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary"
+          >
+            OnlineJobs.ph
           </a>
         </div>
       </div>

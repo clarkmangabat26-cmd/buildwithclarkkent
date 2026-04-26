@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { site, type Project } from "@/content/site";
 
 const Work = () => {
@@ -27,16 +27,12 @@ const Work = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 border-2 border-ink">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((p, i) => (
             <button
               key={p.id}
               onClick={() => setActive(p)}
-              className={`group text-left p-8 md:p-10 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative
-                hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))]
-                ${i < projects.length - 1 ? "border-b-2 lg:border-b-0" : ""}
-                ${i < projects.length - 1 ? "lg:border-r-2" : "lg:border-r-0"}
-                border-ink flex flex-col justify-between`}
+              className="group text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col justify-between"
             >
               <div>
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
@@ -99,6 +95,8 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
 );
 
 const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () => void }) => {
+  const [galleryIdx, setGalleryIdx] = useState(0);
+  const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : null;
   return (
     <div className="fixed inset-0 z-[100] bg-background overflow-y-auto animate-fade-up">
       <div className="sticky top-0 z-10 border-b-2 border-ink bg-background">
@@ -133,23 +131,74 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </span>
         </div>
 
-        {/* Full view image — preserves aspect ratio so the entire diagram is readable */}
-        <div className="mt-12 md:mt-16 w-full border-2 border-ink bg-ink overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]">
-          {project.fullImage ? (
-            <img
-              src={project.fullImage}
-              alt={`${project.title} — full workflow diagram`}
-              className="block w-full h-auto"
-              loading="lazy"
-            />
-          ) : (
-            <div className="aspect-[8/5] flex items-center justify-center">
-              <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-background/50">
-                1600 × 1000 / Full view
-              </span>
+        {/* Full view / gallery — preserves aspect ratio so the entire diagram is readable */}
+        {gallery ? (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Workflow Views</SectionLabel>
+            <div className="relative w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]">
+              <img
+                key={galleryIdx}
+                src={gallery[galleryIdx].src}
+                alt={gallery[galleryIdx].alt}
+                className="block w-full h-auto animate-fade-up"
+                loading="lazy"
+              />
+              <button
+                onClick={() => setGalleryIdx((galleryIdx - 1 + gallery.length) % gallery.length)}
+                aria-label="Previous image"
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-11 w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setGalleryIdx((galleryIdx + 1) % gallery.length)}
+                aria-label="Next image"
+                className="absolute right-3 top-1/2 -translate-y-1/2 h-11 w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
             </div>
-          )}
-        </div>
+            <div className="mt-4 flex items-center justify-between">
+              <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {gallery[galleryIdx].alt}
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {String(galleryIdx + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}
+                </span>
+                <div className="flex gap-2">
+                  {gallery.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setGalleryIdx(i)}
+                      aria-label={`Go to image ${i + 1}`}
+                      className={`h-2 w-6 border border-ink transition-colors ${
+                        i === galleryIdx ? "bg-primary" : "bg-background"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-12 md:mt-16 w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]">
+            {project.fullImage ? (
+              <img
+                src={project.fullImage}
+                alt={`${project.title} — full workflow diagram`}
+                className="block w-full h-auto"
+                loading="lazy"
+              />
+            ) : (
+              <div className="aspect-[8/5] flex items-center justify-center bg-ink">
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-background/50">
+                  1600 × 1000 / Full view
+                </span>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Problem / Solution */}
         {(project.problem || project.solution) && (
