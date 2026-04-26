@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import SmartImage from "@/components/site/SmartImage";
 
 const About = () => {
   return (
@@ -9,13 +10,13 @@ const About = () => {
           {/* Portrait — 400x400 desktop, centered on mobile */}
           <div className="shrink-0 mx-auto lg:mx-0">
             <div className="w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[400px] lg:h-[400px] max-w-full border border-ink rounded-2xl bg-secondary overflow-hidden">
-              <img
+              <SmartImage
                 src={site.about.imageUrl}
-                alt={`${site.name} — ${site.role}`}
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                  (e.currentTarget.style.display = "none");
-                }}
+                alt={`Portrait of ${site.name}, ${site.role}`}
+                width={400}
+                height={400}
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 400px"
+                className="object-cover"
               />
             </div>
           </div>
