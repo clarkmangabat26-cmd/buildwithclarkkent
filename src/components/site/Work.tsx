@@ -111,8 +111,8 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </span>
           <button
             onClick={onClose}
-            className="h-11 w-11 border-2 border-ink flex items-center justify-center hover:bg-ink hover:text-background transition-colors"
-            aria-label="Close"
+            className="h-11 w-11 min-h-11 min-w-11 border-2 border-ink flex items-center justify-center hover:bg-ink hover:text-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            aria-label="Close case study"
           >
             <X className="h-5 w-5" />
           </button>
@@ -140,25 +140,34 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
         {gallery ? (
           <div className="mt-12 md:mt-16">
             <SectionLabel>Workflow Views</SectionLabel>
-            <div className="relative w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]">
-              <img
-                key={galleryIdx}
-                src={gallery[galleryIdx].src}
-                alt={gallery[galleryIdx].alt}
-                className="block w-full h-auto animate-fade-up"
-                loading="lazy"
-              />
+            <div
+              className="relative w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label={`${project.title} workflow views`}
+            >
+              <div className="relative w-full" style={{ aspectRatio: "16 / 10" }}>
+                <SmartImage
+                  key={galleryIdx}
+                  src={gallery[galleryIdx].src}
+                  alt={`${project.title} — ${gallery[galleryIdx].alt}`}
+                  width={1600}
+                  height={1000}
+                  sizes="(max-width: 1024px) 100vw, 1400px"
+                  className="object-contain animate-fade-up"
+                />
+              </div>
               <button
                 onClick={() => setGalleryIdx((galleryIdx - 1 + gallery.length) % gallery.length)}
-                aria-label="Previous image"
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-11 w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors"
+                aria-label={`Previous image (${galleryIdx + 1} of ${gallery.length})`}
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-11 min-w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={() => setGalleryIdx((galleryIdx + 1) % gallery.length)}
-                aria-label="Next image"
-                className="absolute right-3 top-1/2 -translate-y-1/2 h-11 w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors"
+                aria-label={`Next image (${galleryIdx + 1} of ${gallery.length})`}
+                className="absolute right-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-11 min-w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -171,16 +180,23 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                 <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   {String(galleryIdx + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}
                 </span>
-                <div className="flex gap-2">
+                <div className="flex gap-2" role="tablist" aria-label="Gallery navigation">
                   {gallery.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setGalleryIdx(i)}
-                      aria-label={`Go to image ${i + 1}`}
-                      className={`h-2 w-6 border border-ink transition-colors ${
-                        i === galleryIdx ? "bg-primary" : "bg-background"
-                      }`}
-                    />
+                      aria-label={`Go to image ${i + 1} of ${gallery.length}`}
+                      aria-current={i === galleryIdx}
+                      role="tab"
+                      aria-selected={i === galleryIdx}
+                      className={`relative h-11 w-11 min-h-11 min-w-11 flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
+                    >
+                      <span
+                        className={`block h-2 w-6 border border-ink transition-colors ${
+                          i === galleryIdx ? "bg-primary" : "bg-background"
+                        }`}
+                      />
+                    </button>
                   ))}
                 </div>
               </div>
@@ -189,12 +205,16 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
         ) : (
           <div className="mt-12 md:mt-16 w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]">
             {project.fullImage ? (
-              <img
-                src={project.fullImage}
-                alt={`${project.title} — full workflow diagram`}
-                className="block w-full h-auto"
-                loading="lazy"
-              />
+              <div className="relative w-full" style={{ aspectRatio: "16 / 10" }}>
+                <SmartImage
+                  src={project.fullImage}
+                  alt={`${project.title} — full workflow diagram (${project.toolsDetail ?? project.tools.join(", ")})`}
+                  width={1600}
+                  height={1000}
+                  sizes="(max-width: 1024px) 100vw, 1400px"
+                  className="object-contain"
+                />
+              </div>
             ) : (
               <div className="aspect-[8/5] flex items-center justify-center bg-ink">
                 <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-background/50">
