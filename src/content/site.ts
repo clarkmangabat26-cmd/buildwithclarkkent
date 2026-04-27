@@ -158,7 +158,7 @@ export const site = {
       benefit: "47 HOURS → 60 SECONDS",
       workflowTag: "SPEED TO LEAD",
       summary:
-        "Built for Prestige Auto Detail. Tally form triggers n8n workflow that runs duplicate checks, scores leads 1-10 using weighted AI rubric (vehicle type, service, budget, timeline), routes into GoHighLevel CRM by tier (hot/warm/cold), fires Slack alerts with lead summary, and triggers tier-specific follow-up sequences. Hot leads get contacted in under 60 seconds, 24/7.",
+        "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data — it all happens on its own.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
       thumbnail: "/work/lead-router-thumbnail.png",
       fullImage: "/work/lead-router-full.png",
@@ -206,7 +206,7 @@ export const site = {
       title: "Export Account Transactions from Xero",
       benefit: "ZERO MANUAL ENTRY",
       summary:
-        "Built a seamless workflow to bridge accounting and project management. Automatically exports account transactions from Xero, converts complex financial data into clean CSV format, and uploads directly to Asana as structured tasks. Eliminates manual data entry and gives the project team real-time visibility into financial movements.",
+        "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything — the system does it all.",
       tools: ["Make", "Xero", "Asana", "CSV"],
       thumbnail: "/work/xero-invoice-thumbnail.png",
       fullImage: "/work/xero-invoice-full.png",
@@ -233,7 +233,7 @@ export const site = {
       title: "29-step Asana client onboarding CRM",
       benefit: "ZERO FORGOTTEN CLIENTS",
       summary:
-        "Transformed Asana into a fully automated CRM handling file organization and lead follow-ups. When a lead reaches 'Ready' status, the system creates Google Drive folders with linked Asana subtasks, triggers automated SMS/Email sequences for unresponsive leads, sends welcome emails with PDF attachments once approved, and delivers tailored maintenance advice based on the service purchased.",
+        "When a client pays, the system sets up their folders, sends their welcome email, and schedules follow-ups. The team doesn't lift a finger.",
       tools: ["Asana", "Google Drive", "Gmail", "Zapier"],
       thumbnail: "/work/asana-29step-thumbnail.png",
       fullImage: "/work/asana-29step-full.png",

@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { site } from "@/content/site";
 
 const N8N_WEBHOOK_URL =
-  "https://n8n.srv1602546.hstgr.cloud/webhook-test/b3c98ee8-e2ae-4097-b2ce-fd5444de811a";
+  "https://n8n.srv1602546.hstgr.cloud/webhook/b3c98ee8-e2ae-4097-b2ce-fd5444de811a";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
