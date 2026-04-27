@@ -85,6 +85,54 @@ export const site = {
     subtext: "3 CASE STUDIES",
   },
 
+  // ---------- Workflow categories ----------
+  workflowCategories: {
+    eyebrow: "WORKFLOW CATEGORIES",
+    headline: "Types of workflows I build for businesses.",
+    cards: [
+      {
+        title: "Speed to Lead",
+        benefits: [
+          "Faster response times",
+          "Higher close rates",
+          "Revenue loss prevention",
+        ],
+      },
+      {
+        title: "Document Processing",
+        benefits: [
+          "Labor cost savings",
+          "Cut processing time by 80%+",
+          "Eliminate data entry errors",
+        ],
+      },
+      {
+        title: "Follow-Up Sequences",
+        benefits: [
+          "More customer touchpoints",
+          "Increased close rates",
+          "Never miss a follow-up",
+        ],
+      },
+      {
+        title: "Database Reactions",
+        benefits: [
+          "Churned leads get personalized sequences",
+          "Automated re-engagement",
+          "Behavior-triggered workflows",
+        ],
+      },
+      {
+        title: "Status Notifications",
+        benefits: [
+          "Weekly pipeline reports",
+          "Compiled client KPI reports",
+          "Automated status updates",
+        ],
+      },
+    ],
+  },
+
   // ---------- Stack ----------
   stack: {
     label: "Tools I Use",
