@@ -53,11 +53,18 @@ const Work = () => {
                     </span>
                   )}
                 </div>
-                <div className="flex items-center justify-between mb-8">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
-                    {String(i + 1).padStart(2, "0")} / {p.category}
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition" />
+                <div className="flex items-center justify-between mb-8 gap-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {p.workflowTag && (
+                      <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1">
+                        {p.workflowTag}
+                      </span>
+                    )}
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
+                      {String(i + 1).padStart(2, "0")} / {p.category}
+                    </span>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition shrink-0" />
                 </div>
                 <h3 className="font-black tracking-tightest text-2xl md:text-3xl leading-tight">
                   {p.title}
@@ -135,13 +142,20 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
             {project.benefit}
           </span>
         </div>
+        {project.workflowTag && (
+          <div className="mt-3">
+            <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1">
+              {project.workflowTag}
+            </span>
+          </div>
+        )}
 
         {/* Full view / gallery — preserves aspect ratio so the entire diagram is readable */}
         {gallery ? (
           <div className="mt-12 md:mt-16">
             <SectionLabel>Workflow Views</SectionLabel>
             <div
-              className="relative w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]"
+              className="group/gallery relative w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]"
               role="region"
               aria-roledescription="carousel"
               aria-label={`${project.title} workflow views`}
@@ -160,14 +174,14 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
               <button
                 onClick={() => setGalleryIdx((galleryIdx - 1 + gallery.length) % gallery.length)}
                 aria-label={`Previous image (${galleryIdx + 1} of ${gallery.length})`}
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-11 min-w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-11 min-w-11 border-2 border-ink bg-background flex items-center justify-center transition-opacity duration-200 opacity-20 group-hover/gallery:opacity-100 hover:bg-ink hover:text-background focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={() => setGalleryIdx((galleryIdx + 1) % gallery.length)}
                 aria-label={`Next image (${galleryIdx + 1} of ${gallery.length})`}
-                className="absolute right-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-11 min-w-11 border-2 border-ink bg-background flex items-center justify-center hover:bg-ink hover:text-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="absolute right-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-11 min-w-11 border-2 border-ink bg-background flex items-center justify-center transition-opacity duration-200 opacity-20 group-hover/gallery:opacity-100 hover:bg-ink hover:text-background focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>

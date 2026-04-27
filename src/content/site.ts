@@ -12,6 +12,7 @@ export type Project = {
   benefit: string; // outcome badge
   summary: string; // short card description
   tools: string[];
+  workflowTag?: string; // small pill badge above category, e.g. "SPEED TO LEAD"
 
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
@@ -84,6 +85,54 @@ export const site = {
     subtext: "3 CASE STUDIES",
   },
 
+  // ---------- Workflow categories ----------
+  workflowCategories: {
+    eyebrow: "WORKFLOW CATEGORIES",
+    headline: "Types of workflows I build for businesses.",
+    cards: [
+      {
+        title: "Speed to Lead",
+        benefits: [
+          "Faster response times",
+          "Higher close rates",
+          "Revenue loss prevention",
+        ],
+      },
+      {
+        title: "Document Processing",
+        benefits: [
+          "Labor cost savings",
+          "Cut processing time by 80%+",
+          "Eliminate data entry errors",
+        ],
+      },
+      {
+        title: "Follow-Up Sequences",
+        benefits: [
+          "More customer touchpoints",
+          "Increased close rates",
+          "Never miss a follow-up",
+        ],
+      },
+      {
+        title: "Database Reactions",
+        benefits: [
+          "Churned leads get personalized sequences",
+          "Automated re-engagement",
+          "Behavior-triggered workflows",
+        ],
+      },
+      {
+        title: "Status Notifications",
+        benefits: [
+          "Weekly pipeline reports",
+          "Compiled client KPI reports",
+          "Automated status updates",
+        ],
+      },
+    ],
+  },
+
   // ---------- Stack ----------
   stack: {
     label: "Tools I Use",
@@ -107,6 +156,7 @@ export const site = {
       category: "Lead Management",
       title: "AI lead qualification + CRM routing pipeline",
       benefit: "47 HOURS → 60 SECONDS",
+      workflowTag: "SPEED TO LEAD",
       summary:
         "Built for Prestige Auto Detail. Tally form triggers n8n workflow that runs duplicate checks, scores leads 1-10 using weighted AI rubric (vehicle type, service, budget, timeline), routes into GoHighLevel CRM by tier (hot/warm/cold), fires Slack alerts with lead summary, and triggers tier-specific follow-up sequences. Hot leads get contacted in under 60 seconds, 24/7.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
@@ -152,31 +202,30 @@ export const site = {
     },
     {
       id: "invoice-ops",
-      category: "CRM Automation",
-      title: "Asana CRM with automated follow-ups",
-      benefit: "ZERO FORGOTTEN CLIENTS",
+      category: "Finance Ops",
+      title: "Export Account Transactions from Xero",
+      benefit: "ZERO MANUAL ENTRY",
       summary:
-        "Transformed Asana into a fully automated CRM handling file organization and lead follow-ups. When a lead reaches 'Ready' status, the system creates Google Drive folders with linked Asana subtasks, triggers automated SMS/Email sequences for unresponsive leads, sends welcome emails with PDF attachments once approved, and delivers tailored maintenance advice based on the service purchased.",
-      tools: ["Asana", "Google Drive", "Gmail", "Twilio SMS"],
+        "Built a seamless workflow to bridge accounting and project management. Automatically exports account transactions from Xero, converts complex financial data into clean CSV format, and uploads directly to Asana as structured tasks. Eliminates manual data entry and gives the project team real-time visibility into financial movements.",
+      tools: ["Make", "Xero", "Asana", "CSV"],
       thumbnail: "/work/xero-invoice-thumbnail.png",
       fullImage: "/work/xero-invoice-full.png",
       problem:
-        "Leads were slipping through the cracks — files scattered across drives, follow-ups forgotten, and onboarding handled manually for every new client. The team had no consistent system for nurturing prospects or delivering post-sale guidance.",
+        "Finance and project teams worked in silos — transactions lived in Xero while task tracking lived in Asana. Reconciling the two meant hours of manual exports, reformatting, and copy-paste, with errors creeping in at every step.",
       solution:
-        "Turned Asana into a full CRM. Status changes drive automation: folders auto-created in Google Drive with linked subtasks, unresponsive leads get SMS/Email nurture sequences, approved clients receive welcome emails with PDFs, and service-specific maintenance advice goes out automatically.",
+        "I built a seamless workflow to bridge the gap between accounting and project management. This automation ensures financial transactions are accurately tracked as actionable tasks without manual data entry.",
       flow: [
-        "Lead reaches 'Ready' status in Asana",
-        "Google Drive folder auto-created and linked back as Asana subtask",
-        "Unresponsive leads enter SMS + Email follow-up sequence",
-        "Once approved, welcome email fires with PDF attachments",
-        "Tailored maintenance advice scheduled based on service purchased",
+        "Extract: Automatically exports account transactions from Xero",
+        "Format: Converts complex financial data into clean CSV format compatible with Asana",
+        "Sync: Uploads CSV directly to Asana, creating structured tasks for the team",
+        "Efficiency: Eliminates human error and ensures real-time visibility into financial movements",
       ],
       impact: [
-        { label: "Forgotten follow-ups", from: "Frequent", to: "Zero" },
-        { label: "File organization", from: "Manual", to: "Automatic" },
-        { label: "Client onboarding", from: "Hours", to: "Instant" },
+        { label: "Manual data entry", from: "Hours/week", to: "Zero" },
+        { label: "Finance ↔ project sync", from: "Manual exports", to: "Automatic" },
+        { label: "Data entry errors", from: "Frequent", to: "Eliminated" },
       ],
-      toolsDetail: "Asana, Google Drive, Gmail, Twilio (SMS)",
+      toolsDetail: "Make, Xero, Asana",
     },
     {
       id: "onboarding",
