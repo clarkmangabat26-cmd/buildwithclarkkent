@@ -156,6 +156,7 @@ export const site = {
       category: "Lead Management",
       title: "AI lead qualification + CRM routing pipeline",
       benefit: "47 HOURS → 60 SECONDS",
+      workflowTag: "SPEED TO LEAD",
       summary:
         "Built for Prestige Auto Detail. Tally form triggers n8n workflow that runs duplicate checks, scores leads 1-10 using weighted AI rubric (vehicle type, service, budget, timeline), routes into GoHighLevel CRM by tier (hot/warm/cold), fires Slack alerts with lead summary, and triggers tier-specific follow-up sequences. Hot leads get contacted in under 60 seconds, 24/7.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
