@@ -12,6 +12,7 @@ export type Project = {
   benefit: string; // outcome badge
   summary: string; // short card description
   tools: string[];
+  workflowTag?: string; // small pill badge above category, e.g. "SPEED TO LEAD"
 
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
