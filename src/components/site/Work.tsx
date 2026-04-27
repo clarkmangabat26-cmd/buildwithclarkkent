@@ -53,11 +53,18 @@ const Work = () => {
                     </span>
                   )}
                 </div>
-                <div className="flex items-center justify-between mb-8">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
-                    {String(i + 1).padStart(2, "0")} / {p.category}
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition" />
+                <div className="flex items-center justify-between mb-8 gap-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {p.workflowTag && (
+                      <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1">
+                        {p.workflowTag}
+                      </span>
+                    )}
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
+                      {String(i + 1).padStart(2, "0")} / {p.category}
+                    </span>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition shrink-0" />
                 </div>
                 <h3 className="font-black tracking-tightest text-2xl md:text-3xl leading-tight">
                   {p.title}
