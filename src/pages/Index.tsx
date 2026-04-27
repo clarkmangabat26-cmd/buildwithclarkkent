@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "@/components/site/Header";
 import Hero from "@/components/site/Hero";
 import Stack from "@/components/site/Stack";
+import WorkflowCategories from "@/components/site/WorkflowCategories";
 import Work from "@/components/site/Work";
 import About from "@/components/site/About";
 import Audit from "@/components/site/Audit";
@@ -25,6 +26,7 @@ const Index = () => {
       <main>
         <Hero introDone={heroReady} />
         <Stack />
+        <WorkflowCategories />
         <Work />
         <About />
         <Audit />
