@@ -46,6 +46,9 @@ const Work = () => {
                       height={500}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
+                      loadingBorder
+                      loading={i < 3 ? "eager" : "lazy"}
+                      fetchPriority={i < 3 ? "high" : "auto"}
                     />
                   ) : (
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/40 group-hover:text-background/50">
@@ -169,6 +172,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                   height={1000}
                   sizes="(max-width: 1024px) 100vw, 1400px"
                   className="object-contain animate-fade-up"
+                  loadingBorder
                 />
               </div>
               <button
@@ -227,6 +231,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                   height={1000}
                   sizes="(max-width: 1024px) 100vw, 1400px"
                   className="object-contain"
+                  loadingBorder
                 />
               </div>
             ) : (

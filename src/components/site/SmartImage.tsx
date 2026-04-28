@@ -6,6 +6,8 @@ type Props = ImgHTMLAttributes<HTMLImageElement> & {
   wrapperClassName?: string;
   /** Optional skeleton tone. Defaults to muted. */
   skeletonClassName?: string;
+  /** When true: light gray placeholder + thin blue border while loading. */
+  loadingBorder?: boolean;
 };
 
 /**
@@ -22,17 +24,25 @@ const SmartImage = ({
   alt = "",
   loading = "lazy",
   decoding = "async",
+  loadingBorder = false,
   ...rest
 }: Props) => {
   const [state, setState] = useState<"loading" | "loaded" | "error">("loading");
 
   return (
-    <div className={cn("relative w-full h-full", wrapperClassName)}>
+    <div
+      className={cn(
+        "relative w-full h-full transition-[border-color] duration-200",
+        loadingBorder && state === "loading" && "border border-primary/60",
+        wrapperClassName,
+      )}
+    >
       {state === "loading" && (
         <div
           aria-hidden
           className={cn(
-            "absolute inset-0 animate-pulse bg-secondary",
+            "absolute inset-0 animate-pulse",
+            loadingBorder ? "bg-muted/60" : "bg-secondary",
             skeletonClassName,
           )}
         />
