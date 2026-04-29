@@ -114,19 +114,42 @@ const Work = () => {
           </div>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {projects.map((p, i) => (
-            <button
-              key={p.id}
-              onClick={() => setActive(p)}
-              className="group text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col justify-between"
+        <div ref={gridRef} className="relative">
+          <div
+            className="overflow-hidden"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
+            <div
+              className="flex"
               style={{
-                opacity: revealed ? 1 : 0,
-                transform: revealed ? "translateY(0)" : "translateY(20px)",
-                transition: `opacity 600ms ease-out ${i * 100}ms, transform 600ms ease-out ${i * 100}ms`,
+                transform: `translateX(calc(-${startIdx} * (100% / ${perView})))`,
+                transition: "transform 400ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
-              <div>
+              {projects.map((p, i) => {
+                const visible = i >= startIdx && i < startIdx + perView;
+                return (
+                <div
+                  key={p.id}
+                  className="shrink-0 px-2 md:px-3"
+                  style={{ width: `calc(100% / ${perView})`, opacity: visible ? 1 : 0.4, transition: "opacity 400ms ease" }}
+                >
+                <button
+                  onClick={() => setActive(p)}
+                  className="group w-full h-full text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col justify-between"
+                  style={{
+                    opacity: revealed ? 1 : 0,
+                    transform: revealed ? "translateY(0)" : "translateY(20px)",
+                    transition: `opacity 600ms ease-out ${i * 100}ms, transform 600ms ease-out ${i * 100}ms`,
+                  }}
+                >
+                  {p.hasVideoPlaceholder && (
+                    <span className="absolute top-3 right-3 z-20 inline-flex items-center gap-1 rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 shadow-lg animate-pulse-badge">
+                      ▶ Loom Demo
+                    </span>
+                  )}
+                  <div>
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
                 <div className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors">
                   {p.thumbnail ? (
@@ -154,11 +177,6 @@ const Work = () => {
                         {p.workflowTag}
                       </span>
                     )}
-                    {p.hasVideoPlaceholder && (
-                      <span className="inline-flex items-center rounded-full bg-primary/15 text-primary font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 group-hover:bg-background/15 group-hover:text-background transition-colors">
-                        Loom Demo
-                      </span>
-                    )}
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
                       {String(i + 1).padStart(2, "0")} / {p.category}
                     </span>
@@ -182,16 +200,54 @@ const Work = () => {
                     </span>
                   ))}
                 </div>
-              </div>
-              <div className="mt-8 inline-flex items-center gap-2 self-start">
-                <span className="h-2 w-2 bg-primary group-hover:bg-background" />
-                <span className="font-mono text-sm md:text-base uppercase tracking-[0.15em] font-bold">
-                  {p.benefit}
-                </span>
-              </div>
-            </button>
-          ))}
+                  </div>
+                  <div className="mt-8 inline-flex items-center gap-2 self-start">
+                    <span className="h-2 w-2 bg-primary group-hover:bg-background" />
+                    <span className="font-mono text-sm md:text-base uppercase tracking-[0.15em] font-bold">
+                      {p.benefit}
+                    </span>
+                  </div>
+                </button>
+                </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <button
+            onClick={() => setStartIdx((i) => Math.max(0, i - 1))}
+            disabled={startIdx === 0}
+            aria-label="Previous case studies"
+            className="absolute left-1 md:-left-6 top-1/2 -translate-y-1/2 z-10 h-12 w-12 min-h-12 min-w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-110 transition-transform disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            onClick={() => setStartIdx((i) => Math.min(maxStart, i + 1))}
+            disabled={startIdx >= maxStart}
+            aria-label="Next case studies"
+            className="absolute right-1 md:-right-6 top-1/2 -translate-y-1/2 z-10 h-12 w-12 min-h-12 min-w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-110 transition-transform disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
         </div>
+
+        {numPages > 1 && (
+          <div className="mt-8 flex items-center justify-center gap-2" role="tablist" aria-label="Case study pagination">
+            {Array.from({ length: numPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setStartIdx(i)}
+                role="tab"
+                aria-selected={i === startIdx}
+                aria-label={`Go to slide ${i + 1} of ${numPages}`}
+                className={`h-3 rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
+                  i === startIdx ? "w-8 bg-primary" : "w-3 bg-ink/25 hover:bg-ink/50"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {active && <ProjectOverlay project={active} onClose={() => setActive(null)} />}
