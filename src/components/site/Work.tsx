@@ -59,6 +59,41 @@ const Work = () => {
     return () => io.disconnect();
   }, [revealed]);
 
+  // Responsive cards-per-view: 1 (mobile) / 2 (tablet) / 3 (desktop).
+  const [perView, setPerView] = useState(3);
+  useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth;
+      if (w < 768) setPerView(1);
+      else if (w < 1024) setPerView(2);
+      else setPerView(3);
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
+  const [startIdx, setStartIdx] = useState(0);
+  const maxStart = Math.max(0, projects.length - perView);
+  useEffect(() => {
+    if (startIdx > maxStart) setStartIdx(maxStart);
+  }, [maxStart, startIdx]);
+  const numPages = maxStart + 1;
+
+  const touchStartX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) setStartIdx((i) => Math.min(maxStart, i + 1));
+      else setStartIdx((i) => Math.max(0, i - 1));
+    }
+    touchStartX.current = null;
+  };
+
   return (
     <section id="work" className="border-b-2 border-ink">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
