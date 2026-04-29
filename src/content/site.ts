@@ -170,7 +170,7 @@ export const site = {
       hasVideoPlaceholder: true,
       videoPlaceholderText: "Watch the demo — Amy takes a live call",
       summary:
-        "A voice AI agent that handles the full appointment lifecycle over the phone — booking, rescheduling, and cancellations — synced live to Google Calendar. Amy answers calls 24/7, checks open slots, books appointments, and handles errors gracefully without a human in the loop.",
+        "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed — it runs 24/7 on its own.",
       tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
       thumbnail: "/work/ai-receptionist-thumbnail.png",
       fullImage: "/work/ai-receptionist-full.png",

@@ -193,6 +193,10 @@ export default {
           "0%": { transform: "translateY(0)" },
           "100%": { transform: "translateY(-100%)" },
         },
+        "pulse-badge": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -219,6 +223,7 @@ export default {
         "sonar-ping": "sonar-ping 0.85s cubic-bezier(0, 0, 0.2, 1) forwards",
         "grid-flash": "grid-flash 0.7s ease-out forwards",
         "loader-slide-up": "loader-slide-up 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards",
+        "pulse-badge": "pulse-badge 2s ease-in-out infinite",
       },
     },
   },
