@@ -75,7 +75,7 @@ const Work = () => {
             </div>
           </div>
           <div className="hidden md:block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            {projects.length} case studies
+            {projects.length} CASE STUDIES
           </div>
         </div>
 
@@ -212,6 +212,17 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
             <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1">
               {project.workflowTag}
             </span>
+          </div>
+        )}
+
+        {/* Video demo placeholder (modal) */}
+        {project.hasVideoPlaceholder && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Demo Video</SectionLabel>
+            <VideoPlaceholder
+              caption={project.videoPlaceholderText ?? "Watch the demo"}
+              size="modal"
+            />
           </div>
         )}
 
