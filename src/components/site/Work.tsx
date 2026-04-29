@@ -1,12 +1,63 @@
-import { useState } from "react";
-import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { site, type Project } from "@/content/site";
 import SmartImage from "@/components/site/SmartImage";
+
+// Reusable video embed placeholder shown until the demo video is ready.
+const VideoPlaceholder = ({
+  caption,
+  size = "card",
+}: {
+  caption: string;
+  size?: "card" | "modal";
+}) => (
+  <div
+    className={`relative w-full aspect-video border-2 border-ink bg-ink overflow-hidden flex items-center justify-center ${
+      size === "card" ? "mb-6" : ""
+    }`}
+    role="img"
+    aria-label={`${caption} (video coming soon)`}
+  >
+    <span className="absolute top-3 right-3 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 z-10">
+      Coming Soon
+    </span>
+    <div className="flex flex-col items-center gap-3 text-background px-4 text-center">
+      <span className="flex items-center justify-center h-14 w-14 md:h-16 md:w-16 rounded-full bg-background/10 border-2 border-background/60 backdrop-blur-sm">
+        <Play className="h-6 w-6 md:h-7 md:w-7 fill-background text-background ml-0.5" />
+      </span>
+      <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.18em] text-background/85">
+        {caption}
+      </span>
+    </div>
+  </div>
+);
 
 const Work = () => {
   const [active, setActive] = useState<Project | null>(null);
   const projects = site.projects;
   const ws = site.workSection;
+
+  // Trigger one-time stagger entrance when the grid scrolls into view.
+  const gridRef = useRef<HTMLDivElement | null>(null);
+  const [revealed, setRevealed] = useState(false);
+  useEffect(() => {
+    if (!gridRef.current || revealed) return;
+    const node = gridRef.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setRevealed(true);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, [revealed]);
 
   return (
     <section id="work" className="border-b-2 border-ink">
@@ -28,14 +79,25 @@ const Work = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((p, i) => (
             <button
               key={p.id}
               onClick={() => setActive(p)}
               className="group text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col justify-between"
+              style={{
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 600ms ease-out ${i * 100}ms, transform 600ms ease-out ${i * 100}ms`,
+              }}
             >
               <div>
+                {p.hasVideoPlaceholder && (
+                  <VideoPlaceholder
+                    caption={p.videoPlaceholderText ?? "Watch the demo"}
+                    size="card"
+                  />
+                )}
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
                 <div className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors">
                   {p.thumbnail ? (
