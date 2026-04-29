@@ -13,6 +13,8 @@ export type Project = {
   summary: string; // short card description
   tools: string[];
   workflowTag?: string; // small pill badge above category, e.g. "SPEED TO LEAD"
+  hasVideoPlaceholder?: boolean; // shows a "coming soon" video embed placeholder
+  videoPlaceholderText?: string; // caption under the play button
 
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
@@ -82,7 +84,7 @@ export const site = {
   workSection: {
     eyebrow: "Selected Builds",
     headline: "Systems I've built.",
-    subtext: "3 CASE STUDIES",
+    subtext: "4 CASE STUDIES",
   },
 
   // ---------- Workflow categories ----------
@@ -130,6 +132,14 @@ export const site = {
           "Automated status updates",
         ],
       },
+      {
+        title: "AI Voice Automation",
+        benefits: [
+          "24/7 availability",
+          "Zero hiring costs",
+          "Human-level conversations",
+        ],
+      },
     ],
   },
 
@@ -151,6 +161,38 @@ export const site = {
 
   // ---------- Projects ----------
   projects: [
+    {
+      id: "ai-voice-receptionist",
+      category: "AI Voice Automation",
+      title: "AI Voice Receptionist for Health Clinics",
+      benefit: "24/7 AVAILABILITY",
+      workflowTag: "AI VOICE AGENT",
+      hasVideoPlaceholder: true,
+      videoPlaceholderText: "Watch the demo — Amy takes a live call",
+      summary:
+        "A voice AI agent that handles the full appointment lifecycle over the phone — booking, rescheduling, and cancellations — synced live to Google Calendar. Amy answers calls 24/7, checks open slots, books appointments, and handles errors gracefully without a human in the loop.",
+      tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
+      thumbnail: "/work/ai-receptionist-thumbnail.png",
+      fullImage: "/work/ai-receptionist-full.png",
+      client: "Portfolio demonstration — built for Wellness Partners, a multi-specialty health clinic",
+      problem:
+        "Amy is a voice assistant powered by Vapi and ElevenLabs that answers calls on behalf of a health clinic. She can check open slots, book new appointments, reschedule existing ones, and process cancellations — all without a human receptionist in the loop.\n\nThe system handles errors gracefully: if a requested slot is no longer available, Amy offers alternatives in real time. Urgent or complex situations are escalated to clinic staff rather than handled by AI.",
+      solution:
+        "Four separate n8n workflows are triggered by Vapi tool calls. Each handles one part of the appointment lifecycle:\n\nGetSlots — Fetches available Google Calendar events, computes open 30-minute windows within business hours, returns formatted availability to Amy.\n\nBookSlots — Creates a new calendar event with patient details, includes timezone conversion and a friendly error response if the time is already taken.\n\nUpdateSlots — Finds the existing appointment by patient name and email, deletes it, and creates a new one at the rescheduled time.\n\nCancelSlots — Locates and removes the calendar event. Cancellation notes are passed back to the system for logging.\n\nAfter each call, a fifth workflow captures the full transcript, recording URL, call summary, cost, and patient details into Airtable — giving the clinic a complete call log without any manual entry.",
+      flow: [
+        "Timezone handling built in — Vapi passes times in UTC. A dedicated conversion step normalizes all times to America/Chicago (CST) before writing to Google Calendar — preventing double-booking across timezone mismatches.",
+        "Error paths on every workflow — Each workflow has a dedicated error branch that returns a human-readable message to Amy rather than failing silently — so the caller always gets a clear response even when something goes wrong.",
+        "Human escalation preserved — Amy is prompted to escalate urgent or clinical situations to a triage nurse rather than attempt to handle them. AI handles logistics; clinical judgment stays human.",
+      ],
+      flowNote:
+        "Status: Built and tested to production spec as a portfolio demonstration. End-to-end tested across all four appointment actions. Available to adapt for live clinic deployment.",
+      impact: [
+        { label: "Automation workflows", from: "Manual reception", to: "4 workflows" },
+        { label: "Availability", from: "Business hours", to: "24/7" },
+        { label: "Manual steps to book", from: "Multiple", to: "0" },
+      ],
+      toolsDetail: "Vapi, n8n (4 workflows), ElevenLabs, Google Calendar, Airtable",
+    },
     {
       id: "lead-router",
       category: "Lead Management",
