@@ -176,8 +176,7 @@ export const site = {
       title: "AI Voice Receptionist for Health Clinics",
       benefit: "24/7 AVAILABILITY",
       workflowTag: "AI VOICE AGENT",
-      hasVideoPlaceholder: true,
-      videoPlaceholderText: "Watch the demo — Amy takes a live call",
+      loomEmbedId: "4338cbbb8a114005bf0bde3affba69c7",
       summary:
         "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed — it runs 24/7 on its own.",
       tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
