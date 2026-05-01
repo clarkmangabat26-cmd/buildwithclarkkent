@@ -306,6 +306,73 @@ export const site = {
       ],
       toolsDetail: "Asana, Google Drive, Gmail, Zapier, SMS integration",
     },
+    {
+      id: "lead-enrichment",
+      category: "Lead Management",
+      title: "Automated lead enrichment + AI scoring",
+      benefit: "SALES-READY LEADS",
+      workflowTag: "SPEED TO LEAD",
+      summary:
+        "Form submission triggers Apollo.io to pull company data. Zapier sorts leads into hot or cold, logs them in Google Sheets, and alerts the sales team in Slack. AI summarizes everything so reps know exactly who they're calling.",
+      tools: ["Zapier", "Tally", "Apollo.io", "Google Sheets", "Slack", "AI by Zapier"],
+      thumbnail: "/work/lead-enrichment-thumbnail.png",
+      fullImage: "/work/lead-enrichment-full.png",
+      flow: [
+        "Prospect fills out Tally form with basic info",
+        "Zapier triggers Apollo.io webhook to pull company data (size, revenue, industry)",
+        "Zapier Paths sort leads into High Priority vs Low Priority",
+        "High-value leads logged in Google Sheets",
+        "Slack notification fires to sales team with lead summary",
+        "AI by Zapier analyzes all data and writes a 2-sentence brief for the rep",
+      ],
+      toolsDetail: "Zapier, Tally, Apollo.io, Google Sheets, Slack, AI by Zapier",
+    },
+    {
+      id: "content-repurposing",
+      category: "Content Automation",
+      title: "AI content repurposing engine",
+      benefit: "1 VIDEO → 10 ASSETS",
+      summary:
+        "Drop a video in Google Drive and the system transcribes it, writes 2 blog posts and social captions, scans for brand-risk words, then posts to Facebook and LinkedIn. One video becomes 10 content pieces without lifting a finger.",
+      tools: ["Zapier", "Google Drive", "AI (Whisper)", "Facebook", "LinkedIn"],
+      thumbnail: "/work/content-repurposing-thumbnail.png",
+      fullImage: "/work/content-repurposing-full.png",
+      flow: [
+        "Video uploaded to Google Drive folder",
+        "AI (Whisper) transcribes audio to text instantly",
+        "AI generates 2 blog posts and social captions from transcript",
+        "\"Brand Guard\" scans content for reputation-risk keywords (refund, lawsuit, scandal)",
+        "If flagged words found, workflow pauses for manual review",
+        "Clean content routed via Zapier Paths to Facebook and LinkedIn for posting",
+      ],
+      flowNote:
+        "Brand safety built in — A custom filter checks every piece of AI-generated content before it goes live. If risky language is detected, the system stops and alerts the team instead of auto-posting potentially damaging content.",
+      toolsDetail: "Zapier, Google Drive, AI (Whisper), AI content generation, Facebook, LinkedIn",
+    },
+    {
+      id: "gmail-sort",
+      category: "Document Processing",
+      title: "Auto-sort Gmail attachments to Drive",
+      benefit: "ZERO MANUAL FILING",
+      summary:
+        "Watches Gmail for attachments, downloads them, uses Gemini to read the content and generate a smart filename, renames the file, uploads to the right Google Drive folder, and logs everything in Google Sheets. No one touches the files.",
+      tools: ["Make", "Gmail", "Gemini", "Google Drive", "Google Sheets"],
+      thumbnail: "/work/gmail-sort-thumbnail.png",
+      fullImage: "/work/gmail-sort-full.png",
+      flow: [
+        "Gmail monitor watches for new emails with attachments",
+        "Make downloads all attachments (PDFs, DOCX, XLSX, CSV)",
+        "Gemini (via OpenAI API) analyzes file content",
+        "AI generates a short, descriptive filename based on what's inside",
+        "File renamed automatically",
+        "Uploaded to specific Google Drive folder",
+        "Results logged in Google Sheets (timestamp, original name, new name, file type)",
+        "Optional summary email sent after each file is processed",
+      ],
+      flowNote:
+        "Smart naming — Instead of \"invoice_final_v3.pdf\", files get renamed to something like \"2024_Q3_Acme_Corp_Invoice.pdf\" based on the actual content. Makes searching and organizing instant.",
+      toolsDetail: "Make, Gmail, Gemini, Google Drive, Google Sheets",
+    },
   ] as Project[],
 
   // ---------- Contact ----------
