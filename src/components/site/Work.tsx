@@ -249,6 +249,23 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
 const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () => void }) => {
   const [galleryIdx, setGalleryIdx] = useState(0);
   const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : null;
+
+  // Scroll lock: freeze the page behind the modal so only the modal scrolls.
+  useEffect(() => {
+    const { body } = document;
+    const prevOverflow = body.style.overflow;
+    const prevPaddingRight = body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+    return () => {
+      body.style.overflow = prevOverflow;
+      body.style.paddingRight = prevPaddingRight;
+    };
+  }, []);
+
   return (
     <div className="fixed inset-0 z-[100] bg-background overflow-y-auto animate-fade-up">
       <div className="sticky top-0 z-10 border-b-2 border-ink bg-background">
