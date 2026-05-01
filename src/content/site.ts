@@ -85,7 +85,7 @@ export const site = {
   workSection: {
     eyebrow: "Selected Builds",
     headline: "Systems I've built.",
-    subtext: "4 CASE STUDIES",
+    subtext: "7 CASE STUDIES",
   },
 
   // ---------- Workflow categories ----------
