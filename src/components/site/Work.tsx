@@ -129,12 +129,17 @@ const Work = () => {
                     transition: `opacity 600ms ease-out ${i * 100}ms, transform 600ms ease-out ${i * 100}ms`,
                   }}
                 >
-                  {p.hasVideoPlaceholder && (
+                  {p.loomEmbedId && (
                     <span className="absolute top-3 right-3 z-20 inline-flex items-center gap-1 rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 shadow-lg animate-pulse-badge">
                       ▶ Loom Demo
                     </span>
                   )}
                   <div>
+                {p.loomEmbedId && (
+                  <div className="mb-8">
+                    <LoomEmbed embedId={p.loomEmbedId} title={p.title} />
+                  </div>
+                )}
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
                 <div className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors">
                   {p.thumbnail ? (
@@ -290,14 +295,11 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </div>
         )}
 
-        {/* Video demo placeholder (modal) */}
-        {project.hasVideoPlaceholder && (
+        {/* Loom video embed (modal) */}
+        {project.loomEmbedId && (
           <div className="mt-12 md:mt-16">
             <SectionLabel>Demo Video</SectionLabel>
-            <VideoPlaceholder
-              caption={project.videoPlaceholderText ?? "Watch the demo"}
-              size="modal"
-            />
+            <LoomEmbed embedId={project.loomEmbedId} title={project.title} />
           </div>
         )}
 
