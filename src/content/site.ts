@@ -15,6 +15,7 @@ export type Project = {
   workflowTag?: string; // small pill badge above category, e.g. "SPEED TO LEAD"
   hasVideoPlaceholder?: boolean; // shows a "coming soon" video embed placeholder
   videoPlaceholderText?: string; // caption under the play button
+  loomEmbedId?: string; // Loom share id; when set, an embedded Loom iframe replaces the placeholder
 
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
