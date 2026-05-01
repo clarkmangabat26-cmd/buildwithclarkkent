@@ -1,34 +1,19 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, X, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { site, type Project } from "@/content/site";
 import SmartImage from "@/components/site/SmartImage";
 
-// Reusable video embed placeholder shown until the demo video is ready.
-const VideoPlaceholder = ({
-  caption,
-  size = "card",
-}: {
-  caption: string;
-  size?: "card" | "modal";
-}) => (
-  <div
-    className={`relative w-full aspect-video border-2 border-ink bg-ink overflow-hidden flex items-center justify-center ${
-      size === "card" ? "mb-6" : ""
-    }`}
-    role="img"
-    aria-label={`${caption} (video coming soon)`}
-  >
-    <span className="absolute top-3 right-3 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 z-10">
-      Coming Soon
-    </span>
-    <div className="flex flex-col items-center gap-3 text-background px-4 text-center">
-      <span className="flex items-center justify-center h-14 w-14 md:h-16 md:w-16 rounded-full bg-background/10 border-2 border-background/60 backdrop-blur-sm">
-        <Play className="h-6 w-6 md:h-7 md:w-7 fill-background text-background ml-0.5" />
-      </span>
-      <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.18em] text-background/85">
-        {caption}
-      </span>
-    </div>
+// Responsive 16:9 Loom embed (no autoplay).
+const LoomEmbed = ({ embedId, title }: { embedId: string; title: string }) => (
+  <div className="relative w-full aspect-video border-2 border-ink bg-ink overflow-hidden">
+    <iframe
+      src={`https://www.loom.com/embed/${embedId}`}
+      title={`${title} — Loom demo`}
+      frameBorder={0}
+      allowFullScreen
+      loading="lazy"
+      className="absolute inset-0 w-full h-full"
+    />
   </div>
 );
 
