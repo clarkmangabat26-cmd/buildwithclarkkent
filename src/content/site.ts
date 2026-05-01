@@ -141,6 +141,14 @@ export const site = {
           "Human-level conversations",
         ],
       },
+      {
+        title: "Content Automation",
+        benefits: [
+          "One input → multiple outputs",
+          "Zero manual content creation",
+          "Brand safety checks built in",
+        ],
+      },
     ],
   },
 
