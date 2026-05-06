@@ -210,6 +210,7 @@ export const site = {
       title: "AI lead qualification + CRM routing pipeline",
       benefit: "47 HOURS → 60 SECONDS",
       workflowTag: "SPEED TO LEAD",
+      loomEmbedId: "4f4fc37aa3d94d14b625ba993f78064c",
       summary:
         "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data — it all happens on its own.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
