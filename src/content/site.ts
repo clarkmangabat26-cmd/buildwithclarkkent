@@ -381,22 +381,25 @@ export const site = {
 
   // ---------- Contact ----------
   contactSection: {
-    eyebrow: "GET IN TOUCH",
-    headline: "Need a workflow built?",
-    description:
-      "I'm available for hourly or project-based automation work. Fill out the form and I'll respond within 24 hours.",
-    formLabels: {
-      name: "01 / Name",
-      email: "02 / Email",
-      bottleneck: "03 / What workflow do you need built?",
+    availabilityNote:
+      "Available for hourly or project-based work. Currently taking on 2-3 new clients per month.",
+    whatsapp: {
+      eyebrow: "QUICK RESPONSE",
+      headline: "Need a workflow built?",
+      subtext:
+        "Message me on WhatsApp for the fastest response. I typically reply within 2-4 hours during business hours (PHT).",
+      number: "+63 960 289 4958",
+      note: "Save this number and send me a message describing what you need automated.",
     },
-    placeholders: {
-      name: "Your name",
-      email: "you@company.com",
-      bottleneck: "Our team spends ~15h/week copying data between...",
+    calendly: {
+      eyebrow: "PREFER A SCHEDULED CALL?",
+      headline: "Book a 30-minute discovery call",
+      url: "https://calendly.com/clarkmangabat26/30min-discovery-call-with-clark",
     },
-    submitButton: "Send message",
-    submittingText: "Sending…",
+    email: {
+      label: "Or email me at:",
+      address: "clarkmangabat26@gmail.com",
+    },
   },
 
   // ---------- Footer ----------
