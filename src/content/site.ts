@@ -49,34 +49,34 @@ export const site = {
   // ---------- Hero ----------
   hero: {
     tag: "AI AUTOMATION SPECIALIST / AVAILABLE NOW",
-    headline: "I build Make, Zapier, and n8n workflows that run your operations.",
-    sub: "No-code automation for teams that need things done reliably. Based in the Philippines, working with businesses that want workflows shipped fast.",
-    primaryCta: "See what I've built",
+    headline: "Your business runs because you show up. That's the problem.",
+    sub: "I build automation systems for service business founders who are still the ones holding everything together, so the operation keeps running whether you're there or not.",
+    primaryCta: "SEE WHAT I'VE BUILT",
     primaryCtaTarget: "#work",
-    secondaryCta: "Contact me",
+    secondaryCta: "CONTACT ME",
     secondaryCtaTarget: "#contact",
   },
 
   // ---------- About ----------
   about: {
     imageUrl: "/clark-portrait.png",
-    headline: "Hi, I'm Clark Kent Mangabat",
-    bio: "I build automation workflows for operations teams — turning manual processes into reliable systems that run themselves. I completed certifications in Make Intermediate and Google Prompting Essentials, and have built 8+ real-world automation projects covering lead management, CRM workflows, invoice processing, and AI-powered data enrichment. I work with businesses that need workflows shipped fast without the consultant overhead.",
+    headline: "Hi, I'm Clark Kent Mangabat.",
+    bio: "If your business slows down when you're unavailable, that's not a people problem. It's a systems problem.\n\nI work with service business founders who have built real revenue but are still the ones every process routes back to. I take what lives in the founder's head and turn it into documented, automated systems that run without them.\n\nEvery build ships with a process map, gets tested before handoff, and is built to be maintained — not just to work once.",
     principles: [
       {
         n: "01",
         t: "You get the workflow + the process map.",
-        d: "Every build includes a visual process diagram showing how data flows, what triggers what, and where things can break. No black boxes.",
+        d: "Every build includes a visual process diagram showing how data flows, what triggers what, and where things can break. When I'm done, you understand exactly what you own. No black boxes.",
       },
       {
         n: "02",
         t: "Tested before handoff.",
-        d: "I run test scenarios with real data before I deliver. If it breaks during testing, you don't see it. If it works during testing, it'll work in production.",
+        d: "I run test scenarios with real data before delivery. If it breaks during testing, you don't see it. If it works during testing, it'll work in production.",
       },
       {
         n: "03",
-        t: "Execution over strategy.",
-        d: "I'm here to build and ship workflows, not consult on digital transformation. You tell me what's broken, I build the fix.",
+        t: "I build. I don't consult.",
+        d: "You tell me what's broken in your operation. I build the fix and hand it over documented and ready to run. No strategy decks, no retainer for advice.",
       },
     ],
   },
