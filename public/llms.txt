@@ -1,0 +1,7 @@
+# Clark Kent Mangabat
+
+> AI Automation Specialist building Make, Zapier, and n8n workflows for service business founders.
+
+## Pages
+
+- [Home](/): Hero, about, selected work, stack, and contact.

@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://buildwithclarkkent.lovable.app/sitemap.xml
