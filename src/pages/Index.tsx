@@ -14,8 +14,7 @@ const Index = () => {
 
   const handleIntroComplete = () => {
     setIntroUnmounted(true);
-    // Tiny breath between the intro fully clearing and the hero reveal.
-    window.setTimeout(() => setHeroReady(true), 300);
+    setHeroReady(true);
   };
 
   return (

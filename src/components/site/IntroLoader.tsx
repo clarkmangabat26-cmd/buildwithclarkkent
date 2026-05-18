@@ -15,7 +15,7 @@ interface IntroLoaderProps {
 }
 
 const FADE_IN = 500;
-const HOLD = 2000;
+const HOLD = 600;
 const FADE_OUT = 500;
 const FADE_START = FADE_IN + HOLD; // 2500
 const TOTAL = FADE_START + FADE_OUT; // 3000
