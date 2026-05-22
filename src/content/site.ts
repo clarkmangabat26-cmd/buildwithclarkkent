@@ -13,12 +13,14 @@ export type Project = {
   summary: string; // short card description
   tools: string[];
   workflowTag?: string; // small pill badge above category, e.g. "SPEED TO LEAD"
+  workflowTags?: string[]; // multiple stacked tags (overrides workflowTag display when present)
   hasVideoPlaceholder?: boolean; // shows a "coming soon" video embed placeholder
   videoPlaceholderText?: string; // caption under the play button
   loomEmbedId?: string; // Loom share id; when set, an embedded Loom iframe replaces the placeholder
 
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
+  thumbnails?: string[]; // 2+ card images rendered as a split grid in the card thumbnail box
   fullImage?: string; // 1600x1000 case-study image
   gallery?: { src: string; alt: string }[]; // optional multi-image gallery for modal
 
@@ -28,6 +30,9 @@ export type Project = {
   solution?: string;
   flow?: string[];
   flowNote?: string;
+  flowLabel?: string; // overrides the "How It Flows" label in the modal
+  howItWorks?: { label: string; detail: string }[]; // labeled bullet list rendered in modal
+  dataNote?: { label: string; body: string }; // standalone labeled paragraph rendered in modal
   rubric?: { label: string; detail: string }[];
   impact?: ImpactRow[];
   toolsDetail?: string; // e.g. "n8n (14 nodes), GoHighLevel, ..."
