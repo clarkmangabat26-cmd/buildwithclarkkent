@@ -137,7 +137,25 @@ const Work = () => {
                   <div>
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
                 <div className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors">
-                  {p.thumbnail ? (
+                  {p.thumbnails && p.thumbnails.length > 1 ? (
+                    <div className="grid grid-cols-2 w-full h-full divide-x-2 divide-ink group-hover:divide-background">
+                      {p.thumbnails.slice(0, 2).map((src, idx) => (
+                        <div key={idx} className="relative w-full h-full overflow-hidden bg-background">
+                          <SmartImage
+                            src={src}
+                            alt={`${p.title} — view ${idx + 1}`}
+                            width={400}
+                            height={500}
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+                            className="object-cover"
+                            loadingBorder
+                            loading={i < 3 ? "eager" : "lazy"}
+                            fetchPriority={i < 3 ? "high" : "auto"}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ) : p.thumbnail ? (
                     <SmartImage
                       src={p.thumbnail}
                       alt={`${p.title} — workflow thumbnail showing ${p.tools.slice(0, 3).join(", ")}`}
@@ -157,11 +175,20 @@ const Work = () => {
                 </div>
                 <div className="flex items-center justify-between mb-8 gap-3">
                   <div className="flex items-center gap-2 flex-wrap">
-                    {p.workflowTag && (
+                    {p.workflowTags && p.workflowTags.length > 0 ? (
+                      p.workflowTags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))
+                    ) : p.workflowTag ? (
                       <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1">
                         {p.workflowTag}
                       </span>
-                    )}
+                    ) : null}
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
                       {String(i + 1).padStart(2, "0")} / {p.category}
                     </span>
