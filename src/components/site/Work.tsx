@@ -608,6 +608,16 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </div>
         )}
 
+        {/* Tools (when no Impact section renders them) */}
+        {(!project.impact || project.impact.length === 0) && project.toolsDetail && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Tools</SectionLabel>
+            <div className="border-2 border-ink p-5 md:p-6 bg-ink text-background">
+              <div className="font-mono text-sm md:text-base">{project.toolsDetail}</div>
+            </div>
+          </div>
+        )}
+
         <div className="mt-12 md:mt-16 flex flex-col sm:flex-row gap-4">
           <a
             href="#contact"
