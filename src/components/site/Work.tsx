@@ -137,7 +137,25 @@ const Work = () => {
                   <div>
                 {/* Thumbnail placeholder — 800x500 (8:5) */}
                 <div className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors">
-                  {p.thumbnail ? (
+                  {p.thumbnails && p.thumbnails.length > 1 ? (
+                    <div className="grid grid-cols-2 w-full h-full divide-x-2 divide-ink group-hover:divide-background">
+                      {p.thumbnails.slice(0, 2).map((src, idx) => (
+                        <div key={idx} className="relative w-full h-full overflow-hidden bg-background">
+                          <SmartImage
+                            src={src}
+                            alt={`${p.title} — view ${idx + 1}`}
+                            width={400}
+                            height={500}
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+                            className="object-cover"
+                            loadingBorder
+                            loading={i < 3 ? "eager" : "lazy"}
+                            fetchPriority={i < 3 ? "high" : "auto"}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ) : p.thumbnail ? (
                     <SmartImage
                       src={p.thumbnail}
                       alt={`${p.title} — workflow thumbnail showing ${p.tools.slice(0, 3).join(", ")}`}
@@ -157,11 +175,20 @@ const Work = () => {
                 </div>
                 <div className="flex items-center justify-between mb-8 gap-3">
                   <div className="flex items-center gap-2 flex-wrap">
-                    {p.workflowTag && (
+                    {p.workflowTags && p.workflowTags.length > 0 ? (
+                      p.workflowTags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))
+                    ) : p.workflowTag ? (
                       <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1">
                         {p.workflowTag}
                       </span>
-                    )}
+                    ) : null}
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
                       {String(i + 1).padStart(2, "0")} / {p.category}
                     </span>
@@ -299,13 +326,24 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
             {project.benefit}
           </span>
         </div>
-        {project.workflowTag && (
+        {project.workflowTags && project.workflowTags.length > 0 ? (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {project.workflowTags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        ) : project.workflowTag ? (
           <div className="mt-3">
             <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1">
               {project.workflowTag}
             </span>
           </div>
-        )}
+        ) : null}
 
         {/* Loom video embed (modal) */}
         {project.loomEmbedId && (
@@ -433,7 +471,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-ink">
             <div className="p-6 md:p-8 md:col-span-1 border-b-2 md:border-b-0 md:border-r-2 border-ink bg-ink text-background">
               <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 mb-4">
-                / How It Flows
+                / {project.flowLabel ?? "How It Flows"}
               </div>
               <h3 className="font-black tracking-tightest text-3xl md:text-4xl">Step by step.</h3>
               <div className="mt-6 flex flex-wrap gap-2">
@@ -471,6 +509,42 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                   </p>
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {/* How It Works (labeled list) */}
+        {project.howItWorks && project.howItWorks.length > 0 && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>{project.flowLabel ?? "How It Works"}</SectionLabel>
+            <div className="border-2 border-ink">
+              {project.howItWorks.map((row, i) => (
+                <div
+                  key={i}
+                  className={`grid grid-cols-12 gap-4 p-5 md:p-6 ${
+                    i < project.howItWorks!.length - 1 ? "border-b-2 border-ink" : ""
+                  }`}
+                >
+                  <div className="col-span-12 md:col-span-4 font-bold text-base md:text-lg">
+                    {row.label}
+                  </div>
+                  <div className="col-span-12 md:col-span-8 text-sm md:text-base leading-relaxed text-foreground/80">
+                    {row.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Data Note (standalone labeled paragraph) */}
+        {project.dataNote && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>{project.dataNote.label}</SectionLabel>
+            <div className="border-2 border-ink p-6 md:p-8 bg-secondary">
+              <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+                {project.dataNote.body}
+              </p>
             </div>
           </div>
         )}
@@ -530,6 +604,16 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                   <div className="font-mono text-sm md:text-base">{project.toolsDetail}</div>
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {/* Tools (when no Impact section renders them) */}
+        {(!project.impact || project.impact.length === 0) && project.toolsDetail && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Tools</SectionLabel>
+            <div className="border-2 border-ink p-5 md:p-6 bg-ink text-background">
+              <div className="font-mono text-sm md:text-base">{project.toolsDetail}</div>
             </div>
           </div>
         )}

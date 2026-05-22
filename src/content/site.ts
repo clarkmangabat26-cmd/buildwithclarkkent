@@ -13,12 +13,14 @@ export type Project = {
   summary: string; // short card description
   tools: string[];
   workflowTag?: string; // small pill badge above category, e.g. "SPEED TO LEAD"
+  workflowTags?: string[]; // multiple stacked tags (overrides workflowTag display when present)
   hasVideoPlaceholder?: boolean; // shows a "coming soon" video embed placeholder
   videoPlaceholderText?: string; // caption under the play button
   loomEmbedId?: string; // Loom share id; when set, an embedded Loom iframe replaces the placeholder
 
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
+  thumbnails?: string[]; // 2+ card images rendered as a split grid in the card thumbnail box
   fullImage?: string; // 1600x1000 case-study image
   gallery?: { src: string; alt: string }[]; // optional multi-image gallery for modal
 
@@ -28,6 +30,9 @@ export type Project = {
   solution?: string;
   flow?: string[];
   flowNote?: string;
+  flowLabel?: string; // overrides the "How It Flows" label in the modal
+  howItWorks?: { label: string; detail: string }[]; // labeled bullet list rendered in modal
+  dataNote?: { label: string; body: string }; // standalone labeled paragraph rendered in modal
   rubric?: { label: string; detail: string }[];
   impact?: ImpactRow[];
   toolsDetail?: string; // e.g. "n8n (14 nodes), GoHighLevel, ..."
@@ -85,7 +90,7 @@ export const site = {
   workSection: {
     eyebrow: "Selected Builds",
     headline: "Systems I've built.",
-    subtext: "7 CASE STUDIES",
+    subtext: "8 CASE STUDIES",
   },
 
   // ---------- Workflow categories ----------
@@ -376,6 +381,49 @@ export const site = {
       flowNote:
         "Smart naming — Instead of \"invoice_final_v3.pdf\", files get renamed to something like \"2024_Q3_Acme_Corp_Invoice.pdf\" based on the actual content. Makes searching and organizing instant.",
       toolsDetail: "Make, Gmail, Gemini, Google Drive, Google Sheets",
+    },
+    {
+      id: "real-estate-acquisitions",
+      category: "Acquisitions & Operations",
+      title: "Automated Real Estate Acquisitions & Lead Scoring Engine",
+      benefit: "AUTOMATED SCORING & LIVE AI SYNC",
+      workflowTags: ["LIVE PRODUCTION", "IN PROGRESS"],
+      summary:
+        "Engineered a master data infrastructure for property acquisitions. Formulated a weighted 'Sick Score' matrix using multi-select tags to classify high-value leads automatically. Architected HTTP webhook logic to ingest incoming payloads from an AI calling app to sync durations, dispositions, and AI summaries instantly.",
+      tools: ["Airtable", "n8n", "OpenPhone", "AI Tools", "GoHighLevel", "Slack"],
+      thumbnails: ["/work/acquisitions-automation.png", "/work/acquisitions-dashboard.png"],
+      gallery: [
+        { src: "/work/acquisitions-automation.png", alt: "n8n / Airtable automation — webhook ingestion" },
+        { src: "/work/acquisitions-dashboard.png", alt: "Airtable research dashboard — lead interface" },
+      ],
+      flowLabel: "How It Works",
+      howItWorks: [
+        {
+          label: "Relational Architecture",
+          detail:
+            "Built a master operational hub connecting properties, contacts, historical calls, and ongoing workflows.",
+        },
+        {
+          label: "Algorithmic Lead Scoring",
+          detail:
+            "Wrote a custom formula to read multi-select asset tags (e.g., Tax Delinquency, Vacant Land, Open Probate) and dynamically categorize leads into Priority pipelines.",
+        },
+        {
+          label: "Live Webhook Stream",
+          detail:
+            "Set up webhook listener automations to ingest operational activity metrics directly from external caller software.",
+        },
+        {
+          label: "High-Priority Routing",
+          detail:
+            "Automated instant communication updates to team alerting channels the second a record shifts to a 'Hot' status.",
+        },
+      ],
+      dataNote: {
+        label: "Data Validation & Ingestion",
+        body: "Engineered strict webhook mapping logic that validates incoming data against exact record identifiers. This prevents duplicate entries, eliminates fuzzy match errors, and ensures external call logs backfill seamlessly into the core system without disrupting active data.",
+      },
+      toolsDetail: "Airtable, n8n, OpenPhone, AI Tools, GoHighLevel, Slack",
     },
   ] as Project[],
 
