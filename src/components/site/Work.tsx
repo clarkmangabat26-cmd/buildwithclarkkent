@@ -326,13 +326,24 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
             {project.benefit}
           </span>
         </div>
-        {project.workflowTag && (
+        {project.workflowTags && project.workflowTags.length > 0 ? (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {project.workflowTags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        ) : project.workflowTag ? (
           <div className="mt-3">
             <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1">
               {project.workflowTag}
             </span>
           </div>
-        )}
+        ) : null}
 
         {/* Loom video embed (modal) */}
         {project.loomEmbedId && (
@@ -460,7 +471,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-ink">
             <div className="p-6 md:p-8 md:col-span-1 border-b-2 md:border-b-0 md:border-r-2 border-ink bg-ink text-background">
               <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 mb-4">
-                / How It Flows
+                / {project.flowLabel ?? "How It Flows"}
               </div>
               <h3 className="font-black tracking-tightest text-3xl md:text-4xl">Step by step.</h3>
               <div className="mt-6 flex flex-wrap gap-2">
