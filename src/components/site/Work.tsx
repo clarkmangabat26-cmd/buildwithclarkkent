@@ -513,6 +513,42 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </div>
         )}
 
+        {/* How It Works (labeled list) */}
+        {project.howItWorks && project.howItWorks.length > 0 && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>{project.flowLabel ?? "How It Works"}</SectionLabel>
+            <div className="border-2 border-ink">
+              {project.howItWorks.map((row, i) => (
+                <div
+                  key={i}
+                  className={`grid grid-cols-12 gap-4 p-5 md:p-6 ${
+                    i < project.howItWorks!.length - 1 ? "border-b-2 border-ink" : ""
+                  }`}
+                >
+                  <div className="col-span-12 md:col-span-4 font-bold text-base md:text-lg">
+                    {row.label}
+                  </div>
+                  <div className="col-span-12 md:col-span-8 text-sm md:text-base leading-relaxed text-foreground/80">
+                    {row.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Data Note (standalone labeled paragraph) */}
+        {project.dataNote && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>{project.dataNote.label}</SectionLabel>
+            <div className="border-2 border-ink p-6 md:p-8 bg-secondary">
+              <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+                {project.dataNote.body}
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* AI Scoring Rubric */}
         {project.rubric && project.rubric.length > 0 && (
           <div className="mt-12 md:mt-16">
