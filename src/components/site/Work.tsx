@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+// ChevronLeft/ChevronRight still used by the modal gallery below.
 import { site, type Project } from "@/content/site";
 import SmartImage from "@/components/site/SmartImage";
 
