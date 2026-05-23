@@ -24,6 +24,10 @@ export type Project = {
   fullImage?: string; // 1600x1000 case-study image
   gallery?: { src: string; alt: string }[]; // optional multi-image gallery for modal
 
+  // ---- Grid card overrides ----
+  outcome?: string; // one-line capability statement shown beneath the thumbnail on the grid card
+  clientWork?: boolean; // when true, renders a small "Client Work" badge on the thumbnail
+
   // ---- Modal / case study ----
   client?: string;
   problem?: string;
@@ -182,7 +186,9 @@ export const site = {
     {
       id: "real-estate-acquisitions",
       category: "Acquisitions & Operations",
-      title: "Automated Real Estate Acquisitions & Lead Scoring Engine",
+      title: "How I Built a Lead Scoring Engine That Flags Hot Deals Before the Team Sees Them",
+      outcome: "Live client system — scoring and routing active",
+      clientWork: true,
       benefit: "AUTOMATED SCORING & LIVE AI SYNC",
       workflowTags: ["LIVE PRODUCTION", "IN PROGRESS"],
       summary:
@@ -225,7 +231,8 @@ export const site = {
     {
       id: "ai-voice-receptionist",
       category: "AI Voice Automation",
-      title: "AI Voice Receptionist for Health Clinics",
+      title: "This AI Answers the Phone, Books Appointments, and Never Calls In Sick",
+      outcome: "Handles all four appointment actions end-to-end",
       benefit: "24/7 AVAILABILITY",
       workflowTag: "AI VOICE AGENT",
       loomEmbedId: "4640467f36f8481fa60a31f1eab74403",
@@ -256,7 +263,8 @@ export const site = {
     {
       id: "lead-router",
       category: "Lead Management",
-      title: "AI lead qualification + CRM routing pipeline",
+      title: "Hot Leads Get Called. Cold Leads Get Nurtured. No One Touches It.",
+      outcome: "Scores and routes leads in under 60 seconds",
       benefit: "47 HOURS → 60 SECONDS",
       workflowTag: "SPEED TO LEAD",
       loomEmbedId: "4f4fc37aa3d94d14b625ba993f78064c",
@@ -306,7 +314,8 @@ export const site = {
     {
       id: "invoice-ops",
       category: "Finance Ops",
-      title: "Export Account Transactions from Xero",
+      title: "Finance and Project Management Finally Talking to Each Other",
+      outcome: "Transactions exported, formatted, and synced to Asana",
       benefit: "ZERO MANUAL ENTRY",
       summary:
         "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything — the system does it all.",
@@ -333,7 +342,8 @@ export const site = {
     {
       id: "onboarding",
       category: "CRM Automation",
-      title: "29-step Asana client onboarding CRM",
+      title: "A Status Change in Asana Triggers 29 Steps. Zero Manual Work.",
+      outcome: "Full client lifecycle automated from one status field",
       benefit: "ZERO FORGOTTEN CLIENTS",
       summary:
         "When a client pays, the system sets up their folders, sends their welcome email, and schedules follow-ups. The team doesn't lift a finger.",
@@ -362,7 +372,8 @@ export const site = {
     {
       id: "lead-enrichment",
       category: "Lead Management",
-      title: "Automated lead enrichment + AI scoring",
+      title: "Your Sales Rep Sees a Lead Brief Before They Even Pick Up the Phone",
+      outcome: "Enriches, scores, and briefs leads automatically",
       benefit: "SALES-READY LEADS",
       workflowTag: "SPEED TO LEAD",
       summary:
@@ -383,7 +394,8 @@ export const site = {
     {
       id: "content-repurposing",
       category: "Content Automation",
-      title: "AI content repurposing engine",
+      title: "One Video Upload. Two Blog Posts. Social Captions. Brand-Safe. Auto-Posted.",
+      outcome: "Full content repurposing pipeline with brand safety filter",
       benefit: "1 VIDEO → 10 ASSETS",
       summary:
         "Drop a video in Google Drive and the system transcribes it, writes 2 blog posts and social captions, scans for brand-risk words, then posts to Facebook and LinkedIn. One video becomes 10 content pieces without lifting a finger.",
@@ -405,7 +417,8 @@ export const site = {
     {
       id: "gmail-sort",
       category: "Document Processing",
-      title: "Auto-sort Gmail attachments to Drive",
+      title: "AI Reads Every Attachment and Files It Better Than You Would",
+      outcome: "Auto-renames and organizes files by content",
       benefit: "ZERO MANUAL FILING",
       summary:
         "Watches Gmail for attachments, downloads them, uses Gemini to read the content and generate a smart filename, renames the file, uploads to the right Google Drive folder, and logs everything in Google Sheets. No one touches the files.",
