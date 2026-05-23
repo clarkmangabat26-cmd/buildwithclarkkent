@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "@/components/site/Header";
 import Hero from "@/components/site/Hero";
-import Stack from "@/components/site/Stack";
 import Work from "@/components/site/Work";
 import About from "@/components/site/About";
 import Audit from "@/components/site/Audit";
