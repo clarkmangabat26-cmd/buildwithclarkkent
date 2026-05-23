@@ -44,41 +44,6 @@ const Work = () => {
     return () => io.disconnect();
   }, [revealed]);
 
-  // Responsive cards-per-view: 1 (mobile) / 2 (tablet) / 3 (desktop).
-  const [perView, setPerView] = useState(3);
-  useEffect(() => {
-    const compute = () => {
-      const w = window.innerWidth;
-      if (w < 768) setPerView(1);
-      else if (w < 1024) setPerView(2);
-      else setPerView(3);
-    };
-    compute();
-    window.addEventListener("resize", compute);
-    return () => window.removeEventListener("resize", compute);
-  }, []);
-
-  const [startIdx, setStartIdx] = useState(0);
-  const maxStart = Math.max(0, projects.length - perView);
-  useEffect(() => {
-    if (startIdx > maxStart) setStartIdx(maxStart);
-  }, [maxStart, startIdx]);
-  const numPages = maxStart + 1;
-
-  const touchStartX = useRef<number | null>(null);
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current == null) return;
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(dx) > 40) {
-      if (dx < 0) setStartIdx((i) => Math.min(maxStart, i + 1));
-      else setStartIdx((i) => Math.max(0, i - 1));
-    }
-    touchStartX.current = null;
-  };
-
   return (
     <section id="work" className="border-b-2 border-ink">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
@@ -99,109 +64,42 @@ const Work = () => {
           </div>
         </div>
 
-        <div ref={gridRef} className="relative">
-          <div
-            className="overflow-hidden"
-            onTouchStart={onTouchStart}
-            onTouchEnd={onTouchEnd}
-          >
-            <div
-              className="flex"
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {projects.map((p, i) => (
+            <button
+              key={p.id}
+              onClick={() => setActive(p)}
+              className="group w-full text-left bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col"
               style={{
-                transform: `translateX(calc(-${startIdx} * (100% / ${perView})))`,
-                transition: "transform 400ms cubic-bezier(0.4, 0, 0.2, 1)",
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 600ms ease-out ${i * 80}ms, transform 600ms ease-out ${i * 80}ms`,
               }}
             >
-              {projects.map((p, i) => {
-                const visible = i >= startIdx && i < startIdx + perView;
-                return (
-                <div
-                  key={p.id}
-                  className="shrink-0 px-2 md:px-3"
-                  style={{ width: `calc(100% / ${perView})`, opacity: visible ? 1 : 0.4, transition: "opacity 400ms ease" }}
-                >
-                <button
-                  onClick={() => setActive(p)}
-                  className="group w-full h-full text-left p-6 md:p-8 bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col justify-between"
-                  style={{
-                    opacity: revealed ? 1 : 0,
-                    transform: revealed ? "translateY(0)" : "translateY(20px)",
-                    transition: `opacity 600ms ease-out ${i * 100}ms, transform 600ms ease-out ${i * 100}ms`,
-                  }}
-                >
-                  {p.loomEmbedId && (
-                    <span className="absolute top-3 right-3 z-20 inline-flex items-center gap-1 rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 shadow-lg animate-pulse-badge">
-                      ▶ Loom Demo
-                    </span>
-                  )}
-                  <div>
-                {/* Thumbnail placeholder — 800x500 (8:5) */}
-                <div className="mb-8 w-full aspect-[8/5] border-2 border-ink bg-secondary overflow-hidden flex items-center justify-center group-hover:border-background transition-colors">
-                  {p.thumbnails && p.thumbnails.length > 1 ? (
-                    <div className="grid grid-cols-2 w-full h-full divide-x-2 divide-ink group-hover:divide-background">
-                      {p.thumbnails.slice(0, 2).map((src, idx) => (
-                        <div key={idx} className="relative w-full h-full overflow-hidden bg-background">
-                          <SmartImage
-                            src={src}
-                            alt={`${p.title} — view ${idx + 1}`}
-                            width={400}
-                            height={500}
-                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
-                            className="object-cover"
-                            loadingBorder
-                            loading={i < 3 ? "eager" : "lazy"}
-                            fetchPriority={i < 3 ? "high" : "auto"}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  ) : p.thumbnail ? (
-                    <SmartImage
-                      src={p.thumbnail}
-                      alt={`${p.title} — workflow thumbnail showing ${p.tools.slice(0, 3).join(", ")}`}
-                      width={800}
-                      height={500}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
-                      loadingBorder
-                      loading={i < 3 ? "eager" : "lazy"}
-                      fetchPriority={i < 3 ? "high" : "auto"}
-                    />
-                  ) : (
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/40 group-hover:text-background/50">
-                      800 × 500 / Thumbnail
-                    </span>
-                  )}
+              {/* Thumbnail — 16:9 placeholder */}
+              <div className="relative w-full aspect-video bg-ink border-b-2 border-ink flex items-center justify-center overflow-hidden">
+                {p.clientWork && (
+                  <span className="absolute top-3 left-3 z-10 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
+                    Client Work
+                  </span>
+                )}
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
+                  Thumbnail coming soon
+                </span>
+              </div>
+
+              <div className="p-6 md:p-8 flex flex-col flex-1">
+                {/* Outcome line */}
+                <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-4">
+                  {p.outcome ?? p.benefit}
                 </div>
-                <div className="flex items-center justify-between mb-8 gap-3">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {p.workflowTags && p.workflowTags.length > 0 ? (
-                      p.workflowTags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))
-                    ) : p.workflowTag ? (
-                      <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1">
-                        {p.workflowTag}
-                      </span>
-                    ) : null}
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
-                      {String(i + 1).padStart(2, "0")} / {p.category}
-                    </span>
-                  </div>
-                  <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition shrink-0" />
-                </div>
+
+                {/* Title */}
                 <h3 className="font-black tracking-tightest text-2xl md:text-3xl leading-tight">
                   {p.title}
                 </h3>
-                <p className="mt-6 max-w-md text-sm md:text-base leading-relaxed text-foreground/75 transition-colors group-hover:text-background/80">
-                  {p.summary}
-                </p>
-                {/* Tools badges */}
+
+                {/* Tools */}
                 <div className="mt-6 flex flex-wrap gap-2">
                   {p.tools.map((t) => (
                     <span
@@ -212,54 +110,17 @@ const Work = () => {
                     </span>
                   ))}
                 </div>
-                  </div>
-                  <div className="mt-8 inline-flex items-center gap-2 self-start">
-                    <span className="h-2 w-2 bg-primary group-hover:bg-background" />
-                    <span className="font-mono text-sm md:text-base uppercase tracking-[0.15em] font-bold">
-                      {p.benefit}
-                    </span>
-                  </div>
-                </button>
+
+                <div className="mt-6 flex items-center justify-between gap-3">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
+                    {String(i + 1).padStart(2, "0")} / {p.category}
+                  </span>
+                  <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition shrink-0" />
                 </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <button
-            onClick={() => setStartIdx((i) => Math.max(0, i - 1))}
-            disabled={startIdx === 0}
-            aria-label="Previous case studies"
-            className="absolute left-1 md:-left-6 top-1/2 -translate-y-1/2 z-10 h-12 w-12 min-h-12 min-w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-110 transition-transform disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            onClick={() => setStartIdx((i) => Math.min(maxStart, i + 1))}
-            disabled={startIdx >= maxStart}
-            aria-label="Next case studies"
-            className="absolute right-1 md:-right-6 top-1/2 -translate-y-1/2 z-10 h-12 w-12 min-h-12 min-w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-110 transition-transform disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
+              </div>
+            </button>
+          ))}
         </div>
-
-        {numPages > 1 && (
-          <div className="mt-8 flex items-center justify-center gap-2" role="tablist" aria-label="Case study pagination">
-            {Array.from({ length: numPages }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setStartIdx(i)}
-                role="tab"
-                aria-selected={i === startIdx}
-                aria-label={`Go to slide ${i + 1} of ${numPages}`}
-                className={`h-3 rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
-                  i === startIdx ? "w-8 bg-primary" : "w-3 bg-ink/25 hover:bg-ink/50"
-                }`}
-              />
-            ))}
-          </div>
-        )}
       </div>
 
       {active && <ProjectOverlay project={active} onClose={() => setActive(null)} />}
