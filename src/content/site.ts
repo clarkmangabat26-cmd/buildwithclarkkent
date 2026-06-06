@@ -238,6 +238,7 @@ export const site = {
       benefit: "24/7 AVAILABILITY",
       workflowTag: "AI VOICE AGENT",
       loomEmbedId: "4640467f36f8481fa60a31f1eab74403",
+      gridThumbnail: new URL("../assets/work-thumbs/AI_RECEPTIONIST_THUMBNAIL.png.asset.json", import.meta.url).href,
       summary:
         "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed — it runs 24/7 on its own.",
       tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
@@ -270,6 +271,7 @@ export const site = {
       benefit: "47 HOURS → 60 SECONDS",
       workflowTag: "SPEED TO LEAD",
       loomEmbedId: "4f4fc37aa3d94d14b625ba993f78064c",
+      gridThumbnail: "__LEAD_CRM__",
       summary:
         "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data — it all happens on its own.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
@@ -319,6 +321,7 @@ export const site = {
       title: "Finance and Project Management Finally Talking to Each Other",
       outcome: "Transactions exported, formatted, and synced to Asana",
       benefit: "ZERO MANUAL ENTRY",
+      gridThumbnail: "__MAKE_XERO__",
       summary:
         "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything — the system does it all.",
       tools: ["Make", "Xero", "Asana", "CSV"],
@@ -347,6 +350,7 @@ export const site = {
       title: "A Status Change in Asana Triggers 29 Steps. Zero Manual Work.",
       outcome: "Full client lifecycle automated from one status field",
       benefit: "ZERO FORGOTTEN CLIENTS",
+      gridThumbnail: "__ASANA_29__",
       summary:
         "When a client pays, the system sets up their folders, sends their welcome email, and schedules follow-ups. The team doesn't lift a finger.",
       tools: ["Asana", "Google Drive", "Gmail", "Zapier"],
@@ -378,6 +382,7 @@ export const site = {
       outcome: "Enriches, scores, and briefs leads automatically",
       benefit: "SALES-READY LEADS",
       workflowTag: "SPEED TO LEAD",
+      gridThumbnail: "__LEAD_ENRICH__",
       summary:
         "Form submission triggers Apollo.io to pull company data. Zapier sorts leads into hot or cold, logs them in Google Sheets, and alerts the sales team in Slack. AI summarizes everything so reps know exactly who they're calling.",
       tools: ["Zapier", "Tally", "Apollo.io", "Google Sheets", "Slack", "AI by Zapier"],
@@ -399,6 +404,7 @@ export const site = {
       title: "One Video Upload. Two Blog Posts. Social Captions. Brand-Safe. Auto-Posted.",
       outcome: "Full content repurposing pipeline with brand safety filter",
       benefit: "1 VIDEO → 10 ASSETS",
+      gridThumbnail: "__CONTENT__",
       summary:
         "Drop a video in Google Drive and the system transcribes it, writes 2 blog posts and social captions, scans for brand-risk words, then posts to Facebook and LinkedIn. One video becomes 10 content pieces without lifting a finger.",
       tools: ["Zapier", "Google Drive", "AI (Whisper)", "Facebook", "LinkedIn"],
@@ -422,6 +428,7 @@ export const site = {
       title: "AI Reads Every Attachment and Files It Better Than You Would",
       outcome: "Auto-renames and organizes files by content",
       benefit: "ZERO MANUAL FILING",
+      gridThumbnail: "__GMAIL__",
       summary:
         "Watches Gmail for attachments, downloads them, uses Gemini to read the content and generate a smart filename, renames the file, uploads to the right Google Drive folder, and logs everything in Google Sheets. No one touches the files.",
       tools: ["Make", "Gmail", "Gemini", "Google Drive", "Google Sheets"],
