@@ -316,7 +316,7 @@ const Contact = () => {
         {/* Footer links */}
         <div className="flex flex-wrap items-start justify-center gap-10 md:gap-16">
           <a
-            href="https://www.linkedin.com/in/clarkkentmangabat/"
+            href="https://www.linkedin.com/in/clark-kent-mangabat-81183725a/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
@@ -325,7 +325,7 @@ const Contact = () => {
             <span className="text-xs font-mono uppercase tracking-[0.15em]">LinkedIn</span>
           </a>
           <a
-            href="https://www.onlinejobs.ph/jobseekers/info/3887581"
+            href="https://v2.onlinejobs.ph/jobseekers/info/3243744"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
