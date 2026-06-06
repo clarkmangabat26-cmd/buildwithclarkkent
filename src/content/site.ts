@@ -84,7 +84,7 @@ export const site = {
       {
         n: "01",
         t: "What if it breaks after you hand it over?",
-        d: "Every build ships with a process map and test logs. You know exactly what triggers what, where it can fail, and how to fix it. No black boxes. No dependency on me to keep it running.",
+        d: "Every build ships with documentation and test logs. You know exactly what triggers what, where it can fail, and how to fix it. No black boxes. No dependency on me to keep it running.",
       },
       {
         n: "02",
