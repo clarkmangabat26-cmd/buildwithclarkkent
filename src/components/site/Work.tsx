@@ -90,19 +90,21 @@ const Work = () => {
                     Client Work
                   </span>
                 )}
-                {/* Loom Walkthrough badge — clickable link */}
-                <a
-                  href={loomHref}
-                  target={loomHref === "#" ? undefined : "_blank"}
-                  rel={loomHref === "#" ? undefined : "noopener noreferrer"}
-                  onClick={(e) => e.stopPropagation()}
-                  aria-label={`${p.title} — watch Loom walkthrough`}
-                  className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] font-bold shadow hover:brightness-110 transition"
-                  style={{ backgroundColor: "#F59E0B", color: "#ffffff" }}
-                >
-                  <Play className="h-3 w-3 fill-current" strokeWidth={0} />
-                  Loom Walkthrough
-                </a>
+                {/* Loom Walkthrough badge — clickable link (only for projects with a Loom embed) */}
+                {p.loomEmbedId && (
+                  <a
+                    href={`https://www.loom.com/share/${p.loomEmbedId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label={`${p.title} — watch Loom walkthrough`}
+                    className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] font-bold shadow hover:brightness-110 transition"
+                    style={{ backgroundColor: "#F59E0B", color: "#ffffff" }}
+                  >
+                    <Play className="h-3 w-3 fill-current" strokeWidth={0} />
+                    Loom Walkthrough
+                  </a>
+                )}
                 {p.gridThumbnail ? (
                   <img
                     src={p.gridThumbnail}
