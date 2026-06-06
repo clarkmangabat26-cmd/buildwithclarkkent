@@ -293,21 +293,19 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Divider */}
-        <div className="h-px w-full max-w-md" style={{ backgroundColor: "rgba(255,255,255,0.08)", margin: "64px 0" }} />
-
-        {/* Calendly */}
-        <h3 className="font-bold tracking-tight text-2xl md:text-3xl opacity-90">
-          Prefer a free 15-minute Automation Scope call?
-        </h3>
-        <div className="mt-8 w-full overflow-hidden bg-background">
-          <iframe
-            src={calUrl}
-            title="Schedule a call with Clark"
-            className="w-full block"
-            style={{ minHeight: 700, border: 0 }}
-            loading="lazy"
-          />
+        <div className="flex flex-col items-center mt-6">
+          <div className="w-12 h-px bg-white/10 mb-5" />
+          <p className="text-sm text-white/40 text-center">
+            Want a clear answer on whether your workflow is a fit?{' '}
+            <span
+              data-cal-link="clark-kent-mangabat-p5ys1a/scope"
+              data-cal-namespace="scope"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"}'
+              className="text-blue-600 underline underline-offset-2 cursor-pointer"
+            >
+              Book a 15-minute scope call.
+            </span>
+          </p>
         </div>
 
         {/* Divider */}
