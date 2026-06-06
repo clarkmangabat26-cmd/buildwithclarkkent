@@ -65,11 +65,12 @@ const Work = () => {
           </div>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
           {projects.map((p, i) => {
             return (
             <div
               key={p.id}
+              className="h-full"
               style={{
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(20px)",
@@ -78,7 +79,7 @@ const Work = () => {
             >
             <button
               onClick={() => setActive(p)}
-              className="group w-full text-left bg-background hover:bg-ink hover:text-background relative hover:scale-[1.03] hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col transition-transform duration-200 ease-out [transition-property:transform,background-color,color,box-shadow]"
+              className="group w-full h-full text-left bg-background hover:bg-ink hover:text-background relative hover:scale-[1.03] hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col transition-transform duration-200 ease-out [transition-property:transform,background-color,color,box-shadow]"
             >
               {/* Thumbnail — 16:9 */}
               <div className="relative w-full aspect-video bg-ink border-b-2 border-ink flex items-center justify-center overflow-hidden">
@@ -90,7 +91,7 @@ const Work = () => {
                 {/* Loom badge — visual element only (non-clickable) */}
                 {p.loomEmbedId && (
                   <span
-                    className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
+                    className="absolute bottom-[10px] right-[10px] z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
                     style={{
                       backgroundColor: "rgba(245, 158, 11, 0.12)",
                       border: "1px solid rgba(245, 158, 11, 0.3)",
