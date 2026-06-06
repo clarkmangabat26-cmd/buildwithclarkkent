@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 // ChevronLeft/ChevronRight still used by the modal gallery below.
 import { site, type Project } from "@/content/site";
 import SmartImage from "@/components/site/SmartImage";
@@ -66,24 +66,43 @@ const Work = () => {
         </div>
 
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((p, i) => (
-            <button
+          {projects.map((p, i) => {
+            const loomHref = p.loomEmbedId
+              ? `https://www.loom.com/share/${p.loomEmbedId}`
+              : "#";
+            return (
+            <div
               key={p.id}
-              onClick={() => setActive(p)}
-              className="group w-full text-left bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col"
               style={{
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 600ms ease-out ${i * 80}ms, transform 600ms ease-out ${i * 80}ms`,
               }}
             >
-              {/* Thumbnail — 16:9 placeholder */}
+            <button
+              onClick={() => setActive(p)}
+              className="group w-full text-left bg-background hover:bg-ink hover:text-background relative hover:scale-[1.03] hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col transition-transform duration-200 ease-out [transition-property:transform,background-color,color,box-shadow]"
+            >
+              {/* Thumbnail — 16:9 */}
               <div className="relative w-full aspect-video bg-ink border-b-2 border-ink flex items-center justify-center overflow-hidden">
                 {p.clientWork && (
-                  <span className="absolute top-3 left-3 z-10 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
+                  <span className="absolute top-3 left-3 z-20 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
                     Client Work
                   </span>
                 )}
+                {/* Loom Walkthrough badge — clickable link */}
+                <a
+                  href={loomHref}
+                  target={loomHref === "#" ? undefined : "_blank"}
+                  rel={loomHref === "#" ? undefined : "noopener noreferrer"}
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label={`${p.title} — watch Loom walkthrough`}
+                  className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] font-bold shadow hover:brightness-110 transition"
+                  style={{ backgroundColor: "#F59E0B", color: "#ffffff" }}
+                >
+                  <Play className="h-3 w-3 fill-current" strokeWidth={0} />
+                  Loom Walkthrough
+                </a>
                 {p.gridThumbnail ? (
                   <img
                     src={p.gridThumbnail}
@@ -96,6 +115,12 @@ const Work = () => {
                     Thumbnail coming soon
                   </span>
                 )}
+                {/* Hover overlay with centered play icon */}
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-ink/0 group-hover:bg-ink/40 transition-colors duration-200 pointer-events-none">
+                  <div className="h-14 w-14 rounded-full bg-background/90 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-200">
+                    <Play className="h-6 w-6 text-ink fill-current ml-0.5" strokeWidth={0} />
+                  </div>
+                </div>
               </div>
 
               <div className="p-6 md:p-8 flex flex-col flex-1">
@@ -129,7 +154,9 @@ const Work = () => {
                 </div>
               </div>
             </button>
-          ))}
+            </div>
+            );
+          })}
         </div>
       </div>
 
