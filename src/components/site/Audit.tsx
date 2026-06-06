@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Linkedin, Briefcase, Mail, Copy, Check } from "lucide-react";
 import { site } from "@/content/site";
 
-const WHATSAPP_URL = "https://wa.me/639602894958";
+const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=639602894958&text=Hi%20Clark%2C%20I%20found%20your%20portfolio%20at%20buildwithclarkkent.tech.%0A%0AName%3A%20%0AWhat%20I%20need%20built%3A%20%0ABudget%20(optional)%3A%20";
 const WHATSAPP_NUMBER = "+63 960 289 4958";
 const TEMPLATE = `Hi Clark, I found your portfolio at buildwithclarkkent.tech.
 
