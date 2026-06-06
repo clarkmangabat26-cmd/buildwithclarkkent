@@ -197,6 +197,11 @@ export default {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.05)" },
         },
+        "loom-pulse": {
+          "0%": { boxShadow: "0 0 0 0 rgba(245,158,11,0.6)" },
+          "70%": { boxShadow: "0 0 0 6px rgba(245,158,11,0)" },
+          "100%": { boxShadow: "0 0 0 0 rgba(245,158,11,0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
