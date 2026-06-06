@@ -124,17 +124,17 @@ const Work = () => {
 
               <div className="p-5 md:p-6 flex flex-col flex-1">
                 {/* Outcome line */}
-                <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-4">
+                <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-3">
                   {p.outcome ?? p.benefit}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-black tracking-tightest text-2xl md:text-3xl leading-tight">
+                <h3 className="font-black tracking-tightest text-xl md:text-2xl leading-tight">
                   {p.title}
                 </h3>
 
                 {/* Tools */}
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {p.tools.map((t) => (
                     <span
                       key={t}
@@ -145,7 +145,7 @@ const Work = () => {
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center justify-between gap-3">
+                <div className="mt-4 flex items-center justify-between gap-3">
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
                     {String(i + 1).padStart(2, "0")} / {p.category}
                   </span>
