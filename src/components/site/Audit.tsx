@@ -94,14 +94,14 @@ const Contact = () => {
         </button>
 
         {/* Phone number */}
-        <p className="mt-4 text-xs opacity-50 font-mono">{WHATSAPP_NUMBER}</p>
+        <p className="mt-4 text-lg text-white font-semibold font-mono">{WHATSAPP_NUMBER}</p>
 
         {/* Divider */}
         <div className="my-16 md:my-20 h-px w-full max-w-md bg-background/15" />
 
         {/* Calendly */}
         <h3 className="font-bold tracking-tight text-2xl md:text-3xl opacity-90">
-          Prefer a scheduled call?
+          Prefer a free 15-minute Automation Scope call?
         </h3>
         <div className="mt-8 w-full overflow-hidden bg-background">
           <iframe
