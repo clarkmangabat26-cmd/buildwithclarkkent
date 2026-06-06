@@ -187,11 +187,12 @@ export const site = {
     {
       id: "real-estate-acquisitions",
       category: "Acquisitions & Operations",
-      title: "How I Built a Lead Scoring Engine That Flags Hot Deals Before the Team Sees Them",
+      title: "How I Built the Operational Hub That Runs a Real Estate Acquisitions Team on Autopilot",
       outcome: "Live client system — scoring and routing active",
       clientWork: true,
       benefit: "AUTOMATED SCORING & LIVE AI SYNC",
       workflowTags: ["LIVE PRODUCTION", "IN PROGRESS"],
+      gridThumbnail: "/work/acquisitions-automation.png",
       summary:
         "Engineered a master data infrastructure for property acquisitions. Formulated a weighted 'Sick Score' matrix using multi-select tags to classify high-value leads automatically. Architected HTTP webhook logic to ingest incoming payloads from an AI calling app to sync durations, dispositions, and AI summaries instantly.",
       tools: ["Airtable", "n8n", "OpenPhone", "AI Tools", "GoHighLevel", "Slack"],
