@@ -78,23 +78,23 @@ export const site = {
   // ---------- About ----------
   about: {
     imageUrl: "/clark-portrait.png",
-    headline: "Hi, I'm Clark Kent Mangabat.",
-    bio: "If your business slows down when you're unavailable, that's not a people problem. It's a systems problem.\n\nI work with service business founders who have built real revenue but are still the ones every process routes back to. I take what lives in the founder's head and turn it into documented, automated systems that run without them.\n\nEvery build ships with a process map, gets tested before handoff, and is built to be maintained, not just to work once.",
+    headline: "I build systems that run without me",
+    bio: "I work with service founders who are still the ones every process routes back to. I take what lives in your head and turn it into documented, automated systems that run without you.\n\nI build for founders who are tired of being the only one who knows how everything works.",
     principles: [
       {
         n: "01",
-        t: "You get the workflow + the process map.",
-        d: "Every build includes a visual process diagram showing how data flows, what triggers what, and where things can break. When I'm done, you understand exactly what you own. No black boxes.",
+        t: "What if it breaks after you hand it over?",
+        d: "Every build ships with a process map and test logs. You know exactly what triggers what, where it can fail, and how to fix it. No black boxes. No dependency on me to keep it running.",
       },
       {
         n: "02",
-        t: "Tested before handoff.",
-        d: "I run test scenarios with real data before delivery. If it breaks during testing, you don't see it. If it works during testing, it'll work in production.",
+        t: "Will it actually fit how my business works?",
+        d: "I scope every system to your exact process before building anything. No templates dropped into your operation. If your workflow is unusual, that is not a problem. That is the brief.",
       },
       {
         n: "03",
-        t: "I build. I don't consult.",
-        d: "You tell me what's broken in your operation. I build the fix and hand it over documented and ready to run. No strategy decks, no retainer for advice.",
+        t: "I build. I do not consult.",
+        d: "You tell me what is broken. I build the fix and hand it over documented and ready to run. No strategy decks, no retainer for advice.",
       },
     ],
   },
