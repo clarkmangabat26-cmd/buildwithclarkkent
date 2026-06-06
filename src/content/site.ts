@@ -27,6 +27,7 @@ export type Project = {
   // ---- Grid card overrides ----
   outcome?: string; // one-line capability statement shown beneath the thumbnail on the grid card
   clientWork?: boolean; // when true, renders a small "Client Work" badge on the thumbnail
+  gridThumbnail?: string; // 16:9 image URL rendered as the grid card thumbnail
 
   // ---- Modal / case study ----
   client?: string;
