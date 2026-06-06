@@ -103,7 +103,7 @@ export const site = {
   workSection: {
     eyebrow: "Selected Builds",
     headline: "Systems I've built.",
-    subtext: "8 CASE STUDIES",
+    subtext: "7 CASE STUDIES",
   },
 
   // ---------- Workflow categories ----------
@@ -192,52 +192,6 @@ export const site = {
   // ---------- Projects ----------
   // NOTE: Array order = display order. Build 1 is index 0. Insert new case studies at index 0.
   projects: [
-    {
-      id: "real-estate-acquisitions",
-      category: "Acquisitions & Operations",
-      title: "How I Built the Operational Hub That Runs a Real Estate Acquisitions Team on Autopilot",
-      outcome: "Live client system — scoring and routing active",
-      clientWork: true,
-      benefit: "AUTOMATED SCORING & LIVE AI SYNC",
-      workflowTags: ["LIVE PRODUCTION", "IN PROGRESS"],
-      gridThumbnail: "/work/acquisitions-automation.png",
-      summary:
-        "Engineered a master data infrastructure for property acquisitions. Formulated a weighted 'Sick Score' matrix using multi-select tags to classify high-value leads automatically. Architected HTTP webhook logic to ingest incoming payloads from an AI calling app to sync durations, dispositions, and AI summaries instantly.",
-      tools: ["Airtable", "n8n", "OpenPhone", "AI Tools", "GoHighLevel", "Slack"],
-      thumbnails: ["/work/acquisitions-automation.png", "/work/acquisitions-dashboard.png"],
-      gallery: [
-        { src: "/work/acquisitions-automation.png", alt: "n8n / Airtable automation — webhook ingestion" },
-        { src: "/work/acquisitions-dashboard.png", alt: "Airtable research dashboard — lead interface" },
-      ],
-      flowLabel: "How It Works",
-      howItWorks: [
-        {
-          label: "Relational Architecture",
-          detail:
-            "Built a master operational hub connecting properties, contacts, historical calls, and ongoing workflows.",
-        },
-        {
-          label: "Algorithmic Lead Scoring",
-          detail:
-            "Wrote a custom formula to read multi-select asset tags (e.g., Tax Delinquency, Vacant Land, Open Probate) and dynamically categorize leads into Priority pipelines.",
-        },
-        {
-          label: "Live Webhook Stream",
-          detail:
-            "Set up webhook listener automations to ingest operational activity metrics directly from external caller software.",
-        },
-        {
-          label: "High-Priority Routing",
-          detail:
-            "Automated instant communication updates to team alerting channels the second a record shifts to a 'Hot' status.",
-        },
-      ],
-      dataNote: {
-        label: "Data Validation & Ingestion",
-        body: "Engineered strict webhook mapping logic that validates incoming data against exact record identifiers. This prevents duplicate entries, eliminates fuzzy match errors, and ensures external call logs backfill seamlessly into the core system without disrupting active data.",
-      },
-      toolsDetail: "Airtable, n8n, OpenPhone, AI Tools, GoHighLevel, Slack",
-    },
     {
       id: "ai-voice-receptionist",
       category: "AI Voice Automation",
