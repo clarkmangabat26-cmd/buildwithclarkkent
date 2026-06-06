@@ -64,14 +64,14 @@ const Contact = () => {
 
         {/* Phone number block */}
         <div className="mt-10 flex flex-col items-center">
-          <p className="text-3xl md:text-4xl text-white font-bold font-mono tracking-tight">
+          <p className="text-4xl text-white font-bold">
             {WHATSAPP_NUMBER_DISPLAY}
           </p>
           <button
             type="button"
             onClick={handleCopyNumber}
-            className="mt-4 inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-transparent border border-white transition-colors hover:bg-white/10"
-            style={{ borderRadius: "8px" }}
+            className="mt-3 inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-transparent border-[1.5px] border-white/30 hover:border-white transition-colors"
+            style={{ borderRadius: "8px", padding: "10px 24px" }}
           >
             {numberCopied ? (
               <>
@@ -87,22 +87,25 @@ const Contact = () => {
           </button>
         </div>
 
+        {/* Divider */}
+        <div className="my-8 h-px w-full max-w-md bg-white/10" />
+
         {/* Message template block */}
-        <div className="mt-6 w-full max-w-md flex flex-col items-center">
-          <p className="text-xs opacity-60 self-start text-left">
-            Don't know what to say? Copy this message:
+        <div className="w-full max-w-[480px] flex flex-col items-center">
+          <p className="text-[13px] text-white/50 text-center">
+            Don't know what to say?
           </p>
           <div
-            className="mt-2 w-full text-left text-sm text-white/90 whitespace-pre-line p-4 border border-white/15 bg-white/[0.03]"
-            style={{ borderRadius: "8px" }}
+            className="mt-3 w-full text-sm text-white/70 whitespace-pre-line border border-white/10 bg-white/5"
+            style={{ borderRadius: "8px", padding: "16px 20px", lineHeight: 1.8 }}
           >
             {TEMPLATE}
           </div>
           <button
             type="button"
             onClick={handleCopyMessage}
-            className="mt-4 inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-transparent border border-white transition-colors hover:bg-white/10"
-            style={{ borderRadius: "8px" }}
+            className="mt-3 inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-transparent border-[1.5px] border-white/30 hover:border-white transition-colors"
+            style={{ borderRadius: "8px", padding: "10px 24px" }}
           >
             {messageCopied ? (
               <>
@@ -118,7 +121,7 @@ const Contact = () => {
           </button>
         </div>
 
-        <p className="mt-6 text-xs opacity-60">
+        <p className="mt-4 text-xs text-center" style={{ color: "rgba(255,255,255,0.35)" }}>
           Open WhatsApp, search the number, and send your message.
         </p>
 
