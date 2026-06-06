@@ -94,7 +94,7 @@ const Contact = () => {
         </button>
 
         {/* Phone number */}
-        <p className="mt-4 text-lg text-white font-semibold font-mono">{WHATSAPP_NUMBER}</p>
+        <p className="mt-4 mb-8 text-lg text-white font-semibold font-mono">{WHATSAPP_NUMBER}</p>
 
         {/* Divider */}
         <div className="my-16 md:my-20 h-px w-full max-w-md bg-background/15" />
