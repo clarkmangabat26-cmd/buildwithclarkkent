@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
 import SmartImage from "@/components/site/SmartImage";
-import aboutMain from "@/assets/about/about-main.png.asset.json";
 
 const useInView = <T extends Element>(once = true) => {
   const ref = useRef<T | null>(null);
