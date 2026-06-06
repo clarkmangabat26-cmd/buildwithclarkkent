@@ -91,7 +91,7 @@ const Contact = () => {
           .wa-btn:active { transform: scale(0.98); }
         `}</style>
         <div
-          className="wa-card mt-10 text-left"
+          className="wa-card mt-10 mb-16 text-left"
           style={{
             background: "#0f0f0f",
             border: "1px solid rgba(37, 211, 102, 0.25)",
