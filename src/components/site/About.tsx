@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
 import SmartImage from "@/components/site/SmartImage";
 import aboutMain from "@/assets/about/about-main.png.asset.json";
-import aboutSecondary from "@/assets/about/about-secondary.jpg.asset.json";
 
 const useInView = <T extends Element>(once = true) => {
   const ref = useRef<T | null>(null);
@@ -41,7 +40,7 @@ const About = () => {
           {/* Portrait — 400x400 desktop, centered on mobile */}
           <div
             ref={photo.ref}
-            className="shrink-0 mx-auto lg:mx-0 flex flex-col gap-3 transition-all duration-[600ms] ease-out"
+            className="shrink-0 mx-auto lg:mx-0 transition-all duration-[600ms] ease-out"
             style={{
               opacity: photo.inView ? 1 : 0,
               transform: photo.inView ? "scale(1)" : "scale(0.95)",
@@ -53,16 +52,6 @@ const About = () => {
                 alt={`Portrait of ${site.name}, ${site.role}`}
                 width={400}
                 height={400}
-                sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 400px"
-                className="object-cover"
-              />
-            </div>
-            <div className="w-[280px] h-[238px] sm:w-[340px] sm:h-[289px] lg:w-[400px] lg:h-[340px] max-w-full border border-ink rounded-2xl bg-secondary overflow-hidden">
-              <SmartImage
-                src={aboutSecondary.url}
-                alt={`${site.name} secondary portrait`}
-                width={400}
-                height={340}
                 sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 400px"
                 className="object-cover"
               />
