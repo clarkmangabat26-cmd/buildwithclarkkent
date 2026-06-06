@@ -69,7 +69,7 @@ export const site = {
 
   // ---------- About ----------
   about: {
-    imageUrl: "/clark-portrait.png",
+    imageUrl: "/Untitled%20design%20(7).png",
     headline: "I build systems that run without me",
     bio: "I work with service founders who are still the ones every process routes back to. I take what lives in your head and turn it into documented, automated systems that run without you.\n\nI build for founders who are tired of being the only one who knows how everything works.",
     principles: [
