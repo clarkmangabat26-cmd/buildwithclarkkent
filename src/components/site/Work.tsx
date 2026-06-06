@@ -95,11 +95,20 @@ const Work = () => {
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
                     aria-label={`${p.title} — watch Loom walkthrough`}
-                    className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] font-bold shadow hover:brightness-110 transition"
-                    style={{ backgroundColor: "#F59E0B", color: "#ffffff" }}
+                    className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
+                    style={{
+                      backgroundColor: "rgba(245, 158, 11, 0.12)",
+                      border: "1px solid rgba(245, 158, 11, 0.3)",
+                      color: "#F59E0B",
+                      padding: "5px 10px 5px 6px",
+                      fontSize: "12px",
+                      fontWeight: 600,
+                    }}
                   >
-                    <Play className="h-3 w-3 fill-current" strokeWidth={0} />
-                    Loom Walkthrough
+                    <span className="h-[18px] w-[18px] rounded-full bg-[#F59E0B] flex items-center justify-center shrink-0">
+                      <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
+                    </span>
+                    Loom
                   </a>
                 )}
                 {p.gridThumbnail ? (

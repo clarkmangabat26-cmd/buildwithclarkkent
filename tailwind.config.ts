@@ -229,6 +229,7 @@ export default {
         "grid-flash": "grid-flash 0.7s ease-out forwards",
         "loader-slide-up": "loader-slide-up 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards",
         "pulse-badge": "pulse-badge 2s ease-in-out infinite",
+        "loom-pulse": "loom-pulse 2.5s ease-out infinite",
       },
     },
   },
