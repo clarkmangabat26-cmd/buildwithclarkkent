@@ -78,7 +78,7 @@ const Contact = () => {
         <button
           type="button"
           onClick={handleCopy}
-          className="mt-5 inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
+          className="mt-4 inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
         >
           {copied ? (
             <>
@@ -88,7 +88,7 @@ const Contact = () => {
           ) : (
             <>
               <Copy className="w-4 h-4" />
-              Or copy a message template to paste into WhatsApp →
+              Copy a message template to paste into WhatsApp →
             </>
           )}
         </button>
