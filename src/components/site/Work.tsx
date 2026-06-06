@@ -47,8 +47,8 @@ const Work = () => {
 
   return (
     <section id="work" className="border-b-2 border-ink">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
-        <div className="flex items-end justify-between mb-10 md:mb-16">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-28">
+        <div className="flex items-end justify-between mb-8 md:mb-12">
           <div>
             <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
               / {ws.eyebrow}
