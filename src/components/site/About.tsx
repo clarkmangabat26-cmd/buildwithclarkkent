@@ -17,7 +17,7 @@ const useInView = <T extends Element>(once = true) => {
           setInView(false);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -86,7 +86,7 @@ const About = () => {
               {site.about.principles.map((p, i) => (
                 <div
                   key={p.n}
-                  className={`grid grid-cols-12 p-6 md:p-8 border-l-[3px] border-l-[#1A56DB] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg ${
+                  className={`transition-[opacity,transform] duration-500 ease-out ${
                     i < site.about.principles.length - 1 ? "border-b-2 border-ink" : ""
                   }`}
                   style={{
@@ -95,14 +95,18 @@ const About = () => {
                     transitionDelay: cards.inView ? `${(i + 1) * 100}ms` : "0ms",
                   }}
                 >
-                  <div className="col-span-3 md:col-span-2 font-mono text-base md:text-lg font-extrabold text-[#1A56DB]">
-                    {p.n}
-                  </div>
-                  <div className="col-span-9 md:col-span-10">
-                    <h3 className="font-black tracking-tightest text-2xl md:text-3xl">{p.t}</h3>
-                    <p className="mt-2 text-sm md:text-base text-foreground/70 leading-relaxed max-w-xl">
-                      {p.d}
-                    </p>
+                  <div
+                    className="grid grid-cols-12 p-6 md:p-8 border-l-[3px] border-l-[#1A56DB] transition-[transform,box-shadow] duration-200 ease hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
+                  >
+                    <div className="col-span-3 md:col-span-2 font-mono text-base md:text-lg font-extrabold text-[#1A56DB]">
+                      {p.n}
+                    </div>
+                    <div className="col-span-9 md:col-span-10">
+                      <h3 className="font-black tracking-tightest text-2xl md:text-3xl">{p.t}</h3>
+                      <p className="mt-2 text-sm md:text-base text-foreground/70 leading-relaxed max-w-xl">
+                        {p.d}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
