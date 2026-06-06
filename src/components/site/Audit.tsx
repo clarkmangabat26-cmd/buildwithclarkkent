@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Linkedin, Briefcase, Mail, Copy, Check } from "lucide-react";
 import { site } from "@/content/site";
 
-const WHATSAPP_URL = "https://wa.me/639602894958";
+const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=639602894958&text=Hi%20Clark%2C%20I%20found%20your%20portfolio%20at%20buildwithclarkkent.tech.%0A%0AName%3A%20%0AWhat%20I%20need%20built%3A%20%0ABudget%20(optional)%3A%20";
 const WHATSAPP_NUMBER = "+63 960 289 4958";
 const TEMPLATE = `Hi Clark, I found your portfolio at buildwithclarkkent.tech.
 
@@ -78,7 +78,7 @@ const Contact = () => {
         <button
           type="button"
           onClick={handleCopy}
-          className="mt-5 inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
+          className="mt-4 inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
         >
           {copied ? (
             <>
@@ -88,20 +88,20 @@ const Contact = () => {
           ) : (
             <>
               <Copy className="w-4 h-4" />
-              Or copy a message template to paste into WhatsApp →
+              Copy a message template to paste into WhatsApp →
             </>
           )}
         </button>
 
         {/* Phone number */}
-        <p className="mt-4 text-xs opacity-50 font-mono">{WHATSAPP_NUMBER}</p>
+        <p className="mt-4 text-lg text-white font-semibold font-mono">{WHATSAPP_NUMBER}</p>
 
         {/* Divider */}
         <div className="my-16 md:my-20 h-px w-full max-w-md bg-background/15" />
 
         {/* Calendly */}
         <h3 className="font-bold tracking-tight text-2xl md:text-3xl opacity-90">
-          Prefer a scheduled call?
+          Prefer a free 15-minute Automation Scope call?
         </h3>
         <div className="mt-8 w-full overflow-hidden bg-background">
           <iframe
