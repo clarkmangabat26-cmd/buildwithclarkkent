@@ -47,7 +47,7 @@ const About = () => {
           >
             <div className="w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[400px] lg:h-[400px] max-w-full border border-ink rounded-2xl bg-secondary overflow-hidden">
               <SmartImage
-                src={aboutMain.url}
+                src={site.about.imageUrl}
                 alt={`Portrait of ${site.name}, ${site.role}`}
                 width={400}
                 height={400}
