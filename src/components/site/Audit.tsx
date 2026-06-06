@@ -58,10 +58,14 @@ const Contact = () => {
         </p>
 
         {/* WhatsApp button */}
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={() =>
+            window.open(
+              "https://wa.me/639602894958?text=Hi%20Clark%2C%20I%20found%20your%20portfolio%20at%20buildwithclarkkent.tech.%0A%0AName%3A%20%0AWhat%20I%20need%20built%3A%20%0ABudget%20(optional)%3A%20",
+              "_blank"
+            )
+          }
           className="mt-10 inline-flex items-center justify-center gap-3 px-8 py-4 font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
           style={{
             backgroundColor: "#25D366",
@@ -72,7 +76,7 @@ const Contact = () => {
         >
           <WhatsAppIcon className="w-5 h-5" />
           Message me on WhatsApp
-        </a>
+        </button>
 
         {/* Copy template */}
         <button
