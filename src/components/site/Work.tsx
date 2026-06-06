@@ -122,7 +122,7 @@ const Work = () => {
                 </div>
               </div>
 
-              <div className="p-6 md:p-8 flex flex-col flex-1">
+              <div className="p-5 md:p-6 flex flex-col flex-1">
                 {/* Outcome line */}
                 <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-4">
                   {p.outcome ?? p.benefit}
