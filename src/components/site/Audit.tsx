@@ -294,7 +294,7 @@ const Contact = () => {
         </div>
 
         {/* Divider */}
-        <div className="my-16 md:my-20 h-px w-full max-w-md bg-background/15" />
+        <div className="h-px w-full max-w-md" style={{ backgroundColor: "rgba(255,255,255,0.08)", margin: "64px 0" }} />
 
         {/* Calendly */}
         <h3 className="font-bold tracking-tight text-2xl md:text-3xl opacity-90">
