@@ -65,11 +65,8 @@ const Work = () => {
           </div>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {projects.map((p, i) => {
-            const loomHref = p.loomEmbedId
-              ? `https://www.loom.com/share/${p.loomEmbedId}`
-              : "#";
             return (
             <div
               key={p.id}
