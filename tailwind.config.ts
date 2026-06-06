@@ -197,6 +197,11 @@ export default {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.05)" },
         },
+        "loom-pulse": {
+          "0%": { boxShadow: "0 0 0 0 rgba(245,158,11,0.6)" },
+          "70%": { boxShadow: "0 0 0 6px rgba(245,158,11,0)" },
+          "100%": { boxShadow: "0 0 0 0 rgba(245,158,11,0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -224,6 +229,7 @@ export default {
         "grid-flash": "grid-flash 0.7s ease-out forwards",
         "loader-slide-up": "loader-slide-up 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards",
         "pulse-badge": "pulse-badge 2s ease-in-out infinite",
+        "loom-pulse": "loom-pulse 2.5s ease-out infinite",
       },
     },
   },
