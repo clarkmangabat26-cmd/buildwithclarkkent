@@ -192,11 +192,11 @@ export const site = {
       benefit: "24/7 AVAILABILITY",
       workflowTag: "AI VOICE AGENT",
       loomEmbedId: "4640467f36f8481fa60a31f1eab74403",
-      gridThumbnail: "/work/ai-receptionist-thumbnail.png",
+      gridThumbnail: "/work/AI%20RECEPTIONIST%20THUMBNAIL.png",
       summary:
         "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed. It runs 24/7 on its own.",
       tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
-      thumbnail: "/work/ai-receptionist-thumbnail.png",
+      thumbnail: "/work/AI%20RECEPTIONIST%20THUMBNAIL.png",
       fullImage: "/work/ai-receptionist-full.png",
       client: "Portfolio demonstration: built for Wellness Partners, a multi-specialty health clinic",
       problem:
@@ -225,11 +225,11 @@ export const site = {
       benefit: "47 HOURS → 60 SECONDS",
       workflowTag: "SPEED TO LEAD",
       loomEmbedId: "4f4fc37aa3d94d14b625ba993f78064c",
-      gridThumbnail: "/work/lead-router-thumbnail.png",
+      gridThumbnail: "/work/LEAD%20CRM%20SCORE%20PIPELINE%20THUMBNAIL.png",
       summary:
         "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data. It all happens on its own.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
-      thumbnail: "/work/lead-router-thumbnail.png",
+      thumbnail: "/work/LEAD%20CRM%20SCORE%20PIPELINE%20THUMBNAIL.png",
       fullImage: "/work/lead-router-full.png",
       gallery: [
         { src: "/work/lead-router-full.png", alt: "n8n workflow: lead scoring + routing" },
@@ -275,11 +275,11 @@ export const site = {
       title: "Finance and Project Management Finally Talking to Each Other",
       outcome: "Transactions exported, formatted, and synced to Asana",
       benefit: "ZERO MANUAL ENTRY",
-      gridThumbnail: "/work/xero-invoice-thumbnail.png",
+      gridThumbnail: "/work/MAKE%20XERO%20THUMBNAIL.png",
       summary:
         "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything. The system does it all.",
       tools: ["Make", "Xero", "Asana", "CSV"],
-      thumbnail: "/work/xero-invoice-thumbnail.png",
+      thumbnail: "/work/MAKE%20XERO%20THUMBNAIL.png",
       fullImage: "/work/xero-invoice-full.png",
       problem:
         "Finance and project teams worked in silos. Transactions lived in Xero while task tracking lived in Asana. Reconciling the two meant hours of manual exports, reformatting, and copy-paste, with errors creeping in at every step.",
@@ -304,11 +304,11 @@ export const site = {
       title: "A Status Change in Asana Triggers 29 Steps. Zero Manual Work.",
       outcome: "Full client lifecycle automated from one status field",
       benefit: "ZERO FORGOTTEN CLIENTS",
-      gridThumbnail: "/work/asana-29step-thumbnail.png",
+      gridThumbnail: "/work/ZAPIER%20ASANA%2029%20STEPS%20THUMBNAIL.png",
       summary:
         "When a client pays, the system sets up their folders, sends their welcome email, and schedules follow-ups. The team doesn't lift a finger.",
       tools: ["Asana", "Google Drive", "Gmail", "Zapier"],
-      thumbnail: "/work/asana-29step-thumbnail.png",
+      thumbnail: "/work/ZAPIER%20ASANA%2029%20STEPS%20THUMBNAIL.png",
       fullImage: "/work/asana-29step-full.png",
       problem:
         "Leads were slipping through the cracks. Files scattered across drives, follow-ups forgotten, and onboarding handled manually for every new client. The team had no consistent system for nurturing prospects or delivering post-sale guidance.",
@@ -336,11 +336,11 @@ export const site = {
       outcome: "Enriches, scores, and briefs leads automatically",
       benefit: "SALES-READY LEADS",
       workflowTag: "SPEED TO LEAD",
-      gridThumbnail: "/work/lead-enrichment-thumbnail.png",
+      gridThumbnail: "/work/ZAPIER%20LEAD%20ENRICHMENT%20THUMBNAIL.png",
       summary:
         "Form submission triggers Apollo.io to pull company data. Zapier sorts leads into hot or cold, logs them in Google Sheets, and alerts the sales team in Slack. AI summarizes everything so reps know exactly who they're calling.",
       tools: ["Zapier", "Tally", "Apollo.io", "Google Sheets", "Slack", "AI by Zapier"],
-      thumbnail: "/work/lead-enrichment-thumbnail.png",
+      thumbnail: "/work/ZAPIER%20LEAD%20ENRICHMENT%20THUMBNAIL.png",
       fullImage: "/work/lead-enrichment-full.png",
       flow: [
         "Prospect fills out Tally form with basic info",
@@ -358,11 +358,11 @@ export const site = {
       title: "One Video Upload. Two Blog Posts. Social Captions. Brand-Safe. Auto-Posted.",
       outcome: "Full content repurposing pipeline with brand safety filter",
       benefit: "1 VIDEO → 10 ASSETS",
-      gridThumbnail: "/work/content-repurposing-thumbnail.png",
+      gridThumbnail: "/work/ZAPIER%20CONTENT%20ENGINE%20THUMBNAIL.png",
       summary:
         "Drop a video in Google Drive and the system transcribes it, writes 2 blog posts and social captions, scans for brand-risk words, then posts to Facebook and LinkedIn. One video becomes 10 content pieces without lifting a finger.",
       tools: ["Zapier", "Google Drive", "AI (Whisper)", "Facebook", "LinkedIn"],
-      thumbnail: "/work/content-repurposing-thumbnail.png",
+      thumbnail: "/work/ZAPIER%20CONTENT%20ENGINE%20THUMBNAIL.png",
       fullImage: "/work/content-repurposing-full.png",
       flow: [
         "Video uploaded to Google Drive folder",
@@ -382,11 +382,11 @@ export const site = {
       title: "AI Reads Every Attachment and Files It Better Than You Would",
       outcome: "Auto-renames and organizes files by content",
       benefit: "ZERO MANUAL FILING",
-      gridThumbnail: "/work/gmail-sort-thumbnail.png",
+      gridThumbnail: "/work/MAKE%20GMAIL%20ATTACHMENTS%20THUMBNAIL.png",
       summary:
         "Watches Gmail for attachments, downloads them, uses Gemini to read the content and generate a smart filename, renames the file, uploads to the right Google Drive folder, and logs everything in Google Sheets. No one touches the files.",
       tools: ["Make", "Gmail", "Gemini", "Google Drive", "Google Sheets"],
-      thumbnail: "/work/gmail-sort-thumbnail.png",
+      thumbnail: "/work/MAKE%20GMAIL%20ATTACHMENTS%20THUMBNAIL.png",
       fullImage: "/work/gmail-sort-full.png",
       flow: [
         "Gmail monitor watches for new emails with attachments",
