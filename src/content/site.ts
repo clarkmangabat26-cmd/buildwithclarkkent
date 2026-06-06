@@ -79,7 +79,7 @@ export const site = {
   about: {
     imageUrl: "/clark-portrait.png",
     headline: "Hi, I'm Clark Kent Mangabat.",
-    bio: "If your business slows down when you're unavailable, that's not a people problem. It's a systems problem.\n\nI work with service business founders who have built real revenue but are still the ones every process routes back to. I take what lives in the founder's head and turn it into documented, automated systems that run without them.\n\nEvery build ships with a process map, gets tested before handoff, and is built to be maintained — not just to work once.",
+    bio: "If your business slows down when you're unavailable, that's not a people problem. It's a systems problem.\n\nI work with service business founders who have built real revenue but are still the ones every process routes back to. I take what lives in the founder's head and turn it into documented, automated systems that run without them.\n\nEvery build ships with a process map, gets tested before handoff, and is built to be maintained, not just to work once.",
     principles: [
       {
         n: "01",
@@ -202,19 +202,19 @@ export const site = {
       loomEmbedId: "4640467f36f8481fa60a31f1eab74403",
       gridThumbnail: thumbReceptionist.url,
       summary:
-        "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed — it runs 24/7 on its own.",
+        "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed. It runs 24/7 on its own.",
       tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
       thumbnail: "/work/ai-receptionist-thumbnail.png",
       fullImage: "/work/ai-receptionist-full.png",
-      client: "Portfolio demonstration — built for Wellness Partners, a multi-specialty health clinic",
+      client: "Portfolio demonstration: built for Wellness Partners, a multi-specialty health clinic",
       problem:
-        "Amy is a voice assistant powered by Vapi and ElevenLabs that answers calls on behalf of a health clinic. She can check open slots, book new appointments, reschedule existing ones, and process cancellations — all without a human receptionist in the loop.\n\nThe system handles errors gracefully: if a requested slot is no longer available, Amy offers alternatives in real time. Urgent or complex situations are escalated to clinic staff rather than handled by AI.",
+        "Amy is a voice assistant powered by Vapi and ElevenLabs that answers calls on behalf of a health clinic. She can check open slots, book new appointments, reschedule existing ones, and process cancellations, all without a human receptionist in the loop.\n\nThe system handles errors gracefully: if a requested slot is no longer available, Amy offers alternatives in real time. Urgent or complex situations are escalated to clinic staff rather than handled by AI.",
       solution:
-        "Four separate n8n workflows are triggered by Vapi tool calls. Each handles one part of the appointment lifecycle:\n\nGetSlots — Fetches available Google Calendar events, computes open 30-minute windows within business hours, returns formatted availability to Amy.\n\nBookSlots — Creates a new calendar event with patient details, includes timezone conversion and a friendly error response if the time is already taken.\n\nUpdateSlots — Finds the existing appointment by patient name and email, deletes it, and creates a new one at the rescheduled time.\n\nCancelSlots — Locates and removes the calendar event. Cancellation notes are passed back to the system for logging.\n\nAfter each call, a fifth workflow captures the full transcript, recording URL, call summary, cost, and patient details into Airtable — giving the clinic a complete call log without any manual entry.",
+        "Four separate n8n workflows are triggered by Vapi tool calls. Each handles one part of the appointment lifecycle:\n\nGetSlots: Fetches available Google Calendar events, computes open 30-minute windows within business hours, returns formatted availability to Amy.\n\nBookSlots: Creates a new calendar event with patient details, includes timezone conversion and a friendly error response if the time is already taken.\n\nUpdateSlots: Finds the existing appointment by patient name and email, deletes it, and creates a new one at the rescheduled time.\n\nCancelSlots: Locates and removes the calendar event. Cancellation notes are passed back to the system for logging.\n\nAfter each call, a fifth workflow captures the full transcript, recording URL, call summary, cost, and patient details into Airtable, giving the clinic a complete call log without any manual entry.",
       flow: [
-        "Timezone handling built in — Vapi passes times in UTC. A dedicated conversion step normalizes all times to America/Chicago (CST) before writing to Google Calendar — preventing double-booking across timezone mismatches.",
-        "Error paths on every workflow — Each workflow has a dedicated error branch that returns a human-readable message to Amy rather than failing silently — so the caller always gets a clear response even when something goes wrong.",
-        "Human escalation preserved — Amy is prompted to escalate urgent or clinical situations to a triage nurse rather than attempt to handle them. AI handles logistics; clinical judgment stays human.",
+        "Timezone handling built in: Vapi passes times in UTC. A dedicated conversion step normalizes all times to America/Chicago (CST) before writing to Google Calendar, preventing double-booking across timezone mismatches.",
+        "Error paths on every workflow: Each workflow has a dedicated error branch that returns a human-readable message to Amy rather than failing silently, so the caller always gets a clear response even when something goes wrong.",
+        "Human escalation preserved: Amy is prompted to escalate urgent or clinical situations to a triage nurse rather than attempt to handle them. AI handles logistics; clinical judgment stays human.",
       ],
       flowNote:
         "Status: Built and tested to production spec as a portfolio demonstration. End-to-end tested across all four appointment actions. Available to adapt for live clinic deployment.",
@@ -235,19 +235,19 @@ export const site = {
       loomEmbedId: "4f4fc37aa3d94d14b625ba993f78064c",
       gridThumbnail: thumbLeadScore.url,
       summary:
-        "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data — it all happens on its own.",
+        "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data. It all happens on its own.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
       thumbnail: "/work/lead-router-thumbnail.png",
       fullImage: "/work/lead-router-full.png",
       gallery: [
-        { src: "/work/lead-router-full.png", alt: "n8n workflow — lead scoring + routing" },
-        { src: "/work/lead-router-ghl.png", alt: "GoHighLevel automation — tag-based branching" },
+        { src: "/work/lead-router-full.png", alt: "n8n workflow: lead scoring + routing" },
+        { src: "/work/lead-router-ghl.png", alt: "GoHighLevel automation: tag-based branching" },
       ],
       client: "Prestige Auto Detail",
       problem:
-        "Most service businesses lose leads because no one follows up fast enough. Average response time was 47 hours — by then the lead already booked with a competitor. Manual qualification took 15-20 minutes per lead, hot leads only got followed up 60% of the time, and coverage was business hours only.",
+        "Most service businesses lose leads because no one follows up fast enough. Average response time was 47 hours. By then the lead already booked with a competitor. Manual qualification took 15-20 minutes per lead, hot leads only got followed up 60% of the time, and coverage was business hours only.",
       solution:
-        "Fully automated pipeline that captures inbound leads via Tally form, scores them using weighted AI rubric (vehicle type, service, budget, timeline, referral status), routes into GoHighLevel CRM by tier, and triggers immediate follow-up — all within 60 seconds of form submission, 24/7.",
+        "Fully automated pipeline that captures inbound leads via Tally form, scores them using weighted AI rubric (vehicle type, service, budget, timeline, referral status), routes into GoHighLevel CRM by tier, and triggers immediate follow-up, all within 60 seconds of form submission, 24/7.",
       flow: [
         "Prospect submits Tally form (vehicle, service, budget, timeline, source)",
         "n8n receives webhook, runs duplicate check against GoHighLevel",
@@ -285,12 +285,12 @@ export const site = {
       benefit: "ZERO MANUAL ENTRY",
       gridThumbnail: thumbXero.url,
       summary:
-        "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything — the system does it all.",
+        "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything. The system does it all.",
       tools: ["Make", "Xero", "Asana", "CSV"],
       thumbnail: "/work/xero-invoice-thumbnail.png",
       fullImage: "/work/xero-invoice-full.png",
       problem:
-        "Finance and project teams worked in silos — transactions lived in Xero while task tracking lived in Asana. Reconciling the two meant hours of manual exports, reformatting, and copy-paste, with errors creeping in at every step.",
+        "Finance and project teams worked in silos. Transactions lived in Xero while task tracking lived in Asana. Reconciling the two meant hours of manual exports, reformatting, and copy-paste, with errors creeping in at every step.",
       solution:
         "I built a seamless workflow to bridge the gap between accounting and project management. This automation ensures financial transactions are accurately tracked as actionable tasks without manual data entry.",
       flow: [
@@ -319,7 +319,7 @@ export const site = {
       thumbnail: "/work/asana-29step-thumbnail.png",
       fullImage: "/work/asana-29step-full.png",
       problem:
-        "Leads were slipping through the cracks — files scattered across drives, follow-ups forgotten, and onboarding handled manually for every new client. The team had no consistent system for nurturing prospects or delivering post-sale guidance.",
+        "Leads were slipping through the cracks. Files scattered across drives, follow-ups forgotten, and onboarding handled manually for every new client. The team had no consistent system for nurturing prospects or delivering post-sale guidance.",
       solution:
         "Turned Asana into a full CRM. Status changes drive automation: folders auto-created in Google Drive with linked subtasks, unresponsive leads get SMS/Email nurture sequences, approved clients receive welcome emails with PDFs, and service-specific maintenance advice goes out automatically.",
       flow: [
@@ -381,7 +381,7 @@ export const site = {
         "Clean content routed via Zapier Paths to Facebook and LinkedIn for posting",
       ],
       flowNote:
-        "Brand safety built in — A custom filter checks every piece of AI-generated content before it goes live. If risky language is detected, the system stops and alerts the team instead of auto-posting potentially damaging content.",
+        "Brand safety built in: A custom filter checks every piece of AI-generated content before it goes live. If risky language is detected, the system stops and alerts the team instead of auto-posting potentially damaging content.",
       toolsDetail: "Zapier, Google Drive, AI (Whisper), AI content generation, Facebook, LinkedIn",
     },
     {
@@ -407,7 +407,7 @@ export const site = {
         "Optional summary email sent after each file is processed",
       ],
       flowNote:
-        "Smart naming — Instead of \"invoice_final_v3.pdf\", files get renamed to something like \"2024_Q3_Acme_Corp_Invoice.pdf\" based on the actual content. Makes searching and organizing instant.",
+        "Smart naming: Instead of \"invoice_final_v3.pdf\", files get renamed to something like \"2024_Q3_Acme_Corp_Invoice.pdf\" based on the actual content. Makes searching and organizing instant.",
       toolsDetail: "Make, Gmail, Gemini, Google Drive, Google Sheets",
     },
   ] as Project[],

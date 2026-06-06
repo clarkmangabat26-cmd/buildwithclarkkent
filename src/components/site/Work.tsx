@@ -9,7 +9,7 @@ const LoomEmbed = ({ embedId, title }: { embedId: string; title: string }) => (
   <div className="relative w-full aspect-video border-2 border-ink bg-ink overflow-hidden">
     <iframe
       src={`https://www.loom.com/embed/${embedId}`}
-      title={`${title} — Loom demo`}
+      title={`${title}: Loom demo`}
       frameBorder={0}
       allowFullScreen
       loading="lazy"
@@ -109,7 +109,7 @@ const Work = () => {
                 {p.gridThumbnail ? (
                   <img
                     src={p.gridThumbnail}
-                    alt={`${p.title} — thumbnail`}
+                    alt={`${p.title}: thumbnail`}
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -199,7 +199,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
       <div className="sticky top-0 z-10 border-b-2 border-ink bg-background">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
           <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em]">
-            / Case Study — {project.category}
+            / Case Study: {project.category}
           </span>
           <button
             onClick={onClose}
@@ -268,7 +268,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                 <SmartImage
                   key={galleryIdx}
                   src={gallery[galleryIdx].src}
-                  alt={`${project.title} — ${gallery[galleryIdx].alt}`}
+                  alt={`${project.title}: ${gallery[galleryIdx].alt}`}
                   width={1600}
                   height={1000}
                   sizes="(max-width: 1024px) 100vw, 1400px"
@@ -327,7 +327,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
               <div className="relative w-full" style={{ aspectRatio: "16 / 10" }}>
                 <SmartImage
                   src={project.fullImage}
-                  alt={`${project.title} — full workflow diagram (${project.toolsDetail ?? project.tools.join(", ")})`}
+                  alt={`${project.title}: full workflow diagram (${project.toolsDetail ?? project.tools.join(", ")})`}
                   width={1600}
                   height={1000}
                   sizes="(max-width: 1024px) 100vw, 1400px"
