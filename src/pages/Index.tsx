@@ -24,7 +24,6 @@ const Index = () => {
         <Hero introDone={heroReady} />
         <Work />
         <About />
-        <About />
         <Audit />
       </main>
       <Footer />

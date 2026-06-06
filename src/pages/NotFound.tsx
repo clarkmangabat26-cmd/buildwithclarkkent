@@ -8,7 +8,7 @@ const NotFound = () => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
 
     const prevTitle = document.title;
-    document.title = "Page Not Found — Clark Kent Mangabat";
+    document.title = "Page Not Found: Clark Kent Mangabat";
 
     const setMeta = (selector: string, attr: string, value: string) => {
       let el = document.head.querySelector<HTMLMetaElement>(selector);
@@ -32,10 +32,10 @@ const NotFound = () => {
 
     const restores = [
       setMeta('meta[name="description"]', "content", desc),
-      setMeta('meta[property="og:title"]', "content", "Page Not Found — Clark Kent Mangabat"),
+      setMeta('meta[property="og:title"]', "content", "Page Not Found: Clark Kent Mangabat"),
       setMeta('meta[property="og:description"]', "content", desc),
       setMeta('meta[property="og:url"]', "content", url),
-      setMeta('meta[name="twitter:title"]', "content", "Page Not Found — Clark Kent Mangabat"),
+      setMeta('meta[name="twitter:title"]', "content", "Page Not Found: Clark Kent Mangabat"),
       setMeta('meta[name="twitter:description"]', "content", desc),
     ];
 

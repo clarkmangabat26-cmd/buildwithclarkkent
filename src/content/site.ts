@@ -3,6 +3,14 @@
 // Edit this file to update headlines, projects, contact, etc.
 // ============================================================
 
+import thumbReceptionist from "@/assets/work-thumbs/AI_RECEPTIONIST_THUMBNAIL.png.asset.json";
+import thumbLeadScore from "@/assets/work-thumbs/LEAD_CRM_SCORE_PIPELINE_THUMBNAIL.png.asset.json";
+import thumbAsana29 from "@/assets/work-thumbs/ZAPIER_ASANA_29_STEPS_THUMBNAIL.png.asset.json";
+import thumbLeadEnrich from "@/assets/work-thumbs/ZAPIER_LEAD_ENRICHMENT_THUMBNAIL.png.asset.json";
+import thumbContent from "@/assets/work-thumbs/ZAPIER_CONTENT_ENGINE_THUMBNAIL.png.asset.json";
+import thumbGmail from "@/assets/work-thumbs/MAKE_GMAIL_ATTACHMENTS_THUMBNAIL.png.asset.json";
+import thumbXero from "@/assets/work-thumbs/MAKE_XERO_THUMBNAIL.png.asset.json";
+
 export type ImpactRow = { label: string; from: string; to: string };
 
 export type Project = {
@@ -27,6 +35,7 @@ export type Project = {
   // ---- Grid card overrides ----
   outcome?: string; // one-line capability statement shown beneath the thumbnail on the grid card
   clientWork?: boolean; // when true, renders a small "Client Work" badge on the thumbnail
+  gridThumbnail?: string; // 16:9 image URL rendered as the grid card thumbnail
 
   // ---- Modal / case study ----
   client?: string;
@@ -69,23 +78,23 @@ export const site = {
   // ---------- About ----------
   about: {
     imageUrl: "/clark-portrait.png",
-    headline: "Hi, I'm Clark Kent Mangabat.",
-    bio: "If your business slows down when you're unavailable, that's not a people problem. It's a systems problem.\n\nI work with service business founders who have built real revenue but are still the ones every process routes back to. I take what lives in the founder's head and turn it into documented, automated systems that run without them.\n\nEvery build ships with a process map, gets tested before handoff, and is built to be maintained — not just to work once.",
+    headline: "I build systems that run without me",
+    bio: "I work with service founders who are still the ones every process routes back to. I take what lives in your head and turn it into documented, automated systems that run without you.\n\nI build for founders who are tired of being the only one who knows how everything works.",
     principles: [
       {
         n: "01",
-        t: "You get the workflow + the process map.",
-        d: "Every build includes a visual process diagram showing how data flows, what triggers what, and where things can break. When I'm done, you understand exactly what you own. No black boxes.",
+        t: "What if it breaks after you hand it over?",
+        d: "Every build ships with documentation and test logs. You know exactly what triggers what, where it can fail, and how to fix it. No black boxes. No dependency on me to keep it running.",
       },
       {
         n: "02",
-        t: "Tested before handoff.",
-        d: "I run test scenarios with real data before delivery. If it breaks during testing, you don't see it. If it works during testing, it'll work in production.",
+        t: "Will it actually fit how my business works?",
+        d: "I scope every system to your exact process before building anything. No templates dropped into your operation. If your workflow is unusual, that is not a problem. That is the brief.",
       },
       {
         n: "03",
-        t: "I build. I don't consult.",
-        d: "You tell me what's broken in your operation. I build the fix and hand it over documented and ready to run. No strategy decks, no retainer for advice.",
+        t: "I build. I do not consult.",
+        d: "You tell me what is broken. I build the fix and hand it over documented and ready to run. No strategy decks, no retainer for advice.",
       },
     ],
   },
@@ -94,7 +103,7 @@ export const site = {
   workSection: {
     eyebrow: "Selected Builds",
     headline: "Systems I've built.",
-    subtext: "8 CASE STUDIES",
+    subtext: "7 CASE STUDIES",
   },
 
   // ---------- Workflow categories ----------
@@ -184,51 +193,6 @@ export const site = {
   // NOTE: Array order = display order. Build 1 is index 0. Insert new case studies at index 0.
   projects: [
     {
-      id: "real-estate-acquisitions",
-      category: "Acquisitions & Operations",
-      title: "How I Built a Lead Scoring Engine That Flags Hot Deals Before the Team Sees Them",
-      outcome: "Live client system — scoring and routing active",
-      clientWork: true,
-      benefit: "AUTOMATED SCORING & LIVE AI SYNC",
-      workflowTags: ["LIVE PRODUCTION", "IN PROGRESS"],
-      summary:
-        "Engineered a master data infrastructure for property acquisitions. Formulated a weighted 'Sick Score' matrix using multi-select tags to classify high-value leads automatically. Architected HTTP webhook logic to ingest incoming payloads from an AI calling app to sync durations, dispositions, and AI summaries instantly.",
-      tools: ["Airtable", "n8n", "OpenPhone", "AI Tools", "GoHighLevel", "Slack"],
-      thumbnails: ["/work/acquisitions-automation.png", "/work/acquisitions-dashboard.png"],
-      gallery: [
-        { src: "/work/acquisitions-automation.png", alt: "n8n / Airtable automation — webhook ingestion" },
-        { src: "/work/acquisitions-dashboard.png", alt: "Airtable research dashboard — lead interface" },
-      ],
-      flowLabel: "How It Works",
-      howItWorks: [
-        {
-          label: "Relational Architecture",
-          detail:
-            "Built a master operational hub connecting properties, contacts, historical calls, and ongoing workflows.",
-        },
-        {
-          label: "Algorithmic Lead Scoring",
-          detail:
-            "Wrote a custom formula to read multi-select asset tags (e.g., Tax Delinquency, Vacant Land, Open Probate) and dynamically categorize leads into Priority pipelines.",
-        },
-        {
-          label: "Live Webhook Stream",
-          detail:
-            "Set up webhook listener automations to ingest operational activity metrics directly from external caller software.",
-        },
-        {
-          label: "High-Priority Routing",
-          detail:
-            "Automated instant communication updates to team alerting channels the second a record shifts to a 'Hot' status.",
-        },
-      ],
-      dataNote: {
-        label: "Data Validation & Ingestion",
-        body: "Engineered strict webhook mapping logic that validates incoming data against exact record identifiers. This prevents duplicate entries, eliminates fuzzy match errors, and ensures external call logs backfill seamlessly into the core system without disrupting active data.",
-      },
-      toolsDetail: "Airtable, n8n, OpenPhone, AI Tools, GoHighLevel, Slack",
-    },
-    {
       id: "ai-voice-receptionist",
       category: "AI Voice Automation",
       title: "This AI Answers the Phone, Books Appointments, and Never Calls In Sick",
@@ -236,20 +200,21 @@ export const site = {
       benefit: "24/7 AVAILABILITY",
       workflowTag: "AI VOICE AGENT",
       loomEmbedId: "4640467f36f8481fa60a31f1eab74403",
+      gridThumbnail: thumbReceptionist.url,
       summary:
-        "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed — it runs 24/7 on its own.",
+        "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed. It runs 24/7 on its own.",
       tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
       thumbnail: "/work/ai-receptionist-thumbnail.png",
       fullImage: "/work/ai-receptionist-full.png",
-      client: "Portfolio demonstration — built for Wellness Partners, a multi-specialty health clinic",
+      client: "Portfolio demonstration: built for Wellness Partners, a multi-specialty health clinic",
       problem:
-        "Amy is a voice assistant powered by Vapi and ElevenLabs that answers calls on behalf of a health clinic. She can check open slots, book new appointments, reschedule existing ones, and process cancellations — all without a human receptionist in the loop.\n\nThe system handles errors gracefully: if a requested slot is no longer available, Amy offers alternatives in real time. Urgent or complex situations are escalated to clinic staff rather than handled by AI.",
+        "Amy is a voice assistant powered by Vapi and ElevenLabs that answers calls on behalf of a health clinic. She can check open slots, book new appointments, reschedule existing ones, and process cancellations, all without a human receptionist in the loop.\n\nThe system handles errors gracefully: if a requested slot is no longer available, Amy offers alternatives in real time. Urgent or complex situations are escalated to clinic staff rather than handled by AI.",
       solution:
-        "Four separate n8n workflows are triggered by Vapi tool calls. Each handles one part of the appointment lifecycle:\n\nGetSlots — Fetches available Google Calendar events, computes open 30-minute windows within business hours, returns formatted availability to Amy.\n\nBookSlots — Creates a new calendar event with patient details, includes timezone conversion and a friendly error response if the time is already taken.\n\nUpdateSlots — Finds the existing appointment by patient name and email, deletes it, and creates a new one at the rescheduled time.\n\nCancelSlots — Locates and removes the calendar event. Cancellation notes are passed back to the system for logging.\n\nAfter each call, a fifth workflow captures the full transcript, recording URL, call summary, cost, and patient details into Airtable — giving the clinic a complete call log without any manual entry.",
+        "Four separate n8n workflows are triggered by Vapi tool calls. Each handles one part of the appointment lifecycle:\n\nGetSlots: Fetches available Google Calendar events, computes open 30-minute windows within business hours, returns formatted availability to Amy.\n\nBookSlots: Creates a new calendar event with patient details, includes timezone conversion and a friendly error response if the time is already taken.\n\nUpdateSlots: Finds the existing appointment by patient name and email, deletes it, and creates a new one at the rescheduled time.\n\nCancelSlots: Locates and removes the calendar event. Cancellation notes are passed back to the system for logging.\n\nAfter each call, a fifth workflow captures the full transcript, recording URL, call summary, cost, and patient details into Airtable, giving the clinic a complete call log without any manual entry.",
       flow: [
-        "Timezone handling built in — Vapi passes times in UTC. A dedicated conversion step normalizes all times to America/Chicago (CST) before writing to Google Calendar — preventing double-booking across timezone mismatches.",
-        "Error paths on every workflow — Each workflow has a dedicated error branch that returns a human-readable message to Amy rather than failing silently — so the caller always gets a clear response even when something goes wrong.",
-        "Human escalation preserved — Amy is prompted to escalate urgent or clinical situations to a triage nurse rather than attempt to handle them. AI handles logistics; clinical judgment stays human.",
+        "Timezone handling built in: Vapi passes times in UTC. A dedicated conversion step normalizes all times to America/Chicago (CST) before writing to Google Calendar, preventing double-booking across timezone mismatches.",
+        "Error paths on every workflow: Each workflow has a dedicated error branch that returns a human-readable message to Amy rather than failing silently, so the caller always gets a clear response even when something goes wrong.",
+        "Human escalation preserved: Amy is prompted to escalate urgent or clinical situations to a triage nurse rather than attempt to handle them. AI handles logistics; clinical judgment stays human.",
       ],
       flowNote:
         "Status: Built and tested to production spec as a portfolio demonstration. End-to-end tested across all four appointment actions. Available to adapt for live clinic deployment.",
@@ -268,20 +233,21 @@ export const site = {
       benefit: "47 HOURS → 60 SECONDS",
       workflowTag: "SPEED TO LEAD",
       loomEmbedId: "4f4fc37aa3d94d14b625ba993f78064c",
+      gridThumbnail: thumbLeadScore.url,
       summary:
-        "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data — it all happens on its own.",
+        "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data. It all happens on its own.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
       thumbnail: "/work/lead-router-thumbnail.png",
       fullImage: "/work/lead-router-full.png",
       gallery: [
-        { src: "/work/lead-router-full.png", alt: "n8n workflow — lead scoring + routing" },
-        { src: "/work/lead-router-ghl.png", alt: "GoHighLevel automation — tag-based branching" },
+        { src: "/work/lead-router-full.png", alt: "n8n workflow: lead scoring + routing" },
+        { src: "/work/lead-router-ghl.png", alt: "GoHighLevel automation: tag-based branching" },
       ],
       client: "Prestige Auto Detail",
       problem:
-        "Most service businesses lose leads because no one follows up fast enough. Average response time was 47 hours — by then the lead already booked with a competitor. Manual qualification took 15-20 minutes per lead, hot leads only got followed up 60% of the time, and coverage was business hours only.",
+        "Most service businesses lose leads because no one follows up fast enough. Average response time was 47 hours. By then the lead already booked with a competitor. Manual qualification took 15-20 minutes per lead, hot leads only got followed up 60% of the time, and coverage was business hours only.",
       solution:
-        "Fully automated pipeline that captures inbound leads via Tally form, scores them using weighted AI rubric (vehicle type, service, budget, timeline, referral status), routes into GoHighLevel CRM by tier, and triggers immediate follow-up — all within 60 seconds of form submission, 24/7.",
+        "Fully automated pipeline that captures inbound leads via Tally form, scores them using weighted AI rubric (vehicle type, service, budget, timeline, referral status), routes into GoHighLevel CRM by tier, and triggers immediate follow-up, all within 60 seconds of form submission, 24/7.",
       flow: [
         "Prospect submits Tally form (vehicle, service, budget, timeline, source)",
         "n8n receives webhook, runs duplicate check against GoHighLevel",
@@ -317,13 +283,14 @@ export const site = {
       title: "Finance and Project Management Finally Talking to Each Other",
       outcome: "Transactions exported, formatted, and synced to Asana",
       benefit: "ZERO MANUAL ENTRY",
+      gridThumbnail: thumbXero.url,
       summary:
-        "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything — the system does it all.",
+        "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything. The system does it all.",
       tools: ["Make", "Xero", "Asana", "CSV"],
       thumbnail: "/work/xero-invoice-thumbnail.png",
       fullImage: "/work/xero-invoice-full.png",
       problem:
-        "Finance and project teams worked in silos — transactions lived in Xero while task tracking lived in Asana. Reconciling the two meant hours of manual exports, reformatting, and copy-paste, with errors creeping in at every step.",
+        "Finance and project teams worked in silos. Transactions lived in Xero while task tracking lived in Asana. Reconciling the two meant hours of manual exports, reformatting, and copy-paste, with errors creeping in at every step.",
       solution:
         "I built a seamless workflow to bridge the gap between accounting and project management. This automation ensures financial transactions are accurately tracked as actionable tasks without manual data entry.",
       flow: [
@@ -345,13 +312,14 @@ export const site = {
       title: "A Status Change in Asana Triggers 29 Steps. Zero Manual Work.",
       outcome: "Full client lifecycle automated from one status field",
       benefit: "ZERO FORGOTTEN CLIENTS",
+      gridThumbnail: thumbAsana29.url,
       summary:
         "When a client pays, the system sets up their folders, sends their welcome email, and schedules follow-ups. The team doesn't lift a finger.",
       tools: ["Asana", "Google Drive", "Gmail", "Zapier"],
       thumbnail: "/work/asana-29step-thumbnail.png",
       fullImage: "/work/asana-29step-full.png",
       problem:
-        "Leads were slipping through the cracks — files scattered across drives, follow-ups forgotten, and onboarding handled manually for every new client. The team had no consistent system for nurturing prospects or delivering post-sale guidance.",
+        "Leads were slipping through the cracks. Files scattered across drives, follow-ups forgotten, and onboarding handled manually for every new client. The team had no consistent system for nurturing prospects or delivering post-sale guidance.",
       solution:
         "Turned Asana into a full CRM. Status changes drive automation: folders auto-created in Google Drive with linked subtasks, unresponsive leads get SMS/Email nurture sequences, approved clients receive welcome emails with PDFs, and service-specific maintenance advice goes out automatically.",
       flow: [
@@ -376,6 +344,7 @@ export const site = {
       outcome: "Enriches, scores, and briefs leads automatically",
       benefit: "SALES-READY LEADS",
       workflowTag: "SPEED TO LEAD",
+      gridThumbnail: thumbLeadEnrich.url,
       summary:
         "Form submission triggers Apollo.io to pull company data. Zapier sorts leads into hot or cold, logs them in Google Sheets, and alerts the sales team in Slack. AI summarizes everything so reps know exactly who they're calling.",
       tools: ["Zapier", "Tally", "Apollo.io", "Google Sheets", "Slack", "AI by Zapier"],
@@ -397,6 +366,7 @@ export const site = {
       title: "One Video Upload. Two Blog Posts. Social Captions. Brand-Safe. Auto-Posted.",
       outcome: "Full content repurposing pipeline with brand safety filter",
       benefit: "1 VIDEO → 10 ASSETS",
+      gridThumbnail: thumbContent.url,
       summary:
         "Drop a video in Google Drive and the system transcribes it, writes 2 blog posts and social captions, scans for brand-risk words, then posts to Facebook and LinkedIn. One video becomes 10 content pieces without lifting a finger.",
       tools: ["Zapier", "Google Drive", "AI (Whisper)", "Facebook", "LinkedIn"],
@@ -411,7 +381,7 @@ export const site = {
         "Clean content routed via Zapier Paths to Facebook and LinkedIn for posting",
       ],
       flowNote:
-        "Brand safety built in — A custom filter checks every piece of AI-generated content before it goes live. If risky language is detected, the system stops and alerts the team instead of auto-posting potentially damaging content.",
+        "Brand safety built in: A custom filter checks every piece of AI-generated content before it goes live. If risky language is detected, the system stops and alerts the team instead of auto-posting potentially damaging content.",
       toolsDetail: "Zapier, Google Drive, AI (Whisper), AI content generation, Facebook, LinkedIn",
     },
     {
@@ -420,6 +390,7 @@ export const site = {
       title: "AI Reads Every Attachment and Files It Better Than You Would",
       outcome: "Auto-renames and organizes files by content",
       benefit: "ZERO MANUAL FILING",
+      gridThumbnail: thumbGmail.url,
       summary:
         "Watches Gmail for attachments, downloads them, uses Gemini to read the content and generate a smart filename, renames the file, uploads to the right Google Drive folder, and logs everything in Google Sheets. No one touches the files.",
       tools: ["Make", "Gmail", "Gemini", "Google Drive", "Google Sheets"],
@@ -436,7 +407,7 @@ export const site = {
         "Optional summary email sent after each file is processed",
       ],
       flowNote:
-        "Smart naming — Instead of \"invoice_final_v3.pdf\", files get renamed to something like \"2024_Q3_Acme_Corp_Invoice.pdf\" based on the actual content. Makes searching and organizing instant.",
+        "Smart naming: Instead of \"invoice_final_v3.pdf\", files get renamed to something like \"2024_Q3_Acme_Corp_Invoice.pdf\" based on the actual content. Makes searching and organizing instant.",
       toolsDetail: "Make, Gmail, Gemini, Google Drive, Google Sheets",
     },
   ] as Project[],

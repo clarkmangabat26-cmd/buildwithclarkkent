@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 // ChevronLeft/ChevronRight still used by the modal gallery below.
 import { site, type Project } from "@/content/site";
 import SmartImage from "@/components/site/SmartImage";
@@ -9,7 +9,7 @@ const LoomEmbed = ({ embedId, title }: { embedId: string; title: string }) => (
   <div className="relative w-full aspect-video border-2 border-ink bg-ink overflow-hidden">
     <iframe
       src={`https://www.loom.com/embed/${embedId}`}
-      title={`${title} — Loom demo`}
+      title={`${title}: Loom demo`}
       frameBorder={0}
       allowFullScreen
       loading="lazy"
@@ -47,8 +47,8 @@ const Work = () => {
 
   return (
     <section id="work" className="border-b-2 border-ink">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
-        <div className="flex items-end justify-between mb-10 md:mb-16">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-28">
+        <div className="flex items-end justify-between mb-8 md:mb-12">
           <div>
             <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
               / {ws.eyebrow}
@@ -65,43 +65,81 @@ const Work = () => {
           </div>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((p, i) => (
-            <button
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
+          {projects.map((p, i) => {
+            return (
+            <div
               key={p.id}
-              onClick={() => setActive(p)}
-              className="group w-full text-left bg-background hover:bg-ink hover:text-background transition-all duration-200 relative hover:-translate-y-1 hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col"
+              className="h-full"
               style={{
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 600ms ease-out ${i * 80}ms, transform 600ms ease-out ${i * 80}ms`,
               }}
             >
-              {/* Thumbnail — 16:9 placeholder */}
+            <button
+              onClick={() => setActive(p)}
+              className="group w-full h-full text-left bg-background hover:bg-ink hover:text-background relative hover:scale-[1.03] hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col transition-transform duration-200 ease-out [transition-property:transform,background-color,color,box-shadow]"
+            >
+              {/* Thumbnail — 16:9 */}
               <div className="relative w-full aspect-video bg-ink border-b-2 border-ink flex items-center justify-center overflow-hidden">
                 {p.clientWork && (
-                  <span className="absolute top-3 left-3 z-10 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
+                  <span className="absolute top-3 left-3 z-20 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
                     Client Work
                   </span>
                 )}
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
-                  Thumbnail coming soon
-                </span>
+                {/* Loom badge — visual element only (non-clickable) */}
+                {p.loomEmbedId && (
+                  <span
+                    className="absolute bottom-[10px] right-[10px] z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
+                    style={{
+                      backgroundColor: "rgba(245, 158, 11, 0.12)",
+                      border: "1px solid rgba(245, 158, 11, 0.3)",
+                      color: "#F59E0B",
+                      padding: "5px 10px 5px 6px",
+                      fontSize: "12px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span className="h-[18px] w-[18px] rounded-full bg-[#F59E0B] flex items-center justify-center shrink-0">
+                      <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
+                    </span>
+                    Loom
+                  </span>
+                )}
+                {p.gridThumbnail ? (
+                  <img
+                    src={p.gridThumbnail}
+                    alt={`${p.title}: thumbnail`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
+                    Thumbnail coming soon
+                  </span>
+                )}
+                {/* Hover overlay with centered play icon */}
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-ink/0 group-hover:bg-ink/40 transition-colors duration-200 pointer-events-none">
+                  <div className="h-14 w-14 rounded-full bg-background/90 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-200">
+                    <Play className="h-6 w-6 text-ink fill-current ml-0.5" strokeWidth={0} />
+                  </div>
+                </div>
               </div>
 
-              <div className="p-6 md:p-8 flex flex-col flex-1">
+              <div className="p-5 md:p-6 flex flex-col flex-1">
                 {/* Outcome line */}
-                <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-4">
+                <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-3">
                   {p.outcome ?? p.benefit}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-black tracking-tightest text-2xl md:text-3xl leading-tight">
+                <h3 className="font-black tracking-tightest text-xl md:text-2xl leading-tight">
                   {p.title}
                 </h3>
 
                 {/* Tools */}
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {p.tools.map((t) => (
                     <span
                       key={t}
@@ -112,7 +150,7 @@ const Work = () => {
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center justify-between gap-3">
+                <div className="mt-4 flex items-center justify-between gap-3">
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
                     {String(i + 1).padStart(2, "0")} / {p.category}
                   </span>
@@ -120,7 +158,9 @@ const Work = () => {
                 </div>
               </div>
             </button>
-          ))}
+            </div>
+            );
+          })}
         </div>
       </div>
 
@@ -160,7 +200,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
       <div className="sticky top-0 z-10 border-b-2 border-ink bg-background">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
           <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em]">
-            / Case Study — {project.category}
+            / Case Study: {project.category}
           </span>
           <button
             onClick={onClose}
@@ -229,7 +269,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                 <SmartImage
                   key={galleryIdx}
                   src={gallery[galleryIdx].src}
-                  alt={`${project.title} — ${gallery[galleryIdx].alt}`}
+                  alt={`${project.title}: ${gallery[galleryIdx].alt}`}
                   width={1600}
                   height={1000}
                   sizes="(max-width: 1024px) 100vw, 1400px"
@@ -288,7 +328,7 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
               <div className="relative w-full" style={{ aspectRatio: "16 / 10" }}>
                 <SmartImage
                   src={project.fullImage}
-                  alt={`${project.title} — full workflow diagram (${project.toolsDetail ?? project.tools.join(", ")})`}
+                  alt={`${project.title}: full workflow diagram (${project.toolsDetail ?? project.tools.join(", ")})`}
                   width={1600}
                   height={1000}
                   sizes="(max-width: 1024px) 100vw, 1400px"

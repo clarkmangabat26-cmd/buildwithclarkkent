@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex items-center gap-3 flex-wrap">
           <span className="inline-block w-3 h-3 bg-primary" />
           <span className="font-mono text-[10px] uppercase tracking-[0.2em]">
-            © {site.footer.year} {site.brandMark} — {site.footer.tagline}
+            © {site.footer.year} {site.brandMark}: {site.footer.tagline}
           </span>
         </div>
         <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.2em]">
