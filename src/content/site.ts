@@ -3,6 +3,14 @@
 // Edit this file to update headlines, projects, contact, etc.
 // ============================================================
 
+import thumbReceptionist from "@/assets/work-thumbs/AI_RECEPTIONIST_THUMBNAIL.png.asset.json";
+import thumbLeadScore from "@/assets/work-thumbs/LEAD_CRM_SCORE_PIPELINE_THUMBNAIL.png.asset.json";
+import thumbAsana29 from "@/assets/work-thumbs/ZAPIER_ASANA_29_STEPS_THUMBNAIL.png.asset.json";
+import thumbLeadEnrich from "@/assets/work-thumbs/ZAPIER_LEAD_ENRICHMENT_THUMBNAIL.png.asset.json";
+import thumbContent from "@/assets/work-thumbs/ZAPIER_CONTENT_ENGINE_THUMBNAIL.png.asset.json";
+import thumbGmail from "@/assets/work-thumbs/MAKE_GMAIL_ATTACHMENTS_THUMBNAIL.png.asset.json";
+import thumbXero from "@/assets/work-thumbs/MAKE_XERO_THUMBNAIL.png.asset.json";
+
 export type ImpactRow = { label: string; from: string; to: string };
 
 export type Project = {
@@ -27,6 +35,7 @@ export type Project = {
   // ---- Grid card overrides ----
   outcome?: string; // one-line capability statement shown beneath the thumbnail on the grid card
   clientWork?: boolean; // when true, renders a small "Client Work" badge on the thumbnail
+  gridThumbnail?: string; // 16:9 image URL rendered as the grid card thumbnail
 
   // ---- Modal / case study ----
   client?: string;
@@ -186,11 +195,12 @@ export const site = {
     {
       id: "real-estate-acquisitions",
       category: "Acquisitions & Operations",
-      title: "How I Built a Lead Scoring Engine That Flags Hot Deals Before the Team Sees Them",
+      title: "How I Built the Operational Hub That Runs a Real Estate Acquisitions Team on Autopilot",
       outcome: "Live client system — scoring and routing active",
       clientWork: true,
       benefit: "AUTOMATED SCORING & LIVE AI SYNC",
       workflowTags: ["LIVE PRODUCTION", "IN PROGRESS"],
+      gridThumbnail: "/work/acquisitions-automation.png",
       summary:
         "Engineered a master data infrastructure for property acquisitions. Formulated a weighted 'Sick Score' matrix using multi-select tags to classify high-value leads automatically. Architected HTTP webhook logic to ingest incoming payloads from an AI calling app to sync durations, dispositions, and AI summaries instantly.",
       tools: ["Airtable", "n8n", "OpenPhone", "AI Tools", "GoHighLevel", "Slack"],
@@ -236,6 +246,7 @@ export const site = {
       benefit: "24/7 AVAILABILITY",
       workflowTag: "AI VOICE AGENT",
       loomEmbedId: "4640467f36f8481fa60a31f1eab74403",
+      gridThumbnail: thumbReceptionist.url,
       summary:
         "Amy answers the phone, books appointments, reschedules them, and handles cancellations. Everything syncs to Google Calendar automatically. No receptionist needed — it runs 24/7 on its own.",
       tools: ["Vapi", "n8n", "ElevenLabs", "Google Calendar", "Airtable"],
@@ -268,6 +279,7 @@ export const site = {
       benefit: "47 HOURS → 60 SECONDS",
       workflowTag: "SPEED TO LEAD",
       loomEmbedId: "4f4fc37aa3d94d14b625ba993f78064c",
+      gridThumbnail: thumbLeadScore.url,
       summary:
         "Leads get scored by AI and sent to the right sales rep automatically. Hot leads get contacted in under 60 seconds. No one touches the data — it all happens on its own.",
       tools: ["n8n", "GoHighLevel", "OpenAI", "Tally", "Slack"],
@@ -317,6 +329,7 @@ export const site = {
       title: "Finance and Project Management Finally Talking to Each Other",
       outcome: "Transactions exported, formatted, and synced to Asana",
       benefit: "ZERO MANUAL ENTRY",
+      gridThumbnail: thumbXero.url,
       summary:
         "Pulls transactions from Xero and turns them into Asana tasks. The accounting team doesn't type anything — the system does it all.",
       tools: ["Make", "Xero", "Asana", "CSV"],
@@ -345,6 +358,7 @@ export const site = {
       title: "A Status Change in Asana Triggers 29 Steps. Zero Manual Work.",
       outcome: "Full client lifecycle automated from one status field",
       benefit: "ZERO FORGOTTEN CLIENTS",
+      gridThumbnail: thumbAsana29.url,
       summary:
         "When a client pays, the system sets up their folders, sends their welcome email, and schedules follow-ups. The team doesn't lift a finger.",
       tools: ["Asana", "Google Drive", "Gmail", "Zapier"],
@@ -376,6 +390,7 @@ export const site = {
       outcome: "Enriches, scores, and briefs leads automatically",
       benefit: "SALES-READY LEADS",
       workflowTag: "SPEED TO LEAD",
+      gridThumbnail: thumbLeadEnrich.url,
       summary:
         "Form submission triggers Apollo.io to pull company data. Zapier sorts leads into hot or cold, logs them in Google Sheets, and alerts the sales team in Slack. AI summarizes everything so reps know exactly who they're calling.",
       tools: ["Zapier", "Tally", "Apollo.io", "Google Sheets", "Slack", "AI by Zapier"],
@@ -397,6 +412,7 @@ export const site = {
       title: "One Video Upload. Two Blog Posts. Social Captions. Brand-Safe. Auto-Posted.",
       outcome: "Full content repurposing pipeline with brand safety filter",
       benefit: "1 VIDEO → 10 ASSETS",
+      gridThumbnail: thumbContent.url,
       summary:
         "Drop a video in Google Drive and the system transcribes it, writes 2 blog posts and social captions, scans for brand-risk words, then posts to Facebook and LinkedIn. One video becomes 10 content pieces without lifting a finger.",
       tools: ["Zapier", "Google Drive", "AI (Whisper)", "Facebook", "LinkedIn"],
@@ -420,6 +436,7 @@ export const site = {
       title: "AI Reads Every Attachment and Files It Better Than You Would",
       outcome: "Auto-renames and organizes files by content",
       benefit: "ZERO MANUAL FILING",
+      gridThumbnail: thumbGmail.url,
       summary:
         "Watches Gmail for attachments, downloads them, uses Gemini to read the content and generate a smart filename, renames the file, uploads to the right Google Drive folder, and logs everything in Google Sheets. No one touches the files.",
       tools: ["Make", "Gmail", "Gemini", "Google Drive", "Google Sheets"],

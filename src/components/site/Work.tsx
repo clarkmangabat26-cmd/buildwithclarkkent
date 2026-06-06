@@ -84,9 +84,18 @@ const Work = () => {
                     Client Work
                   </span>
                 )}
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
-                  Thumbnail coming soon
-                </span>
+                {p.gridThumbnail ? (
+                  <img
+                    src={p.gridThumbnail}
+                    alt={`${p.title} — thumbnail`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
+                    Thumbnail coming soon
+                  </span>
+                )}
               </div>
 
               <div className="p-6 md:p-8 flex flex-col flex-1">
