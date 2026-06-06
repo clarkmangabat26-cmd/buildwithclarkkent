@@ -87,14 +87,9 @@ const Work = () => {
                     Client Work
                   </span>
                 )}
-                {/* Loom Walkthrough badge — clickable link (only for projects with a Loom embed) */}
+                {/* Loom badge — visual element only (non-clickable) */}
                 {p.loomEmbedId && (
-                  <a
-                    href={`https://www.loom.com/share/${p.loomEmbedId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    aria-label={`${p.title} — watch Loom walkthrough`}
+                  <span
                     className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
                     style={{
                       backgroundColor: "rgba(245, 158, 11, 0.12)",
@@ -109,7 +104,7 @@ const Work = () => {
                       <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
                     </span>
                     Loom
-                  </a>
+                  </span>
                 )}
                 {p.gridThumbnail ? (
                   <img
