@@ -3,14 +3,6 @@
 // Edit this file to update headlines, projects, contact, etc.
 // ============================================================
 
-import thumbReceptionist from "@/assets/work-thumbs/AI_RECEPTIONIST_THUMBNAIL.png.asset.json";
-import thumbLeadScore from "@/assets/work-thumbs/LEAD_CRM_SCORE_PIPELINE_THUMBNAIL.png.asset.json";
-import thumbAsana29 from "@/assets/work-thumbs/ZAPIER_ASANA_29_STEPS_THUMBNAIL.png.asset.json";
-import thumbLeadEnrich from "@/assets/work-thumbs/ZAPIER_LEAD_ENRICHMENT_THUMBNAIL.png.asset.json";
-import thumbContent from "@/assets/work-thumbs/ZAPIER_CONTENT_ENGINE_THUMBNAIL.png.asset.json";
-import thumbGmail from "@/assets/work-thumbs/MAKE_GMAIL_ATTACHMENTS_THUMBNAIL.png.asset.json";
-import thumbXero from "@/assets/work-thumbs/MAKE_XERO_THUMBNAIL.png.asset.json";
-
 export type ImpactRow = { label: string; from: string; to: string };
 
 export type Project = {
