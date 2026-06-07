@@ -4,7 +4,6 @@ import { site, CTA_HREF } from "@/content/site";
 
 const links = [
   { href: "#work", label: "Work" },
-  { href: "#solutions", label: "Tools" },
   { href: "#about", label: "About" },
 ];
 
