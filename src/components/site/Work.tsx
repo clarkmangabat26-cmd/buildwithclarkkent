@@ -369,6 +369,14 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </div>
         )}
 
+        {/* Loom video embed (modal) — after gallery when loomAfterImage is set */}
+        {project.loomEmbedId && project.loomAfterImage && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Demo Video</SectionLabel>
+            <LoomEmbed embedId={project.loomEmbedId} title={project.title} />
+          </div>
+        )}
+
         {/* Problem / Solution */}
         {(project.problem || project.solution) && (
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-ink">
