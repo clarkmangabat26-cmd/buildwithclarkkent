@@ -88,24 +88,47 @@ const Work = () => {
                     Client Work
                   </span>
                 )}
-                {/* Loom badge — visual element only (non-clickable) */}
-                {p.loomEmbedId && (
-                  <span
-                    className="absolute bottom-[10px] right-[10px] z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
-                    style={{
-                      backgroundColor: "rgba(245, 158, 11, 0.12)",
-                      border: "1px solid rgba(245, 158, 11, 0.3)",
-                      color: "#F59E0B",
-                      padding: "5px 10px 5px 6px",
-                      fontSize: "12px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    <span className="h-[18px] w-[18px] rounded-full bg-[#F59E0B] flex items-center justify-center shrink-0">
-                      <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
+                {/* Loom badge */}
+                {(p.loomEmbedId || p.loomShareUrl) && (
+                  p.loomShareUrl ? (
+                    <a
+                      href={p.loomShareUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="absolute bottom-[10px] right-[10px] z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
+                      style={{
+                        backgroundColor: "rgba(245, 158, 11, 0.12)",
+                        border: "1px solid rgba(245, 158, 11, 0.3)",
+                        color: "#F59E0B",
+                        padding: "5px 10px 5px 6px",
+                        fontSize: "12px",
+                        fontWeight: 600,
+                      }}
+                    >
+                      <span className="h-[18px] w-[18px] rounded-full bg-[#F59E0B] flex items-center justify-center shrink-0">
+                        <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
+                      </span>
+                      Loom
+                    </a>
+                  ) : (
+                    <span
+                      className="absolute bottom-[10px] right-[10px] z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
+                      style={{
+                        backgroundColor: "rgba(245, 158, 11, 0.12)",
+                        border: "1px solid rgba(245, 158, 11, 0.3)",
+                        color: "#F59E0B",
+                        padding: "5px 10px 5px 6px",
+                        fontSize: "12px",
+                        fontWeight: 600,
+                      }}
+                    >
+                      <span className="h-[18px] w-[18px] rounded-full bg-[#F59E0B] flex items-center justify-center shrink-0">
+                        <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
+                      </span>
+                      Loom
                     </span>
-                    Loom
-                  </span>
+                  )
                 )}
                 {p.gridThumbnail ? (
                   <img
