@@ -348,17 +348,26 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
         ) : (
           <div className="mt-12 md:mt-16 w-full border-2 border-ink bg-background overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--ink)/0.4)]">
             {project.fullImage ? (
-              <div className="relative w-full" style={{ aspectRatio: "16 / 10" }}>
-                <SmartImage
+              project.fullImageNaturalAspect ? (
+                <img
                   src={project.fullImage}
                   alt={`${project.title}: full workflow diagram (${project.toolsDetail ?? project.tools.join(", ")})`}
-                  width={1600}
-                  height={1000}
-                  sizes="(max-width: 1024px) 100vw, 1400px"
-                  className="object-contain"
-                  loadingBorder
+                  loading="lazy"
+                  className="block w-full h-auto"
                 />
-              </div>
+              ) : (
+                <div className="relative w-full" style={{ aspectRatio: "16 / 10" }}>
+                  <SmartImage
+                    src={project.fullImage}
+                    alt={`${project.title}: full workflow diagram (${project.toolsDetail ?? project.tools.join(", ")})`}
+                    width={1600}
+                    height={1000}
+                    sizes="(max-width: 1024px) 100vw, 1400px"
+                    className="object-contain"
+                    loadingBorder
+                  />
+                </div>
+              )
             ) : (
               <div className="aspect-[8/5] flex items-center justify-center bg-ink">
                 <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-background/50">
