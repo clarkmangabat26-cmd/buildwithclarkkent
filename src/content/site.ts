@@ -17,6 +17,8 @@ export type Project = {
   hasVideoPlaceholder?: boolean; // shows a "coming soon" video embed placeholder
   videoPlaceholderText?: string; // caption under the play button
   loomEmbedId?: string; // Loom share id; when set, an embedded Loom iframe replaces the placeholder
+  loomShareUrl?: string; // Clickable Loom badge URL for grid cards
+
 
   // ---- Visuals ----
   thumbnail?: string; // 800x500 card image
