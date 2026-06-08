@@ -270,8 +270,8 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
           </div>
         ) : null}
 
-        {/* Loom video embed (modal) */}
-        {project.loomEmbedId && (
+        {/* Loom video embed (modal) — before gallery unless loomAfterImage is set */}
+        {project.loomEmbedId && !project.loomAfterImage && (
           <div className="mt-12 md:mt-16">
             <SectionLabel>Demo Video</SectionLabel>
             <LoomEmbed embedId={project.loomEmbedId} title={project.title} />
@@ -366,6 +366,14 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
                 </span>
               </div>
             )}
+          </div>
+        )}
+
+        {/* Loom video embed (modal) — after gallery when loomAfterImage is set */}
+        {project.loomEmbedId && project.loomAfterImage && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Demo Video</SectionLabel>
+            <LoomEmbed embedId={project.loomEmbedId} title={project.title} />
           </div>
         )}
 

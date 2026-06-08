@@ -18,6 +18,7 @@ export type Project = {
   videoPlaceholderText?: string; // caption under the play button
   loomEmbedId?: string; // Loom share id; when set, an embedded Loom iframe replaces the placeholder
   loomShareUrl?: string; // Clickable Loom badge URL for grid cards
+  loomAfterImage?: boolean; // when true, render Loom embed after the full-view image instead of before
 
 
   // ---- Visuals ----
@@ -197,6 +198,9 @@ export const site = {
       summary:
         "An automation that scrapes multiple lead directories simultaneously, scores every lead against custom criteria, and delivers a ranked list to your inbox — all from a single webhook trigger.",
       tools: ["n8n", "Apify", "Apollo.io", "Google Sheets", "Gmail"],
+      fullImage: "/work/WEBSITE_WORKFLOW_multi_lead_scraperFULL_VIEW_.png",
+      loomEmbedId: "d1be23028f034e489c55c72c9243d091",
+      loomAfterImage: true,
       loomShareUrl: "https://www.loom.com/share/d1be23028f034e489c55c72c9243d091",
       problem:
         "Sourcing leads from multiple directories is time-consuming and inconsistent. Manual copying, scoring, and organizing takes hours. By the time the list is ready, the best leads have already been contacted by competitors.",
