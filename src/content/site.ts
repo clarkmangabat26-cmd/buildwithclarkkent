@@ -202,7 +202,7 @@ export const site = {
       fullImage: "/work/WEBSITE%20WORKFLOW%20multi%20lead%20scraperFULL%20VIEW%20.png",
       fullImageNaturalAspect: true,
       loomEmbedId: "d1be23028f034e489c55c72c9243d091",
-      loomAfterImage: true,
+      loomAfterImage: false,
       loomShareUrl: "https://www.loom.com/share/d1be23028f034e489c55c72c9243d091",
       problem:
         "Sourcing leads from multiple directories is time-consuming and inconsistent. Manual copying, scoring, and organizing takes hours. By the time the list is ready, the best leads have already been contacted by competitors.",
