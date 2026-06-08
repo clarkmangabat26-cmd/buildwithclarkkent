@@ -199,7 +199,7 @@ export const site = {
       summary:
         "An automation that scrapes multiple lead directories simultaneously, scores every lead against custom criteria, and delivers a ranked list to your inbox — all from a single webhook trigger.",
       tools: ["n8n", "Apify", "Apollo.io", "Google Sheets", "Gmail"],
-      fullImage: "/work/WEBSITE_WORKFLOW_multi_lead_scraperFULL_VIEW_.png",
+      fullImage: "/work/WEBSITE%20WORKFLOW%20multi%20lead%20scraperFULL%20VIEW%20.png",
       fullImageNaturalAspect: true,
       loomEmbedId: "d1be23028f034e489c55c72c9243d091",
       loomAfterImage: true,
