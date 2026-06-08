@@ -187,6 +187,37 @@ export const site = {
   // NOTE: Array order = display order. Build 1 is index 0. Insert new case studies at index 0.
   projects: [
     {
+      id: "multi-source-lead-scraper",
+      category: "Lead Generation",
+      title: "This Scraper Hits Every Directory. Scored. One Webhook. Done in 3 Minutes.",
+      outcome: "Multi-source scraping, scored and delivered automatically",
+      benefit: "LEADS IN 3 MINUTES",
+      gridThumbnail: "/work/Multi-Source%20Lead%20Scrper.png",
+      thumbnail: "/work/Multi-Source%20Lead%20Scrper.png",
+      summary:
+        "An automation that scrapes multiple lead directories simultaneously, scores every lead against custom criteria, and delivers a ranked list to your inbox — all from a single webhook trigger.",
+      tools: ["n8n", "Apify", "Apollo.io", "Google Sheets", "Gmail"],
+      loomShareUrl: "https://www.loom.com/share/d1be23028f034e489c55c72c9243d091",
+      problem:
+        "Sourcing leads from multiple directories is time-consuming and inconsistent. Manual copying, scoring, and organizing takes hours. By the time the list is ready, the best leads have already been contacted by competitors.",
+      solution:
+        "Built a fully automated lead scraping pipeline that hits multiple directories at once, scores each lead using a custom rubric, and delivers a clean, ranked list to Gmail — all triggered by a single webhook and completed in under 3 minutes.",
+      flow: [
+        "Webhook triggers the n8n workflow on demand",
+        "Apify actors scrape multiple lead directories in parallel",
+        "Apollo.io enriches each lead with company and contact data",
+        "Custom scoring rubric ranks leads by priority",
+        "Results are written to Google Sheets for tracking",
+        "Ranked lead list is delivered via Gmail to the sales team",
+      ],
+      impact: [
+        { label: "Lead sourcing time", from: "Hours", to: "3 minutes" },
+        { label: "Directories covered", from: "1", to: "Multiple" },
+        { label: "Manual scoring", from: "Manual", to: "Automated" },
+      ],
+      toolsDetail: "n8n, Apify, Apollo.io, Google Sheets, Gmail",
+    },
+    {
       id: "ai-voice-receptionist",
       category: "AI Voice Automation",
       title: "This AI Answers the Phone, Books Appointments, and Never Calls In Sick",
