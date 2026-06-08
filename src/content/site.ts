@@ -25,6 +25,7 @@ export type Project = {
   thumbnail?: string; // 800x500 card image
   thumbnails?: string[]; // 2+ card images rendered as a split grid in the card thumbnail box
   fullImage?: string; // 1600x1000 case-study image
+  fullImageNaturalAspect?: boolean; // when true, render fullImage at natural aspect ratio instead of 16:10
   gallery?: { src: string; alt: string }[]; // optional multi-image gallery for modal
 
   // ---- Grid card overrides ----
@@ -199,6 +200,7 @@ export const site = {
         "An automation that scrapes multiple lead directories simultaneously, scores every lead against custom criteria, and delivers a ranked list to your inbox — all from a single webhook trigger.",
       tools: ["n8n", "Apify", "Apollo.io", "Google Sheets", "Gmail"],
       fullImage: "/work/WEBSITE_WORKFLOW_multi_lead_scraperFULL_VIEW_.png",
+      fullImageNaturalAspect: true,
       loomEmbedId: "d1be23028f034e489c55c72c9243d091",
       loomAfterImage: true,
       loomShareUrl: "https://www.loom.com/share/d1be23028f034e489c55c72c9243d091",
