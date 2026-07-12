@@ -29,6 +29,17 @@ const Hero = ({ introDone = true }: HeroProps) => {
             {site.hero.tag}
           </span>
         </div>
+        <a
+          href="#testimonial"
+          onClick={(e) => scrollTo(e, "#testimonial")}
+          className={`inline-flex items-center gap-2 -mt-6 mb-8 font-mono text-[11px] md:text-xs tracking-[0.15em] text-foreground/80 cursor-pointer hover:opacity-70 hover:underline underline-offset-4 transition-opacity ${
+            introDone ? "animate-fade-up-smooth" : "opacity-0"
+          }`}
+          style={{ animationDelay: "0.35s" }}
+        >
+          <span aria-hidden>⭐</span>
+          <span>"{site.hero.trustBadge.quote}" — {site.hero.trustBadge.author}, {site.hero.trustBadge.source}</span>
+        </a>
         <h1
           className={`font-black tracking-tightest leading-[0.95] text-4xl sm:text-6xl md:text-7xl lg:text-8xl ${
             introDone ? "animate-fade-up-smooth" : "opacity-0"

@@ -3,6 +3,7 @@ import Header from "@/components/site/Header";
 import Hero from "@/components/site/Hero";
 import Work from "@/components/site/Work";
 import About from "@/components/site/About";
+import Testimonial from "@/components/site/Testimonial";
 import Audit from "@/components/site/Audit";
 import Footer from "@/components/site/Footer";
 import IntroLoader from "@/components/site/IntroLoader";
@@ -24,6 +25,7 @@ const Index = () => {
         <Hero introDone={heroReady} />
         <Work />
         <About />
+        <Testimonial />
         <Audit />
       </main>
       <Footer />
