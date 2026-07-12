@@ -76,6 +76,13 @@ export const site = {
     },
   },
 
+  // ---------- Testimonial ----------
+  testimonial: {
+    quote: "If he says he can do it, he does it.",
+    author: "Tom Debicki",
+    source: "OnlineJobs.ph",
+  },
+
   // ---------- About ----------
   about: {
     imageUrl: "/work/Untitled%20design%20(7).png",
