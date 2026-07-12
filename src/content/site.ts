@@ -69,6 +69,11 @@ export const site = {
     primaryCtaTarget: "#work",
     secondaryCta: "CONTACT ME",
     secondaryCtaTarget: "#contact",
+    trustBadge: {
+      quote: "If he says he can do it, he does it.",
+      author: "Tom Debicki",
+      source: "OnlineJobs.ph",
+    },
   },
 
   // ---------- About ----------
