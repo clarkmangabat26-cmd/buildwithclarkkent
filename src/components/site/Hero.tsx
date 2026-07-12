@@ -32,7 +32,7 @@ const Hero = ({ introDone = true }: HeroProps) => {
         <a
           href="#testimonial"
           onClick={(e) => scrollTo(e, "#testimonial")}
-          className={`inline-flex items-center gap-2 -mt-6 mb-8 font-mono text-[11px] md:text-xs tracking-[0.15em] text-foreground/80 cursor-pointer hover:opacity-70 hover:underline underline-offset-4 transition-opacity ${
+          className={`inline-flex items-center gap-2 -mt-6 mb-8 px-4 py-2 border border-ink rounded-full bg-background font-mono text-[11px] md:text-xs tracking-[0.15em] text-foreground/80 cursor-pointer hover:bg-secondary/50 hover:underline underline-offset-4 transition-colors ${
             introDone ? "animate-fade-up-smooth" : "opacity-0"
           }`}
           style={{ animationDelay: "0.35s" }}
