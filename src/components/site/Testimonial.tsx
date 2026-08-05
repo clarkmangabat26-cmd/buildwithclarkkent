@@ -12,7 +12,7 @@ const Testimonial = () => {
             He saved us way more than we paid. Worth every penny.
           </h2>
         </div>
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
           <TestimonialCard
             name="Tomas Debicki"
             title="CEO/Founder"
@@ -20,6 +20,14 @@ const Testimonial = () => {
             photoPath="/work/tom-debicki-photo.jpg"
             screenshotPath="/work/tom-debicki-review.png"
             linkedinUrl="https://www.linkedin.com/in/tomas-debicki-21163a36/"
+          />
+          <TestimonialCard
+            name="Peter Watson"
+            title="Founder"
+            company="Next Haven Life"
+            photoPath="/work/Peternexthaven.jpg"
+            screenshotPath="/work/Peter-watson-review.png"
+            linkedinUrl="https://www.linkedin.com/in/nexthavenlife/"
           />
         </div>
       </div>
