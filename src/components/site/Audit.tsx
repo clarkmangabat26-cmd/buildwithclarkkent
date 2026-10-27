@@ -332,7 +332,7 @@ const Contact = () => {
             <span className="text-xs font-mono uppercase tracking-[0.15em]">OnlineJobs.ph</span>
           </a>
           <a
-            href="mailto:clarkmangabat28@gmail.com"
+            href="mailto:clarkmangabat26@gmail.com"
             className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
           >
             <Mail className="w-6 h-6" />
