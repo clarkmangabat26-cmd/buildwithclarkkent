@@ -204,7 +204,7 @@ export const site = {
     {
       id: "land-addiction-research",
       category: "Lead Research",
-      title: '1,000 County Leads Screened in a Workday. 41 "Dead" Owners Found Alive.',
+      title: '1,000 County Leads Screened in a Workday. 41 "Dead" Owners Found Alive',
       outcome: "Raw county lists worked down to the leads worth calling",
       benefit: "1,000 LEADS IN 8 HOURS",
       clientWork: true,
@@ -218,7 +218,7 @@ export const site = {
       problem:
         "Land Addiction buys houses in Cook County, Illinois, where the title needs work: an owner who passed away, heirs who have to sign, years of unpaid taxes, a tax case in court. Their leads come from county tax-delinquent lists, and the 2023 Cook County list alone has 16,968 properties.\n\nResearchers worked each lead by hand across 9 or 10 browser tabs. At 20 to 30 leads a day per researcher and about $1,000 a month each, one researcher would need more than two years to get through that list once. Only 12% of the researchers' qualified leads said who to call.",
       solution:
-        "A research system built with Claude Code that runs every lead through the checks a good researcher would, in order. A lead stops at the first check it fails. The free checks run first and the paid lookups run last, so money only goes on leads still worth calling.\n\nResults go straight into DataSift, their CRM, as statuses and notes, so the caller works from the same place as before. Every call-ready lead gets a one-page summary: the owner from the deed, who has to sign, the tax position and scored phone numbers.",
+        "A research system built with Claude Code that runs every lead through the checks a good researcher would, in order. A lead stops at the first check it fails. The free checks run first and the paid lookups run last, so money only goes on leads still worth calling.\n\nResults go straight into DataSift, their CRM, as statuses and notes, so the caller works from the same place as before. Every call-ready lead gets a one-page summary: the owner from the deed, who has to sign, the tax position and scored phone numbers.\n\nIt works like triage at a hospital: quick checks for everyone, the expensive tests only for the patients who need them. One 8-hour run screens about 1,000 raw leads, and the leads that pass get full research over the next 1 to 3 days.",
       flowLabel: "The Checks, In Order",
       flow: [
         "Listing check: is it listed or already sold? (free)",
@@ -229,26 +229,17 @@ export const site = {
         "Skip trace: find and score the phone numbers ($0.16 a lead)",
         "Caller summary: who owns it, who has to sign, who to call",
       ],
-      flowNote:
-        "It works like triage at a hospital: quick checks for everyone, the expensive tests only for the patients who need them. One 8-hour run screens about 1,000 raw leads, and the leads that pass get full research over the next 1 to 3 days.",
       gallery: [
-        { src: "/work/land-addiction-board.png", alt: "The 2023 Cook County list, 16,968 records, worked stage by stage" },
         { src: "/work/land-addiction-lead-after.png", alt: "A call-ready lead in DataSift: caller summary pinned, 9 scored numbers (personal details hidden)" },
         { src: "/work/land-addiction-evidence-note.png", alt: "The evidence behind one of the 41: an owner marked dead from an obituary, proven alive by a mortgage they signed later" },
-        { src: "/work/land-addiction-throughput.png", alt: "Leads given a final research answer per day, against one researcher's 20 to 30" },
       ],
       impact: [
         { label: "Leads worked per day", from: "20-30 per researcher", to: "Median 173, up to 1,259" },
         { label: "Cost per call-ready lead", from: "$10-16", to: "About $4-5" },
         { label: "Monthly cost at this pace", from: "$10,500-15,700", to: "About $500-600" },
         { label: "Leads that name who to call", from: "12%", to: "100%" },
-        { label: '"Dead" owners proven alive', from: "Not tracked", to: "41 of 486" },
-        { label: 'Summaries wrongly saying "no tax lawsuit"', from: "18 of 59", to: "0" },
+        { label: '"Dead" owners proven alive', from: "Manual obituary search", to: "41 caught in one afternoon" },
       ],
-      dataNote: {
-        label: "What Stayed the Same",
-        body: "Reply rates held level: researched leads replied to texts at 14% and unresearched ones at 18.5%, a gap small enough to be chance. Researchers also qualified more of the leads they worked (15% to 20%) because people had already picked those lists. The system works the whole raw county list, where 7 in 10 fail on value alone. Researcher pace and pay are Tomas's figures. Running cost is measured skip-trace spend plus estimated plan costs.",
-      },
       toolsDetail: "Claude Code, DataSift, SmartSkip, Trestle, Cook County records",
     },
     {
