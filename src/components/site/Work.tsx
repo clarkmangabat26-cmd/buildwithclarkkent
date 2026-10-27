@@ -67,6 +67,74 @@ const Work = () => {
 
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
           {projects.map((p, i) => {
+            const anim = {
+              opacity: revealed ? 1 : 0,
+              transform: revealed ? "translateY(0)" : "translateY(20px)",
+              transition: `opacity 600ms ease-out ${i * 80}ms, transform 600ms ease-out ${i * 80}ms`,
+            };
+            // Featured card: full width (both columns), thumbnail left / text right on lg.
+            if (p.featured) {
+              return (
+                <div key={p.id} className="md:col-span-2" style={anim}>
+                  <button
+                    onClick={() => setActive(p)}
+                    className="group w-full h-full text-left bg-background hover:bg-ink hover:text-background relative hover:scale-[1.03] hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col lg:flex-row transition-transform duration-200 ease-out [transition-property:transform,background-color,color,box-shadow]"
+                  >
+                    <div className="relative w-full lg:w-[55%] shrink-0 aspect-video bg-ink border-b-2 border-ink lg:border-b-0 lg:border-r-2 border-ink overflow-hidden">
+                      {p.clientWork && (
+                        <span className="absolute top-3 left-3 z-20 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
+                          Client Work
+                        </span>
+                      )}
+                      {p.gridThumbnail ? (
+                        <img
+                          src={p.gridThumbnail}
+                          alt={`${p.title}: thumbnail`}
+                          loading="lazy"
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      ) : (
+                        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
+                          Thumbnail coming soon
+                        </span>
+                      )}
+                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-ink/0 group-hover:bg-ink/40 transition-colors duration-200 pointer-events-none">
+                        <div className="h-14 w-14 rounded-full bg-background/90 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-200">
+                          <Play className="h-6 w-6 text-ink fill-current ml-0.5" strokeWidth={0} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-5 md:p-6 lg:p-8 flex flex-col flex-1">
+                      <span className="self-start inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1 mb-4">
+                        FEATURED / BUILT WITH CLAUDE
+                      </span>
+                      <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-3">
+                        {p.outcome ?? p.benefit}
+                      </div>
+                      <h3 className="font-black tracking-tightest text-xl md:text-2xl leading-tight">
+                        {p.title}
+                      </h3>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {p.tools.map((t) => (
+                          <span
+                            key={t}
+                            className="font-mono text-[10px] uppercase tracking-[0.15em] border border-ink px-2 py-1 bg-background text-foreground group-hover:bg-ink group-hover:border-background group-hover:text-background transition-colors"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-4 flex items-center justify-between gap-3">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
+                          {String(i + 1).padStart(2, "0")} / {p.category}
+                        </span>
+                        <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition shrink-0" />
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              );
+            }
             return (
             <div
               key={p.id}
