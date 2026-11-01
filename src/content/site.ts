@@ -19,6 +19,7 @@ export type Project = {
   loomEmbedId?: string; // Loom share id; when set, an embedded Loom iframe replaces the placeholder
   loomShareUrl?: string; // Clickable Loom badge URL for grid cards
   loomAfterImage?: boolean; // when true, render Loom embed after the full-view image instead of before
+  video?: { src: string; poster: string }; // self-hosted 9:16 video
 
 
   // ---- Visuals ----
@@ -209,6 +210,7 @@ export const site = {
       benefit: "1,000 LEADS IN 8 HOURS",
       clientWork: true,
       featured: true,
+      video: { src: "/work/land-addiction-kent-reports.mp4", poster: "/work/land-addiction-kent-reports-poster.png" },
       gridThumbnail: "/work/land-addiction-thumbnail.png",
       thumbnail: "/work/land-addiction-thumbnail.png",
       summary:
