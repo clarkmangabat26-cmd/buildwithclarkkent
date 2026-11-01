@@ -72,6 +72,66 @@ const Work = () => {
               transform: revealed ? "translateY(0)" : "translateY(20px)",
               transition: `opacity 600ms ease-out ${i * 80}ms, transform 600ms ease-out ${i * 80}ms`,
             };
+            // Featured card with a self-hosted video: video panel left (not inside a button),
+            // text block right inside its own button that still opens the case study.
+            if (p.featured && p.video) {
+              return (
+                <div key={p.id} className="md:col-span-2" style={anim}>
+                  <div className="w-full h-full border-2 border-ink bg-background flex flex-col lg:flex-row">
+                    <div className="relative shrink-0 lg:w-[45%] bg-ink border-b-2 lg:border-b-0 lg:border-r-2 border-ink flex items-center justify-center p-4 md:p-6">
+                      {p.clientWork && (
+                        <span className="absolute top-3 left-3 z-20 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
+                          Client Work
+                        </span>
+                      )}
+                      <div
+                        className="relative aspect-[9/16] overflow-hidden"
+                        style={{ width: "min(100%, 360px, calc(75vh * 9 / 16))" }}
+                      >
+                        <video
+                          src={p.video.src}
+                          poster={p.video.poster}
+                          controls
+                          playsInline
+                          preload="none"
+                          className="absolute inset-0 h-full w-full object-contain"
+                        />
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => setActive(p)}
+                      className="group flex-1 text-left p-5 md:p-6 lg:p-8 flex flex-col hover:bg-ink hover:text-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    >
+                      <span className="self-start inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1 mb-4">
+                        FEATURED / BUILT WITH CLAUDE
+                      </span>
+                      <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-3">
+                        {p.outcome ?? p.benefit}
+                      </div>
+                      <h3 className="font-black tracking-tightest text-xl md:text-2xl leading-tight">
+                        {p.title}
+                      </h3>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {p.tools.map((t) => (
+                          <span
+                            key={t}
+                            className="font-mono text-[10px] uppercase tracking-[0.15em] border border-ink px-2 py-1 bg-background text-foreground group-hover:bg-ink group-hover:border-background group-hover:text-background transition-colors"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-4 flex items-center justify-between gap-3">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
+                          {String(i + 1).padStart(2, "0")} / {p.category}
+                        </span>
+                        <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition shrink-0" />
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              );
+            }
             // Featured card: full width (both columns), thumbnail left / text right on lg.
             if (p.featured) {
               return (
@@ -337,6 +397,26 @@ const ProjectOverlay = ({ project, onClose }: { project: Project; onClose: () =>
             </span>
           </div>
         ) : null}
+
+        {/* Self-hosted video (modal) — after benefit badge and workflow tags, before the Loom block */}
+        {project.video && (
+          <div className="mt-12 md:mt-16">
+            <SectionLabel>Watch the 75-second version</SectionLabel>
+            <div
+              className="mx-auto relative aspect-[9/16] border-2 border-ink bg-ink overflow-hidden"
+              style={{ width: "min(100%, calc(80vh * 9 / 16))" }}
+            >
+              <video
+                src={project.video.src}
+                poster={project.video.poster}
+                controls
+                playsInline
+                preload="none"
+                className="absolute inset-0 h-full w-full object-contain"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Loom video embed (modal) — before gallery unless loomAfterImage is set */}
         {project.loomEmbedId && !project.loomAfterImage && (
