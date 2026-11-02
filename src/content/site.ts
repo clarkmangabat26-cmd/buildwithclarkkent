@@ -64,12 +64,12 @@ export const site = {
 
   // ---------- Hero ----------
   hero: {
-    tag: "AI AUTOMATION SPECIALIST / AVAILABLE NOW",
-    headline: "Your business runs because you show up. That's the problem.",
-    sub: "I build automation systems for service business founders who are still the ones holding everything together, so the operation keeps running whether you're there or not.",
-    primaryCta: "SEE WHAT I'VE BUILT",
+    tag: "AI AUTOMATION FOR CURATIVE TITLE INVESTORS / AVAILABLE NOW",
+    headline: "Your county list is bigger than your research team.",
+    sub: "I build research systems for curative title investors. Every record gets checked for sold, listed, value, owner status, probate and taxes before anyone digs in, so your researchers spend their time on the records that need a person.",
+    primaryCta: "SEE THE CASE STUDY",
     primaryCtaTarget: "#work",
-    secondaryCta: "CONTACT ME",
+    secondaryCta: "BOOK A CALL",
     secondaryCtaTarget: "#contact",
     trustBadge: {
       quote: "If he says he can do it, he does it.",
@@ -88,8 +88,8 @@ export const site = {
   // ---------- About ----------
   about: {
     imageUrl: "/work/Untitled%20design%20(7).png",
-    headline: "I build systems that run without me",
-    bio: "I work with service founders who are still the ones every process routes back to. I take what lives in your head and turn it into documented, automated systems that run without you.\n\nI build for founders who are tired of being the only one who knows how everything works.",
+    headline: "I build research systems your team works alongside",
+    bio: "I work with curative title investors who pull county tax-delinquent lists and need to know, record by record, who owns it, who has to sign and who to call.\n\nI build the system in your own accounts, so it stays with you. Your researchers work alongside it, and their help makes it even more accurate",
     principles: [
       {
         n: "01",
@@ -111,9 +111,16 @@ export const site = {
 
   // ---------- Work section header ----------
   workSection: {
-    eyebrow: "Selected Builds",
-    headline: "Systems I've built.",
-    subtext: "9 CASE STUDIES",
+    eyebrow: "Client Work",
+    headline: "A research system on a real county list.",
+    subtext: "1 CASE STUDY",
+  },
+
+  // ---------- Other builds section header ----------
+  otherBuildsSection: {
+    eyebrow: "Other Builds",
+    headline: "Earlier automation work.",
+    subtext: "8 BUILDS",
   },
 
   // ---------- Workflow categories ----------
@@ -220,7 +227,7 @@ export const site = {
       problem:
         "Land Addiction buys houses in Cook County, Illinois, where the title needs work: an owner who passed away, heirs who have to sign, years of unpaid taxes, a tax case in court. Their leads come from county tax-delinquent lists, and the 2023 Cook County list alone has 16,968 properties.\n\nResearchers worked each lead by hand across 9 or 10 browser tabs. At 20 to 30 leads a day per researcher and about $1,000 a month each, one researcher would need more than two years to get through that list once. Only 12% of the researchers' qualified leads said who to call.",
       solution:
-        "A research system built with Claude Code that runs every lead through the checks a good researcher would, in order. A lead stops at the first check it fails. The free checks run first and the paid lookups run last, so money only goes on leads still worth calling.\n\nResults go straight into DataSift, their CRM, as statuses and notes, so the caller works from the same place as before. Every call-ready lead gets a one-page summary: the owner from the deed, who has to sign, the tax position and scored phone numbers.\n\nIt works like triage at a hospital: quick checks for everyone, the expensive tests only for the patients who need them. One 8-hour run screens about 1,000 raw leads, and the leads that pass get full research over the next 1 to 3 days.",
+        "A research system built with Claude Code that runs every lead through the checks a good researcher would, in order. A lead stops at the first check it fails. The free checks run first and the paid lookups run last, so money only goes on leads still worth calling.\n\nResults go straight into DataSift, their CRM, as statuses and notes, so the caller works from the same place as before. Every call-ready lead gets a one-page summary: the owner from the deed, who has to sign, the tax position and scored phone numbers.\n\nOne 8-hour run screens about 1,000 raw leads, and the leads that pass get full research over the next 1 to 3 days.",
       flowLabel: "The Checks, In Order",
       flow: [
         "Listing check: is it listed or already sold? (free)",
@@ -502,14 +509,14 @@ export const site = {
   // ---------- Contact ----------
   contactSection: {
     availabilityNote:
-      "Available for hourly or project-based work. Currently taking on 2-3 new clients per month.",
+      "Project-based builds, priced by the build. Currently taking on 2-3 new clients per month.",
     whatsapp: {
       eyebrow: "QUICK RESPONSE",
-      headline: "Need a workflow built?",
+      headline: "Sitting on a county list nobody has had time to work?",
       subtext:
         "Message me on WhatsApp for the fastest response. I typically reply within 2-4 hours during business hours (PHT).",
       number: "+63 960 289 4958",
-      note: "Save this number and send me a message describing what you need automated.",
+      note: "Save this number and send me a message about the list you're working.",
     },
     calendly: {
       eyebrow: "PREFER A SCHEDULED CALL?",
@@ -524,7 +531,7 @@ export const site = {
 
   // ---------- Footer ----------
   footer: {
-    tagline: "AUTOMATION SPECIALIST BASED IN THE PHILIPPINES",
+    tagline: "AI AUTOMATION FOR CURATIVE TITLE INVESTORS, BASED IN THE PHILIPPINES",
     year: 2026,
   },
 };

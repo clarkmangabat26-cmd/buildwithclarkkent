@@ -18,10 +18,130 @@ const LoomEmbed = ({ embedId, title }: { embedId: string; title: string }) => (
   </div>
 );
 
+// Regular grid card (used by the "Other Builds" section).
+const RegularCard = ({ p, i, revealed, onSelect }: { p: Project; i: number; revealed: boolean; onSelect: (p: Project) => void }) => (
+  <div
+    className="h-full"
+    style={{
+      opacity: revealed ? 1 : 0,
+      transform: revealed ? "translateY(0)" : "translateY(20px)",
+      transition: `opacity 600ms ease-out ${i * 80}ms, transform 600ms ease-out ${i * 80}ms`,
+    }}
+  >
+    <button
+      onClick={() => onSelect(p)}
+      className="group w-full h-full text-left bg-background hover:bg-ink hover:text-background relative hover:scale-[1.03] hover:shadow-[0_0_0_2px_hsl(var(--primary))] border-2 border-ink flex flex-col transition-transform duration-200 ease-out [transition-property:transform,background-color,color,box-shadow]"
+    >
+      {/* Thumbnail — 16:9 */}
+      <div className="relative w-full aspect-video bg-ink border-b-2 border-ink flex items-center justify-center overflow-hidden">
+        {p.clientWork && (
+          <span className="absolute top-3 left-3 z-20 inline-flex items-center rounded-full bg-primary text-primary-foreground font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 shadow">
+            Client Work
+          </span>
+        )}
+        {/* Loom badge */}
+        {(p.loomEmbedId || p.loomShareUrl) && (
+          p.loomShareUrl ? (
+            <a
+              href={p.loomShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="absolute bottom-[10px] right-[10px] z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
+              style={{
+                backgroundColor: "rgba(245, 158, 11, 0.12)",
+                border: "1px solid rgba(245, 158, 11, 0.3)",
+                color: "#F59E0B",
+                padding: "5px 10px 5px 6px",
+                fontSize: "12px",
+                fontWeight: 600,
+              }}
+            >
+              <span className="h-[18px] w-[18px] rounded-full bg-[#F59E0B] flex items-center justify-center shrink-0">
+                <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
+              </span>
+              Loom
+            </a>
+          ) : (
+            <span
+              className="absolute bottom-[10px] right-[10px] z-20 inline-flex items-center gap-1.5 rounded-full animate-loom-pulse"
+              style={{
+                backgroundColor: "rgba(245, 158, 11, 0.12)",
+                border: "1px solid rgba(245, 158, 11, 0.3)",
+                color: "#F59E0B",
+                padding: "5px 10px 5px 6px",
+                fontSize: "12px",
+                fontWeight: 600,
+              }}
+            >
+              <span className="h-[18px] w-[18px] rounded-full bg-[#F59E0B] flex items-center justify-center shrink-0">
+                <Play className="h-2.5 w-2.5 text-[#0A0A0A] fill-current" strokeWidth={0} />
+              </span>
+              Loom
+            </span>
+          )
+        )}
+        {p.gridThumbnail ? (
+          <img
+            src={p.gridThumbnail}
+            alt={`${p.title}: thumbnail`}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
+            Thumbnail coming soon
+          </span>
+        )}
+        {/* Hover overlay with centered play icon */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-ink/0 group-hover:bg-ink/40 transition-colors duration-200 pointer-events-none">
+          <div className="h-14 w-14 rounded-full bg-background/90 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-200">
+            <Play className="h-6 w-6 text-ink fill-current ml-0.5" strokeWidth={0} />
+          </div>
+        </div>
+      </div>
+
+      <div className="p-5 md:p-6 flex flex-col flex-1">
+        {/* Outcome line */}
+        <div className="font-mono text-xs md:text-sm uppercase tracking-[0.15em] font-bold mb-3">
+          {p.outcome ?? p.benefit}
+        </div>
+
+        {/* Title */}
+        <h3 className="font-black tracking-tightest text-xl md:text-2xl leading-tight">
+          {p.title}
+        </h3>
+
+        {/* Tools */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          {p.tools.map((t) => (
+            <span
+              key={t}
+              className="font-mono text-[10px] uppercase tracking-[0.15em] border border-ink px-2 py-1 bg-background text-foreground group-hover:bg-ink group-hover:border-background group-hover:text-background transition-colors"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
+            {String(i + 1).padStart(2, "0")} / {p.category}
+          </span>
+          <ArrowUpRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:text-primary transition shrink-0" />
+        </div>
+      </div>
+    </button>
+  </div>
+);
+
 const Work = () => {
   const [active, setActive] = useState<Project | null>(null);
   const projects = site.projects;
+  const featuredProjects = projects.filter((p) => p.featured);
+  const otherProjects = projects.filter((p) => !p.featured);
   const ws = site.workSection;
+  const obs = site.otherBuildsSection;
 
   // Trigger one-time stagger entrance when the grid scrolls into view.
   const gridRef = useRef<HTMLDivElement | null>(null);
@@ -45,7 +165,30 @@ const Work = () => {
     return () => io.disconnect();
   }, [revealed]);
 
+  // Same one-time entrance for the "Other Builds" grid below.
+  const otherGridRef = useRef<HTMLDivElement | null>(null);
+  const [otherRevealed, setOtherRevealed] = useState(false);
+  useEffect(() => {
+    if (!otherGridRef.current || otherRevealed) return;
+    const node = otherGridRef.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setOtherRevealed(true);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, [otherRevealed]);
+
   return (
+    <>
     <section id="work" className="border-b-2 border-ink">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-28">
         <div className="flex items-end justify-between mb-8 md:mb-12">
@@ -61,12 +204,12 @@ const Work = () => {
             </div>
           </div>
           <div className="hidden md:block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            {projects.length} CASE STUDIES
+            {ws.subtext}
           </div>
         </div>
 
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
-          {projects.map((p, i) => {
+          {featuredProjects.map((p, i) => {
             const anim = {
               opacity: revealed ? 1 : 0,
               transform: revealed ? "translateY(0)" : "translateY(20px)",
@@ -315,8 +458,37 @@ const Work = () => {
         </div>
       </div>
 
+      </section>
+
+      <section className="border-b-2 border-ink">
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-28">
+          <div className="flex items-end justify-between mb-8 md:mb-12">
+            <div>
+              <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
+                / {obs.eyebrow}
+              </div>
+              <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95]">
+                {obs.headline.replace(/\.$/, "")}<span className="text-primary">.</span>
+              </h2>
+              <div className="mt-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {obs.subtext}
+              </div>
+            </div>
+            <div className="hidden md:block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              {obs.subtext}
+            </div>
+          </div>
+
+          <div ref={otherGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
+            {otherProjects.map((p, i) => (
+              <RegularCard key={p.id} p={p} i={i} revealed={otherRevealed} onSelect={setActive} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {active && <ProjectOverlay project={active} onClose={() => setActive(null)} />}
-    </section>
+    </>
   );
 };
 
