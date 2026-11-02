@@ -486,7 +486,6 @@ const Work = () => {
           </div>
         </div>
       </section>
-      </>
 
       {active && <ProjectOverlay project={active} onClose={() => setActive(null)} />}
     </>
