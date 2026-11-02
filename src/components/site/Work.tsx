@@ -188,6 +188,7 @@ const Work = () => {
   }, [otherRevealed]);
 
   return (
+    <>
     <section id="work" className="border-b-2 border-ink">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-28">
         <div className="flex items-end justify-between mb-8 md:mb-12">
@@ -203,12 +204,12 @@ const Work = () => {
             </div>
           </div>
           <div className="hidden md:block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            {projects.length} CASE STUDIES
+            {ws.subtext}
           </div>
         </div>
 
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
-          {projects.map((p, i) => {
+          {featuredProjects.map((p, i) => {
             const anim = {
               opacity: revealed ? 1 : 0,
               transform: revealed ? "translateY(0)" : "translateY(20px)",
@@ -457,8 +458,38 @@ const Work = () => {
         </div>
       </div>
 
+      </section>
+
+      <section className="border-b-2 border-ink">
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-28">
+          <div className="flex items-end justify-between mb-8 md:mb-12">
+            <div>
+              <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] mb-4">
+                / {obs.eyebrow}
+              </div>
+              <h2 className="font-black tracking-tightest text-4xl md:text-7xl leading-[0.95]">
+                {obs.headline.replace(/\.$/, "")}<span className="text-primary">.</span>
+              </h2>
+              <div className="mt-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {obs.subtext}
+              </div>
+            </div>
+            <div className="hidden md:block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              {obs.subtext}
+            </div>
+          </div>
+
+          <div ref={otherGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
+            {otherProjects.map((p, i) => (
+              <RegularCard key={p.id} p={p} i={i} revealed={otherRevealed} onSelect={setActive} />
+            ))}
+          </div>
+        </div>
+      </section>
+      </>
+
       {active && <ProjectOverlay project={active} onClose={() => setActive(null)} />}
-    </section>
+    </>
   );
 };
 
